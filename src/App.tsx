@@ -559,11 +559,11 @@ export default function App() {
       <nav className="fixed w-full z-50 bg-[#183e26]/95 backdrop-blur-md border-b border-[#183e26]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
-            <div className="flex-shrink-0 flex items-center">
+            <a href={import.meta.env.BASE_URL} aria-label="Eucalyptus Tratados, página inicial" className="flex-shrink-0 flex items-center">
               <Logo />
-            </div>
+            </a>
 
-            <div className="hidden md:flex space-x-8 items-center">
+            <div className="hidden lg:flex space-x-8 items-center">
               {HEADER_LINKS.map((link) => (
                 <a
                   key={link.slug}
@@ -581,7 +581,7 @@ export default function App() {
               </a>
             </div>
 
-            <div className="md:hidden flex items-center">
+            <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
                 className="text-stone-200"
@@ -602,7 +602,7 @@ export default function App() {
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="md:hidden bg-[#183e26] border-b border-[#183e26] px-4 pt-2 pb-4 space-y-1 shadow-lg overflow-hidden"
+              className="lg:hidden bg-[#183e26] border-b border-[#183e26] px-4 pt-2 pb-4 space-y-1 shadow-lg overflow-hidden"
               initial={{ opacity: 0, height: 0 }}
               animate={{ opacity: 1, height: "auto" }}
               exit={{ opacity: 0, height: 0 }}
