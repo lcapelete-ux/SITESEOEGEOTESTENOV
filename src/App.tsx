@@ -23,7 +23,7 @@ const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 import { Toaster, toast } from "react-hot-toast";
 import { FAQ } from "./seoContent";
-import { FOOTER_GROUPS } from "./pages/nav";
+import { FOOTER_GROUPS, HEADER_LINKS } from "./pages/nav";
 
 const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 
@@ -564,42 +564,15 @@ export default function App() {
             </div>
 
             <div className="hidden md:flex space-x-8 items-center">
-              <a
-                href="#sobre"
-                className="text-stone-200 hover:text-white font-medium transition-colors"
-              >
-                Sobre
-              </a>
-              <a
-                href={pageHref("produtos")}
-                className="text-stone-200 hover:text-white font-medium transition-colors"
-              >
-                Produtos
-              </a>
-              <a
-                href="#citriodora"
-                className="text-stone-200 hover:text-white font-medium transition-colors"
-              >
-                Citriodora
-              </a>
-              <a
-                href="#processo"
-                className="text-stone-200 hover:text-white font-medium transition-colors"
-              >
-                Processo
-              </a>
-              <a
-                href="#normas"
-                className="text-stone-200 hover:text-white font-medium transition-colors"
-              >
-                Normas
-              </a>
-              <a
-                href="#perguntas"
-                className="text-stone-200 hover:text-white font-medium transition-colors"
-              >
-                Dúvidas
-              </a>
+              {HEADER_LINKS.map((link) => (
+                <a
+                  key={link.slug}
+                  href={pageHref(link.slug)}
+                  className="text-stone-200 hover:text-white font-medium transition-colors"
+                >
+                  {link.name}
+                </a>
+              ))}
               <a
                 href="#contato"
                 className="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors"
@@ -635,47 +608,16 @@ export default function App() {
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.18, ease: "easeOut" }}
             >
-              <a
-                href="#sobre"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
-              >
-                Sobre
-              </a>
-              <a
-                href={pageHref("produtos")}
-                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
-              >
-                Produtos
-              </a>
-              <a
-                href="#citriodora"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
-              >
-                Citriodora
-              </a>
-              <a
-                href="#processo"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
-              >
-                Processo
-              </a>
-              <a
-                href="#normas"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
-              >
-                Normas
-              </a>
-              <a
-                href="#perguntas"
-                onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
-              >
-                Dúvidas
-              </a>
+              {HEADER_LINKS.map((link) => (
+                <a
+                  key={link.slug}
+                  href={pageHref(link.slug)}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
+                >
+                  {link.name}
+                </a>
+              ))}
               <a
                 href="#contato"
                 onClick={() => setIsMenuOpen(false)}
