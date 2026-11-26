@@ -31,6 +31,7 @@ export const FOOTER_GROUPS: { title: string; links: NavLink[] }[] = [
     title: "Empresa",
     links: [
       { slug: "sobre-a-empresa", name: "Sobre a empresa" },
+      { slug: "blog", name: "Blog" },
       { slug: "perguntas-frequentes", name: "Perguntas frequentes" },
       { slug: "contato", name: "Contato e orçamento" },
     ],
@@ -45,4 +46,5 @@ export const HEADER_LINKS: NavLink[] = [
   { slug: "tratamento-em-autoclave", name: "Tratamento" },
   { slug: "norma-nbr-9480", name: "Normas" },
   { slug: "perguntas-frequentes", name: "Dúvidas" },
+  { slug: "blog", name: "Blog" },
 ];

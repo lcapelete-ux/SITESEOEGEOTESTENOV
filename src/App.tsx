@@ -24,6 +24,7 @@ const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 import { Toaster, toast } from "react-hot-toast";
 import { FAQ } from "./seoContent";
 import { FOOTER_GROUPS, HEADER_LINKS } from "./pages/nav";
+import LATEST_POSTS from "virtual:blog-latest";
 
 const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 
@@ -564,7 +565,7 @@ export default function App() {
               <Logo />
             </a>
 
-            <div className="hidden lg:flex space-x-8 items-center">
+            <div className="hidden lg:flex space-x-5 xl:space-x-8 items-center">
               {HEADER_LINKS.map((link) => (
                 <a
                   key={link.slug}
@@ -1133,7 +1134,46 @@ export default function App() {
         </div>
       </section>
 
-      {/* Contact Section */}
+      {/* Blog */}
+      {LATEST_POSTS.length > 0 && (
+        <section id="blog" className="py-24 bg-stone-50">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
+                Do nosso blog
+              </h2>
+              <p className="text-lg text-stone-700 max-w-2xl mx-auto">
+                Guias práticos para escolher, calcular e instalar eucalipto
+                tratado. Artigos novos todo mês.
+              </p>
+            </div>
+            <div className="grid gap-6 md:grid-cols-3">
+              {LATEST_POSTS.map((post) => (
+                <a
+                  key={post.slug}
+                  href={pageHref(post.slug)}
+                  className="group flex flex-col bg-white border border-stone-200 rounded-2xl p-6 hover:border-brand-500 hover:shadow-lg transition-all"
+                >
+                  <p className="text-sm font-semibold text-brand-800 mb-2">
+                    {post.category} · <time dateTime={post.date}>{post.dateLabel}</time>
+                  </p>
+                  <h3 className="text-xl font-bold text-[#183e26] mb-2">{post.title}</h3>
+                  <p className="text-stone-700 mb-4 flex-1">{post.description}</p>
+                  <span className="inline-flex items-center gap-1 font-bold text-[#183e26] group-hover:gap-2 transition-all">
+                    Ler artigo <ChevronRight className="w-4 h-4" />
+                  </span>
+                </a>
+              ))}
+            </div>
+            <p className="text-center mt-10">
+              <a href={pageHref("blog")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">
+                Ver todos os artigos <ChevronRight className="w-4 h-4" />
+              </a>
+            </p>
+          </div>
+        </section>
+      )}
+
       {/* FAQ */}
       <section id="perguntas" className="py-24 bg-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

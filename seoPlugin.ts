@@ -12,8 +12,9 @@
  */
 import type { Plugin, ResolvedConfig } from 'vite';
 import { BUSINESS as B, FAQ, PRODUCTS } from './src/seoContent';
-import { PAGES, pageBySlug, whatsappLink, type PageFaq, type SitePage } from './src/pages/content';
+import { PAGES, whatsappLink, type PageFaq, type SitePage } from './src/pages/content';
 import { FOOTER_GROUPS, HEADER_LINKS } from './src/pages/nav';
+import { blogIndexPage, dataPorExtenso, loadBlogPosts, type BlogPost } from './blogLoader';
 
 const SITE = B.url; // domínio oficial (canonical), com barra final
 const LASTMOD = new Date().toISOString().slice(0, 10);
@@ -24,6 +25,20 @@ const ld = (obj: unknown) =>
   `<script type="application/ld+json">${JSON.stringify(obj).replace(/</g, '\\u003c')}</script>`;
 
 const BUSINESS_ID = `${SITE}#empresa`;
+
+// Páginas fixas + blog (recarregado a cada build a partir de src/blog/posts).
+let POSTS: BlogPost[] = [];
+let ALL: SitePage[] = PAGES;
+function refreshBlog() {
+  POSTS = loadBlogPosts();
+  ALL = [...PAGES, blogIndexPage(POSTS), ...POSTS];
+}
+const bySlug = (slug: string): SitePage => {
+  const p = ALL.find((x) => x.slug === slug);
+  if (!p) throw new Error(`Página não encontrada: ${slug}`);
+  return p;
+};
+const articleOf = (p: SitePage) => (p as Partial<BlogPost>).article;
 
 function businessLd() {
   return {
@@ -163,7 +178,7 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
   ];
   const graph: unknown[] = [
     {
-      '@type': p.slug === 'contato' ? 'ContactPage' : p.slug === 'sobre-a-empresa' ? 'AboutPage' : p.slug === 'perguntas-frequentes' ? 'FAQPage' : 'WebPage',
+      '@type': articleOf(p) ? 'BlogPosting' : p.slug === 'blog' ? 'Blog' : p.slug === 'contato' ? 'ContactPage' : p.slug === 'sobre-a-empresa' ? 'AboutPage' : p.slug === 'perguntas-frequentes' ? 'FAQPage' : 'WebPage',
       '@id': `${url}#pagina`,
       url,
       name: p.title,
@@ -171,7 +186,22 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
       inLanguage: 'pt-BR',
       isPartOf: { '@id': `${SITE}#site` },
       about: { '@id': BUSINESS_ID },
-      dateModified: LASTMOD,
+      dateModified: articleOf(p) ? (articleOf(p)!.updated ?? articleOf(p)!.date) : LASTMOD,
+      ...(articleOf(p)
+        ? {
+            headline: p.h1,
+            datePublished: articleOf(p)!.date,
+            articleSection: articleOf(p)!.category,
+            author: { '@id': BUSINESS_ID },
+            publisher: { '@id': BUSINESS_ID },
+            image: `${SITE}og-image.jpg`,
+            mainEntityOfPage: url,
+            timeRequired: `PT${articleOf(p)!.readMinutes}M`,
+          }
+        : {}),
+      ...(p.slug === 'blog'
+        ? { blogPost: POSTS.map((x) => ({ '@type': 'BlogPosting', headline: x.h1, url: pageUrl(x.slug), datePublished: x.article.date })) }
+        : {}),
       ...(p.slug === 'perguntas-frequentes'
         ? {
             mainEntity: faq.map((f) => ({
@@ -192,7 +222,7 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
       })),
     },
   ];
-  if (p.slug === 'sobre-a-empresa' || p.slug === 'contato') graph.push(businessLd());
+  if (p.slug === 'sobre-a-empresa' || p.slug === 'contato' || articleOf(p) || p.slug === 'blog') graph.push(businessLd());
   if (p.product) {
     graph.push({
       '@type': 'Product',
@@ -225,7 +255,7 @@ function faqHtml(items: PageFaq[], title: string): string {
 function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string; noindex: boolean }): string {
   const { base } = ctx;
   const href = (slug: string) => `${base}${slug}/`;
-  const resolve = (html: string) => html.replace(/\{\{([a-z0-9/-]+)\}\}/g, (_, slug) => href(pageBySlug(slug).slug));
+  const resolve = (html: string) => html.replace(/\{\{([a-z0-9/-]+)\}\}/g, (_, slug) => href(bySlug(slug).slug));
   const isFaqPage = p.slug === 'perguntas-frequentes';
   const faq = isFaqPage ? allFaq() : (p.faq ?? []);
   const wa = whatsappLink(p.whatsappText);
@@ -243,7 +273,7 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
   ).join('');
 
   const related = p.related
-    .map((slug) => pageBySlug(slug))
+    .map((slug) => bySlug(slug))
     .map((r) => `<a class="card" href="${href(r.slug)}"><h3>${esc(r.nav)}</h3><p>${esc(r.description)}</p></a>`)
     .join('');
 
@@ -263,7 +293,7 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
 <meta name="robots" content="${ctx.noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1'}">
 <link rel="canonical" href="${canonical}">
 <meta name="theme-color" content="#183e26">
-<meta property="og:type" content="${p.product ? 'product' : 'article'}">
+<meta property="og:type" content="${p.product ? 'product' : 'article'}">${articleOf(p) ? `\n<meta property="article:published_time" content="${articleOf(p)!.date}">` : ''}
 <meta property="og:site_name" content="${esc(B.name)}">
 <meta property="og:locale" content="pt_BR">
 <meta property="og:title" content="${esc(p.title)}">
@@ -274,6 +304,7 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" type="image/svg+xml" href="${base}favicon.svg">
+<link rel="alternate" type="application/rss+xml" title="Blog Eucalyptus Tratados" href="${base}blog/feed.xml">
 ${ctx.css.map((c) => `<link rel="stylesheet" href="${base}${c}">`).join('\n')}
 ${pageLd(p, faq)}
 ${ctx.gtm}
@@ -283,7 +314,7 @@ ${ctx.gtm}
 <header class="sticky top-0 w-full z-50 bg-[#183e26]/95 backdrop-blur-md border-b border-[#183e26]">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 <a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a>
-<nav aria-label="Principal" class="hidden lg:flex space-x-8 items-center">${nav}<a href="${href('contato')}" class="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors">Orçamento</a></nav>
+<nav aria-label="Principal" class="hidden lg:flex space-x-5 xl:space-x-8 items-center">${nav}<a href="${href('contato')}" class="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors">Orçamento</a></nav>
 <details class="lg:hidden relative menu-mobile"><summary class="list-none cursor-pointer text-stone-200 p-2.5 -mr-2.5 rounded-lg" aria-label="Abrir menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
 <nav aria-label="Menu" class="absolute right-0 top-12 w-60 bg-[#183e26] rounded-xl shadow-xl p-3 flex flex-col gap-1">${HEADER_LINKS.map((l) => `<a class="block px-3 py-3 text-stone-100 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a>`).join('')}<a class="block px-3 py-3 text-[#A1C913] font-bold" href="${href('contato')}">Orçamento</a></nav></details>
 </div>
@@ -291,7 +322,7 @@ ${ctx.gtm}
 <nav aria-label="Você está em" class="max-w-3xl mx-auto px-4 pt-6 text-sm text-stone-600 breadcrumbs">${crumbs}</nav>
 <main id="conteudo" class="max-w-3xl mx-auto px-4 pb-16">
 <article class="conteudo">
-<h1>${esc(p.h1)}</h1>
+<h1>${esc(p.h1)}</h1>${articleOf(p) ? `\n<p class="nota">${esc(articleOf(p)!.category)} · <time datetime="${articleOf(p)!.date}">${dataPorExtenso(articleOf(p)!.date)}</time>${articleOf(p)!.updated ? ` · atualizado em <time datetime="${articleOf(p)!.updated}">${dataPorExtenso(articleOf(p)!.updated!)}</time>` : ''} · ${articleOf(p)!.readMinutes} min de leitura</p>` : ''}
 <p class="lead">${esc(p.intro)}</p>
 <p><a class="cta" href="${wa}">Pedir orçamento pelo WhatsApp</a></p>
 ${resolve(p.body)}
@@ -323,7 +354,7 @@ ${footer}
 function sitemap(): string {
   const urls = [
     `<url><loc>${SITE}</loc><lastmod>${LASTMOD}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
-    ...PAGES.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${LASTMOD}</lastmod></url>`),
+    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${articleOf(p) ? (articleOf(p)!.updated ?? articleOf(p)!.date) : LASTMOD}</lastmod></url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -335,7 +366,7 @@ ${urls.join('\n')}
 function llms(): string {
   const section = (title: string, slugs: string[]) =>
     `## ${title}\n\n${slugs
-      .map((s) => pageBySlug(s))
+      .map((s) => bySlug(s))
       .map((p) => `- [${p.nav}](${pageUrl(p.slug)}): ${p.description}`)
       .join('\n')}\n`;
   return `# ${B.name}
@@ -354,6 +385,7 @@ function llms(): string {
 ${section('Produtos', PAGES.filter((p) => p.slug.startsWith('produtos')).map((p) => p.slug))}
 ${section('Guias técnicos', ['eucalipto-citriodora', 'tratamento-em-autoclave', 'norma-nbr-9480', 'cerca-de-eucalipto-tratado', 'construcoes-com-eucalipto-tratado'])}
 ${section('Empresa', ['sobre-a-empresa', 'perguntas-frequentes', 'contato'])}
+${POSTS.length ? section('Blog (artigos)', ['blog', ...POSTS.map((p) => p.slug)]) : ''}
 ## Contato
 
 - WhatsApp: +55 15 99685-4945 (https://wa.me/${B.whatsapp})
@@ -363,6 +395,23 @@ ${section('Empresa', ['sobre-a-empresa', 'perguntas-frequentes', 'contato'])}
 - Site: ${SITE}
 `;
 }
+
+function rss(): string {
+  const items = POSTS.map(
+    (p) => `<item><title>${esc(p.title)}</title><link>${pageUrl(p.slug)}</link><guid>${pageUrl(p.slug)}</guid><pubDate>${new Date(p.article.date + 'T12:00:00-03:00').toUTCString()}</pubDate><category>${esc(p.article.category)}</category><description>${esc(p.description)}</description></item>`,
+  ).join('\n');
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>Blog Eucalyptus Tratados</title>
+<link>${SITE}blog/</link>
+<description>Guias práticos de eucalipto citriodora tratado: cercas, postes, tratamento em autoclave e medidas.</description>
+<language>pt-BR</language>
+${items}
+</channel></rss>
+`;
+}
+
+const VIRTUAL_ID = 'virtual:blog-latest';
 
 // ───────────────────────── Plugin ─────────────────────────
 
@@ -376,6 +425,26 @@ export function seoPlugin(): Plugin {
     configResolved(c) {
       config = c;
     },
+    buildStart() {
+      refreshBlog();
+    },
+    // Módulo virtual com os 3 artigos mais recentes, usado na home React.
+    resolveId(id) {
+      return id === VIRTUAL_ID ? '\0' + VIRTUAL_ID : null;
+    },
+    load(id) {
+      if (id !== '\0' + VIRTUAL_ID) return null;
+      refreshBlog();
+      const latest = POSTS.slice(0, 3).map((p) => ({
+        slug: p.slug,
+        title: p.title,
+        description: p.description,
+        category: p.article.category,
+        date: p.article.date,
+        dateLabel: dataPorExtenso(p.article.date),
+      }));
+      return `export default ${JSON.stringify(latest)};`;
+    },
     transformIndexHtml(html) {
       const m = html.match(/<!-- Google Tag Manager \(adiado[\s\S]*?<!-- End Google Tag Manager -->/);
       gtm = m ? m[0] : '';
@@ -383,12 +452,13 @@ export function seoPlugin(): Plugin {
         html = html.replace(/<meta name="robots"[^>]*>/, '<meta name="robots" content="noindex, nofollow">');
       }
       return html
+        .replace('</head>', `  <link rel="alternate" type="application/rss+xml" title="Blog Eucalyptus Tratados" href="${config.base}blog/feed.xml">\n  </head>`)
         .replace('<!--SEO_JSONLD-->', homeLd())
         .replace('<div id="root"></div>', `<div id="root">${homeStatic(config.base)}</div>`);
     },
     generateBundle(_, bundle) {
       const css = Object.keys(bundle).filter((f) => f.endsWith('.css') && f.startsWith('assets/index'));
-      for (const p of PAGES) {
+      for (const p of ALL) {
         this.emitFile({
           type: 'asset',
           fileName: `${p.slug}/index.html`,
@@ -397,6 +467,7 @@ export function seoPlugin(): Plugin {
       }
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap() });
       this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llms() });
+      this.emitFile({ type: 'asset', fileName: 'blog/feed.xml', source: rss() });
     },
   };
 }
