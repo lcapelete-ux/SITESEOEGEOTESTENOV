@@ -184,7 +184,6 @@ function homeStatic(base: string): string {
   const products = PRODUCTS.map(
     (p) => `<li><strong>${esc(p.name)}</strong>: ${esc(p.description)}</li>`,
   ).join('');
-  const faq = FAQ.map((f) => `<h3>${esc(f.q)}</h3><p>${esc(f.a)}</p>`).join('');
   const links = FOOTER_GROUPS.map(
     (g) =>
       `<h3>${esc(g.title)}</h3><ul>${g.links
@@ -199,7 +198,7 @@ function homeStatic(base: string): string {
 <h2>Por que eucalipto citriodora?</h2>
 <ul><li>Fibras retorcidas que aumentam a resistência estrutural</li><li>Maior resistência a trincas e rachaduras</li><li>Densidade alta e resistência mecânica superior, suporta altas cargas</li><li>Melhor absorção do preservativo CCA</li><li>Ideal para ambientes externos e rurais</li><li>Durabilidade superior a 20 a 30 anos em contato com o solo e laudos de tratamento aprovados pelo IPT</li></ul>
 <h2>Produtos</h2><ul>${products}</ul>
-<h2>Perguntas frequentes</h2>${faq}
+<h2>Perguntas frequentes</h2><p><a href="${base}perguntas-frequentes/">Veja as perguntas frequentes sobre eucalipto tratado</a>.</p>
 <h2>Contato e orçamento</h2>
 <p>WhatsApp: <a href="https://wa.me/${B.whatsapp}">${esc(B.whatsappDisplay)}</a>. Telefone: ${esc(B.phoneDisplay)}. E-mail: <a href="mailto:${B.email}">${esc(B.email)}</a>. Endereço: ${esc(B.street)}, ${esc(B.city)} - ${B.region}.</p>
 ${POSTS.length ? `<h2>Do blog</h2><ul>${POSTS.slice(0, 5).map((p) => `<li><a href="${base}${p.slug}/">${esc(p.title)}</a></li>`).join('')}</ul>` : ''}
