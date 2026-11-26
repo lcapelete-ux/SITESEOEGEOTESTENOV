@@ -41,7 +41,7 @@ const HOME_PRODUCTS = [
   { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado.", photoIndex: 3 },
 ];
 
-// Amostra curta da galeria, sem repetir as fotos da capa e dos cartões de produtos.
+// Amostra exibida enquanto as escolhas do painel ainda estão carregando.
 const FEATURED_GALLERY = [20, 1, 7].map(index => gallerySnapshot.rows[index]);
 
 const getSupabase = async () => (await import("./supabase")).supabase;
@@ -560,7 +560,9 @@ export default function App() {
   };
 
   const galleryItems = activeGalleryTab === "destaques"
-    ? FEATURED_GALLERY
+    ? isDataLoaded.gallery
+      ? (Object.values(siteImages.gallery).flat() as GalleryItem[]).filter(item => item.pages?.includes("destaques"))
+      : FEATURED_GALLERY
     : siteImages.gallery[activeGalleryTab];
 
   return (

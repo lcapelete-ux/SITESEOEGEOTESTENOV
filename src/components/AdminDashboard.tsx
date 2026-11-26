@@ -160,7 +160,16 @@ const SortableGalleryItem: React.FC<SortableGalleryItemProps> = ({
       </div>
       </div>
       <div className="p-3 space-y-2 text-sm">
-        <p className="font-semibold text-stone-700">Mostrar nas páginas:</p>
+        <button
+          type="button"
+          onClick={() => onTogglePage(item, "destaques")}
+          disabled={!!loading}
+          aria-pressed={(item.pages ?? []).includes("destaques")}
+          className={`w-full rounded-lg border px-3 py-2 text-left font-semibold transition-colors ${(item.pages ?? []).includes("destaques") ? "border-[#183e26] bg-[#eaf2df] text-[#183e26]" : "border-stone-300 bg-white text-stone-700 hover:border-brand-700"}`}
+        >
+          {(item.pages ?? []).includes("destaques") ? "★ Destaque na página inicial" : "☆ Marcar como destaque na página inicial"}
+        </button>
+        <p className="font-semibold text-stone-700">Mostrar também nas páginas:</p>
         <div className="flex flex-wrap gap-1.5">
           {GALLERY_PAGES.map((gp) => {
             const on = (item.pages ?? []).includes(gp.key);
@@ -488,13 +497,20 @@ export default function AdminDashboard({
   const handleToggleGalleryPage = async (item: GalleryItem, pageKey: string) => {
     if (!supabase) return;
     const current = item.pages ?? [];
+    if (pageKey === "destaques" && !current.includes(pageKey)) {
+      const selectedCount = (Object.values(siteImages.gallery).flat() as GalleryItem[]).filter(photo => photo.pages?.includes("destaques")).length;
+      if (selectedCount >= 3) {
+        toast.error("Escolha até 3 fotos de destaque. Desmarque uma antes de adicionar outra.");
+        return;
+      }
+    }
     const pages = current.includes(pageKey) ? current.filter((p) => p !== pageKey) : [...current, pageKey];
     setLoading(item.id);
     try {
       const { error } = await supabase.from('gallery').update({ pages }).eq('id', item.id);
       if (error) throw error;
       await refreshGallery();
-      toast.success("Páginas atualizadas. Entra no site na próxima publicação (todo dia de madrugada).");
+      toast.success(pageKey === "destaques" ? "Destaques atualizados na página inicial." : "Páginas atualizadas. Entra no site na próxima publicação (todo dia de madrugada).");
     } catch (err: any) {
       toast.error(formatSupabaseError(err));
     } finally {
@@ -1233,7 +1249,7 @@ export default function AdminDashboard({
                 </div>
 
                 <p className="mb-4 p-3 rounded-lg bg-brand-50 border border-brand-200 text-sm text-stone-700">
-                  Marque em cada foto as páginas do site onde ela deve aparecer (Mourões, Esticadores, Palanques...) e escreva uma descrição curta do que aparece nela. A galeria da página inicial muda na hora; as páginas de produto são atualizadas na publicação automática, todo dia de madrugada.
+                  Escolha até 3 fotos como destaque na página inicial. Você também pode marcar as páginas onde cada foto aparece (Mourões, Esticadores, Palanques...) e escrever uma descrição curta. Os destaques mudam na hora; as páginas de produto são atualizadas na publicação automática, todo dia de madrugada.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   <DndContext
