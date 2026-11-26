@@ -12,12 +12,14 @@
  */
 import type { Plugin, ResolvedConfig } from 'vite';
 import { BUSINESS as B, FAQ, PRODUCTS } from './src/seoContent';
-import { PAGES, whatsappLink, type PageFaq, type SitePage } from './src/pages/content';
+import { CONTENT_UPDATED, PAGES, whatsappLink, type PageFaq, type SitePage } from './src/pages/content';
 import { FOOTER_GROUPS, HEADER_LINKS } from './src/pages/nav';
 import { blogIndexPage, dataPorExtenso, loadBlogPosts, type BlogPost } from './blogLoader';
 
 const SITE = B.url; // domínio oficial (canonical), com barra final
-const LASTMOD = new Date().toISOString().slice(0, 10);
+// Datas reais de revisão (não a data do build): o Google ignora lastmod que muda sem o conteúdo mudar.
+const modifiedOf = (p: { updated?: string; article?: { date: string; updated?: string } }) =>
+  p.article ? (p.article.updated ?? p.article.date) : (p.updated ?? CONTENT_UPDATED);
 
 const esc = (s: string) =>
   s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
@@ -143,6 +145,7 @@ function homeStatic(base: string): string {
 <h2>Perguntas frequentes</h2>${faq}
 <h2>Contato e orçamento</h2>
 <p>WhatsApp: <a href="https://wa.me/${B.whatsapp}">${esc(B.whatsappDisplay)}</a>. Telefone: ${esc(B.phoneDisplay)}. E-mail: <a href="mailto:${B.email}">${esc(B.email)}</a>. Endereço: ${esc(B.street)}, ${esc(B.city)} - ${B.region}.</p>
+${POSTS.length ? `<h2>Do blog</h2><ul>${POSTS.slice(0, 5).map((p) => `<li><a href="${base}${p.slug}/">${esc(p.title)}</a></li>`).join('')}</ul>` : ''}
 <nav aria-label="Páginas do site">${links}</nav>
 </main>
 </div>`;
@@ -186,7 +189,7 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
       inLanguage: 'pt-BR',
       isPartOf: { '@id': `${SITE}#site` },
       about: { '@id': BUSINESS_ID },
-      dateModified: articleOf(p) ? (articleOf(p)!.updated ?? articleOf(p)!.date) : LASTMOD,
+      dateModified: modifiedOf(p as Partial<BlogPost>),
       ...(articleOf(p)
         ? {
             headline: p.h1,
@@ -223,26 +226,15 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
     },
   ];
   if (p.slug === 'sobre-a-empresa' || p.slug === 'contato' || articleOf(p) || p.slug === 'blog') graph.push(businessLd());
-  if (p.product) {
-    graph.push({
-      '@type': 'Product',
-      '@id': `${url}#produto`,
-      name: p.product.name,
-      category: p.product.category,
-      description: p.description,
-      image: `${SITE}og-image.jpg`,
-      material: 'Eucalyptus citriodora tratado em autoclave (CCA)',
-      brand: { '@type': 'Brand', name: B.name },
-      manufacturer: { '@id': BUSINESS_ID },
-    });
-  }
+  // Product sem offers/review/aggregateRating é marcado como inválido no Search Console;
+  // os produtos ficam descritos no OfferCatalog da empresa. Reativar quando houver preço público.
   if (faq.length && p.slug !== 'perguntas-frequentes') graph.push(faqLd(url, faq));
   return ld({ '@context': 'https://schema.org', '@graph': graph });
 }
 
 const logoHtml = `<span class="flex items-center gap-3">
 <span class="flex flex-col justify-between h-[28px] w-[32px]" aria-hidden="true"><span class="h-[6px] w-full bg-[#A1C913]"></span><span class="h-[6px] w-full bg-[#A1C913]"></span><span class="h-[6px] w-full bg-[#A1C913]"></span></span>
-<span class="flex flex-col justify-center" style="font-family:Arial,sans-serif"><span class="text-[#FDF8E7] font-black text-[22px] leading-[0.85] tracking-wide">EUCALYPTUS</span><span class="text-[#D8B990] text-[10px] tracking-[0.45em] leading-none ml-[2px] mt-[3px]">TRATADOS</span></span>
+<span class="flex flex-col justify-center" style="font-family:Arial,sans-serif"><span class="text-[#FDF8E7] font-black text-[22px] leading-[0.85] tracking-wide">EUCALYPTUS</span> <span class="text-[#D8B990] text-[10px] tracking-[0.45em] leading-none ml-[2px] mt-[3px]">TRATADOS</span></span>
 </span>`;
 
 function faqHtml(items: PageFaq[], title: string): string {
@@ -337,7 +329,7 @@ ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
 </main>
 <footer class="bg-[#183e26] text-stone-300 py-12">
 <div class="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm">
-<div><a href="${base}" aria-label="Página inicial">${logoHtml}</a>
+<div><a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a>
 <p class="mt-4">${esc(B.street)}<br>${esc(B.city)} - ${B.region}</p>
 <p class="mt-2 flex flex-col items-start"><a class="inline-block py-1.5 hover:text-white" href="https://wa.me/${B.whatsapp}">WhatsApp ${esc(B.whatsappDisplay)}</a><a class="inline-block py-1.5 hover:text-white" href="tel:${B.phone}">Tel. ${esc(B.phoneDisplay)}</a><a class="inline-block py-1.5 hover:text-white break-all" href="mailto:${B.email}">${esc(B.email)}</a></p></div>
 ${footer}
@@ -353,8 +345,8 @@ ${footer}
 
 function sitemap(): string {
   const urls = [
-    `<url><loc>${SITE}</loc><lastmod>${LASTMOD}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
-    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${articleOf(p) ? (articleOf(p)!.updated ?? articleOf(p)!.date) : LASTMOD}</lastmod></url>`),
+    `<url><loc>${SITE}</loc><lastmod>${[CONTENT_UPDATED, ...POSTS.map((x) => x.article.date)].sort().pop()}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
+    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod></url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -394,6 +386,32 @@ ${POSTS.length ? section('Blog (artigos)', ['blog', ...POSTS.map((p) => p.slug)]
 - Endereço: ${B.street}, ${B.city} - ${B.region}, Brasil
 - Site: ${SITE}
 `;
+}
+
+function notFound(base: string, css: string[]): string {
+  const links = [['produtos', 'Produtos'], ['eucalipto-citriodora', 'Eucalipto citriodora'], ['blog', 'Blog'], ['perguntas-frequentes', 'Perguntas frequentes'], ['contato', 'Contato e orçamento']]
+    .map(([slug, name]) => `<li><a href="${base}${slug}/">${name}</a></li>`)
+    .join('');
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Página não encontrada | ${esc(B.name)}</title>
+<meta name="robots" content="noindex">
+<link rel="icon" type="image/svg+xml" href="${base}favicon.svg">
+${css.map((c) => `<link rel="stylesheet" href="${base}${c}">`).join('\n')}
+</head>
+<body class="bg-white text-stone-800 antialiased">
+<main class="max-w-3xl mx-auto px-4 py-20 conteudo">
+<p><a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a></p>
+<h1>Página não encontrada</h1>
+<p class="lead">O endereço pode ter mudado. Veja abaixo as páginas principais ou fale com a gente pelo WhatsApp.</p>
+<ul>${links}</ul>
+<p><a class="cta" href="https://wa.me/${B.whatsapp}">Falar no WhatsApp ${esc(B.whatsappDisplay)}</a></p>
+</main>
+</body>
+</html>`;
 }
 
 function rss(): string {
@@ -468,6 +486,7 @@ export function seoPlugin(): Plugin {
       this.emitFile({ type: 'asset', fileName: 'sitemap.xml', source: sitemap() });
       this.emitFile({ type: 'asset', fileName: 'llms.txt', source: llms() });
       this.emitFile({ type: 'asset', fileName: 'blog/feed.xml', source: rss() });
+      this.emitFile({ type: 'asset', fileName: '404.html', source: notFound(config.base, css) });
     },
   };
 }

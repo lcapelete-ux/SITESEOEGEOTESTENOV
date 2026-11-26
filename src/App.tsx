@@ -176,7 +176,7 @@ const Logo = ({ className = "" }: { className?: string }) => (
       <div className="h-[6px] w-full bg-[#A1C913]"></div>
     </div>
     <div className="flex flex-col justify-center">
-      <span className="text-[#FDF8E7] font-black text-[22px] leading-[0.85] tracking-wide" style={{ fontFamily: 'Arial, sans-serif' }}>EUCALYPTUS</span>
+      <span className="text-[#FDF8E7] font-black text-[22px] leading-[0.85] tracking-wide" style={{ fontFamily: 'Arial, sans-serif' }}>EUCALYPTUS</span>{" "}
       <span className="text-[#D8B990] text-[10px] font-normal tracking-[0.45em] leading-none ml-[2px] mt-[3px]" style={{ fontFamily: 'Arial, sans-serif' }}>TRATADOS</span>
     </div>
   </div>

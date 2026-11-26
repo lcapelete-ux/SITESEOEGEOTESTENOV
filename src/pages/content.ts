@@ -21,6 +21,7 @@ export interface SitePage {
   whatsappText: string;
   related: string[]; // slugs de páginas relacionadas
   nav: string; // nome curto usado em links e no rodapé
+  updated?: string; // AAAA-MM-DD da última revisão real do conteúdo (sitemap e schema)
 }
 
 const wa = (text: string) => `https://wa.me/${B.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -68,7 +69,7 @@ export const PAGES: SitePage[] = [
     nav: "Todos os produtos",
     title: "Produtos de Eucalipto Tratado | Postes, Mourões e Palanques",
     description:
-      "Catálogo de eucalipto citriodora tratado em autoclave: mourões, esticadores, palanques, postes, varas e madeira serrada. Medidas, pesos e orçamento pelo WhatsApp.",
+      "Catálogo de eucalipto citriodora tratado em autoclave: mourões, esticadores, palanques, postes, varas e madeira serrada, com medidas e pesos.",
     h1: "Produtos de eucalipto citriodora tratado",
     intro:
       "Todas as peças são de eucalipto citriodora, tratadas em autoclave com CCA conforme a ABNT NBR 9480 e com 10 anos de garantia. Escolha a linha abaixo para ver medidas, pesos e aplicações.",
@@ -92,7 +93,7 @@ ${comoMedimos}`,
     product: { name: "Mourão de eucalipto citriodora tratado 2,20 m", category: "Mourões" },
     title: "Mourão de Eucalipto Tratado 2,20 m | Citriodora | Para Cerca",
     description:
-      "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, racha menos e tem 10 anos de garantia. Peça orçamento.",
+      "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, racha menos e tem 10 anos de garantia.",
     h1: "Mourão de eucalipto tratado para cerca (2,20 m)",
     intro:
       "O mourão de eucalipto citriodora tratado tem 2,20 m e forma a linha da cerca rural. Vendemos do refugo (4 a 6 cm) ao super grosso (12 a 14 cm), além de lasca, todos tratados em autoclave com CCA e com 10 anos de garantia.",
@@ -485,7 +486,7 @@ ${comoMedimos}`,
     nav: "Contato e orçamento",
     title: "Contato e Orçamento | Eucalyptus Tratados, Laranjal Paulista",
     description:
-      "Peça orçamento de eucalipto citriodora tratado pelo WhatsApp (15) 99685-4945, telefone (15) 3283-1253 ou e-mail. Estrada do Moinho Km 2.1, Laranjal Paulista - SP.",
+      "Orçamento de eucalipto citriodora tratado pelo WhatsApp (15) 99685-4945, telefone (15) 3283-1253 ou e-mail. Estrada do Moinho Km 2.1, Laranjal Paulista.",
     h1: "Contato e orçamento",
     intro:
       "O jeito mais rápido de pedir orçamento é pelo WhatsApp. Informe as peças, medidas, quantidade, aplicação e a cidade de entrega para receber o valor com frete.",
@@ -508,6 +509,9 @@ ${comoMedimos}`,
     related: ["produtos", "perguntas-frequentes", "sobre-a-empresa"],
   },
 ];
+
+/** Data da última revisão do conteúdo das páginas fixas. Atualize ao mudar textos. */
+export const CONTENT_UPDATED = "2026-11-26";
 
 export const pageBySlug = (slug: string) => {
   const p = PAGES.find((x) => x.slug === slug);
