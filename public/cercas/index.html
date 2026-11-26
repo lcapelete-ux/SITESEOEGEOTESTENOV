@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta name="robots" content="noindex, nofollow">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eucalyptus Tratados — Cercas em Eucalipto Citriodora Tratado</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --verde: #1e3520;
+  --verde2: #2d5230;
+  --lima: #8ab800;
+  --areia: #b8935a;
+  --areia-claro: #e8d5b0;
+  --creme: #f5f0e8;
+  --branco: #fdfbf7;
+  --escuro: #111410;
+  --cinza: #5a5a50;
+}
+*{ margin:0; padding:0; box-sizing:border-box; }
+html{ scroll-behavior:smooth; }
+body{ font-family:'Barlow',sans-serif; background:var(--branco); color:var(--escuro); overflow-x:hidden; }
+.hero{ min-height:100vh; position:relative; display:flex; flex-direction:column; justify-content:flex-end; overflow:hidden; }
+.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center 45%; }
+.hero-overlay{ position:absolute; inset:0; background:linear-gradient(160deg,rgba(8,16,8,.35) 0%,rgba(8,16,8,.9) 100%); }
+.navbar{ position:absolute; top:0; left:0; right:0; z-index:20; padding:0 60px; height:140px; display:flex; align-items:center; justify-content:space-between; background:linear-gradient(to bottom,rgba(8,16,8,.7) 0%,transparent 100%); }
+.navbar-logo{ height:120px; width:auto; display:block; }
+.nav-links{ display:flex; align-items:center; gap:36px; }
+.nav-links a{ color:rgba(255,255,255,.6); font-size:11px; letter-spacing:3px; text-transform:uppercase; text-decoration:none; font-weight:400; transition:color .3s; }
+.nav-links a:hover{ color:var(--lima); }
+.nav-cta{ background:var(--lima)!important; color:var(--verde)!important; padding:12px 28px!important; font-weight:600!important; letter-spacing:2px!important; }
+.hero-body{ position:relative; z-index:5; padding:0 60px 96px; max-width:900px; }
+.tag{ display:inline-flex; align-items:center; gap:10px; margin-bottom:32px; animation:fadeUp .7s ease both; }
+.tag-dot{ width:6px;height:6px;background:var(--lima);border-radius:50%; }
+.tag span{ font-size:11px;letter-spacing:4px;text-transform:uppercase;color:rgba(255,255,255,.5);font-weight:400; }
+.hero-body h1{ font-family:'Cormorant Garamond',serif; font-size:clamp(50px,7.5vw,100px); color:#fff; font-weight:300; line-height:1.02; margin-bottom:28px; animation:fadeUp .8s ease .1s both; }
+.hero-body h1 em{ font-style:italic; color:var(--areia-claro); }
+.hero-sub{ color:rgba(255,255,255,.6); font-size:16px; font-weight:300; line-height:1.75; max-width:540px; animation:fadeUp .9s ease .2s both; margin-bottom:40px; }
+.hero-btns{ display:flex; gap:16px; flex-wrap:wrap; animation:fadeUp 1s ease .3s both; }
+.btn-primary{ display:inline-flex; align-items:center; gap:12px; background:var(--lima); color:var(--verde); padding:18px 48px; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; text-decoration:none; transition:all .3s; }
+.btn-primary:hover{ background:#9ed000; transform:translateY(-3px); box-shadow:0 16px 48px rgba(138,184,0,.3); }
+.btn-secondary{ display:inline-flex; align-items:center; gap:12px; background:transparent; color:#fff; padding:18px 48px; font-size:12px; font-weight:400; letter-spacing:3px; text-transform:uppercase; text-decoration:none; border:1px solid rgba(255,255,255,.25); transition:all .3s; }
+.btn-secondary:hover{ border-color:var(--lima); color:var(--lima); }
+.hero-scroll{ position:absolute; bottom:48px; right:60px; z-index:5; display:flex; flex-direction:column; align-items:center; gap:10px; color:rgba(255,255,255,.3); font-size:9px; letter-spacing:3px; text-transform:uppercase; }
+.scroll-line{ width:1px;height:52px;background:linear-gradient(to bottom,transparent,rgba(255,255,255,.35));animation:pulse 2s ease infinite; }
+.numeros{ background:var(--verde); display:grid; grid-template-columns:repeat(4,1fr); }
+.num-item{ padding:48px 36px; border-right:1px solid rgba(255,255,255,.07); text-align:center; }
+.num-item:last-child{ border-right:none; }
+.num-val{ font-family:'Cormorant Garamond',serif; font-size:52px; font-weight:300; color:var(--lima); line-height:1; margin-bottom:8px; }
+.num-label{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); font-weight:300; }
+.sobre{ background:var(--creme); padding:110px 60px; }
+.sobre-inner{ max-width:1140px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+.sec-label{ font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--lima); font-weight:600; margin-bottom:18px; }
+.sobre-texto h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(36px,3.8vw,56px); font-weight:300; color:var(--verde); line-height:1.12; margin-bottom:32px; }
+.sobre-texto p{ color:var(--cinza); font-size:15px; line-height:1.85; font-weight:300; margin-bottom:20px; }
+.sobre-texto p strong{ color:var(--escuro); font-weight:500; }
+.sobre-decorativo{ background:var(--verde); padding:60px 48px; display:flex; flex-direction:column; justify-content:center; min-height:420px; }
+.sobre-decorativo .deco-label{ font-size:10px; letter-spacing:4px; text-transform:uppercase; color:var(--lima); font-weight:600; margin-bottom:40px; }
+.deco-item{ margin-bottom:32px; border-bottom:1px solid rgba(255,255,255,.08); padding-bottom:32px; }
+.deco-item:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+.deco-num{ font-family:'Cormorant Garamond',serif; font-size:14px; color:var(--lima); letter-spacing:2px; margin-bottom:8px; }
+.deco-item h4{ font-family:'Cormorant Garamond',serif; font-size:22px; color:#fff; font-weight:400; margin-bottom:8px; }
+.deco-item p{ font-size:13px; color:rgba(255,255,255,.45); line-height:1.65; font-weight:300; }
+.vantagens{ background:var(--branco); padding:110px 60px; }
+.vant-inner{ max-width:1140px; margin:0 auto; }
+.vant-inner h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(36px,3.8vw,56px); font-weight:300; color:var(--verde); margin-bottom:16px; max-width:700px; }
+.vant-inner > p{ color:var(--cinza); font-size:15px; line-height:1.75; font-weight:300; max-width:560px; margin-bottom:64px; }
+.vant-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.vant-card{ background:var(--creme); border:1px solid rgba(0,0,0,.04); padding:48px 36px; transition:all .3s; }
+.vant-card:hover{ background:var(--verde); }
+.vant-card:hover .vant-icon{ color:var(--lima); }
+.vant-card:hover h3{ color:#fff; }
+.vant-card:hover p{ color:rgba(255,255,255,.5); }
+.vant-icon{ font-size:36px; margin-bottom:20px; color:var(--verde); transition:color .3s; line-height:1; }
+.vant-card h3{ font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; color:var(--verde); margin-bottom:12px; transition:color .3s; }
+.vant-card p{ font-size:13px; color:var(--cinza); line-height:1.75; font-weight:300; transition:color .3s; }
+.obras{ padding:0; background:var(--escuro); }
+.obras-header{ padding:80px 60px 60px; max-width:1140px; margin:0 auto; }
+.obras-header h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(34px,3.8vw,56px); font-weight:300; color:#fff; margin-bottom:16px; }
+.obras-header p{ color:rgba(255,255,255,.45); font-size:14px; font-weight:300; max-width:480px; line-height:1.7; }
+.obras-grid{ display:grid; grid-template-columns:1fr 1fr; grid-template-rows:420px 420px; gap:3px; }
+.obra-item{ overflow:hidden; position:relative; }
+.obra-item img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s ease; }
+.obra-item:hover img{ transform:scale(1.05); }
+.obra-cap{ position:absolute; bottom:0; left:0; right:0; padding:24px 24px 20px; background:linear-gradient(to top,rgba(8,16,8,.8) 0%,transparent 100%); color:rgba(255,255,255,.65); font-size:11px; letter-spacing:2px; text-transform:uppercase; font-weight:300; }
+.madeira{ background:var(--verde); padding:110px 60px; color:#fff; }
+.mad-inner{ max-width:1140px; margin:0 auto; }
+.mad-inner h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(36px,3.8vw,56px); font-weight:300; color:var(--areia-claro); margin-bottom:64px; max-width:600px; }
+.pilares{ display:grid; grid-template-columns:repeat(3,1fr); gap:2px; margin-bottom:64px; }
+.pilar{ background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.07); padding:44px 32px; transition:background .3s; }
+.pilar:hover{ background:rgba(138,184,0,.08); border-color:rgba(138,184,0,.2); }
+.pilar-num{ font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--lima); font-weight:300; opacity:.45; margin-bottom:16px; line-height:1; }
+.pilar h3{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; margin-bottom:12px; }
+.pilar p{ font-size:13px; color:rgba(255,255,255,.5); line-height:1.75; font-weight:300; }
+.mad-stats{ border-top:1px solid rgba(255,255,255,.08); padding-top:52px; display:grid; grid-template-columns:repeat(4,1fr); gap:32px; }
+.stat-val{ font-family:'Cormorant Garamond',serif; font-size:52px; color:var(--lima); font-weight:300; line-height:1; margin-bottom:6px; }
+.stat-label{ font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,.4); font-weight:300; }
+.processo{ background:var(--creme); padding:110px 60px; }
+.proc-inner{ max-width:1140px; margin:0 auto; }
+.proc-inner h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(36px,3.8vw,56px); font-weight:300; color:var(--verde); margin-bottom:16px; }
+.proc-inner > p{ color:var(--cinza); font-size:15px; line-height:1.75; font-weight:300; max-width:560px; margin-bottom:64px; }
+.proc-steps{ display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+.proc-step{ background:var(--branco); border:1px solid rgba(0,0,0,.04); padding:40px 28px; position:relative; }
+.proc-step::before{ content:attr(data-step); font-family:'Cormorant Garamond',serif; font-size:64px; color:var(--lima); font-weight:300; opacity:.25; line-height:1; display:block; margin-bottom:16px; }
+.proc-step h4{ font-family:'Cormorant Garamond',serif; font-size:20px; color:var(--verde); font-weight:400; margin-bottom:10px; }
+.proc-step p{ font-size:13px; color:var(--cinza); line-height:1.75; font-weight:300; }
+.garantias{ background:var(--branco); padding:110px 60px; }
+.gar-inner{ max-width:1140px; margin:0 auto; }
+.gar-inner h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(34px,3.8vw,52px); font-weight:300; color:var(--verde); margin-bottom:52px; max-width:500px; }
+.gar-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.gar-item{ background:var(--creme); padding:32px; display:flex; gap:18px; align-items:flex-start; border:1px solid rgba(0,0,0,.04); }
+.gar-chk{ width:22px;height:22px;background:var(--lima);flex-shrink:0;display:flex;align-items:center;justify-content:center;margin-top:2px; }
+.gar-item strong{ display:block;color:var(--escuro);font-size:15px;font-weight:500;margin-bottom:5px; }
+.gar-item p{ font-size:13px;color:var(--cinza);line-height:1.65;font-weight:300; }
+.cta{ background:var(--verde); padding:130px 60px; text-align:center; position:relative; overflow:hidden; }
+.cta::before{ content:''; position:absolute; top:-150px; left:50%; transform:translateX(-50%); width:800px; height:800px; background:radial-gradient(circle,rgba(138,184,0,.07) 0%,transparent 70%); pointer-events:none; }
+.cta-logo{ height:80px; width:auto; margin-bottom:52px; }
+.cta h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(44px,7vw,90px); font-weight:300; color:#fff; line-height:1.03; margin-bottom:20px; }
+.cta h2 em{ color:var(--lima); font-style:italic; }
+.cta-sub{ color:rgba(255,255,255,.45); font-size:15px; margin-bottom:16px; font-weight:300; }
+.cta-site{ margin-bottom:52px; }
+.cta-site a{ color:var(--lima); font-size:14px; letter-spacing:2px; text-decoration:none; font-weight:400; border-bottom:1px solid rgba(138,184,0,.35); padding-bottom:2px; transition:border-color .3s; }
+.cta-site a:hover{ border-color:var(--lima); }
+.btn-wpp{ display:inline-flex; align-items:center; gap:14px; background:var(--lima); color:var(--verde); padding:22px 64px; font-size:12px; font-weight:600; letter-spacing:3px; text-transform:uppercase; text-decoration:none; transition:all .3s; }
+.btn-wpp:hover{ background:#9ed000; transform:translateY(-3px); box-shadow:0 16px 48px rgba(138,184,0,.3); }
+.btn-wpp svg{ width:22px;height:22px;flex-shrink:0; }
+.cta-info{ margin-top:64px; padding-top:40px; border-top:1px solid rgba(255,255,255,.08); color:rgba(255,255,255,.2); font-size:11px; letter-spacing:1px; line-height:2; }
+footer{ background:var(--escuro); padding:44px 60px; display:flex; justify-content:space-between; align-items:center; }
+.footer-logo{ height:64px; width:auto; }
+.footer-right{ text-align:right; }
+.footer-site{ color:var(--lima); font-size:12px; letter-spacing:2px; text-decoration:none; display:block; margin-bottom:8px; }
+.footer-info{ color:rgba(255,255,255,.2); font-size:11px; line-height:1.8; font-weight:300; }
+@keyframes fadeUp{ from{ opacity:0;transform:translateY(28px); } to{ opacity:1;transform:translateY(0); } }
+@keyframes pulse{ 0%,100%{ opacity:.25; } 50%{ opacity:.7; } }
+.reveal{ opacity:0; transform:translateY(32px); transition:opacity .7s ease, transform .7s ease; }
+.reveal.visible{ opacity:1; transform:translateY(0); }
+@media(max-width:768px){
+  .navbar{ padding:0 24px; height:80px; }
+  .navbar-logo{ height:56px; }
+  .nav-links{ display:none; }
+  .hero-body{ padding:0 24px 64px; }
+  .numeros{ grid-template-columns:1fr 1fr; }
+  .sobre,.vantagens,.obras-header,.madeira,.processo,.garantias{ padding:64px 24px; }
+  .sobre-inner{ grid-template-columns:1fr; gap:40px; }
+  .vant-grid{ grid-template-columns:1fr; }
+  .obras-grid{ grid-template-columns:1fr; grid-template-rows:auto; }
+  .pilares,.mad-stats{ grid-template-columns:1fr; }
+  .proc-steps{ grid-template-columns:1fr 1fr; }
+  .gar-grid{ grid-template-columns:1fr; }
+  .cta{ padding:80px 24px; }
+  footer{ flex-direction:column; gap:24px; padding:36px 24px; }
+  .footer-right{ text-align:center; }
+  .hero-scroll{ display:none; }
+  .hero-btns{ flex-direction:column; }
+}
+
+/* ─── PROJETO TÉCNICO ─── */
+.projeto-tecnico{ background:var(--escuro); padding:110px 60px; color:#fff; }
+.pt-inner{ max-width:1140px; margin:0 auto; }
+.pt-inner h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(36px,3.8vw,56px); font-weight:300; color:#fff; margin-bottom:8px; }
+.pt-inner h2 em{ color:var(--lima); font-style:normal; }
+.pt-sub{ color:rgba(255,255,255,.45); font-size:15px; font-weight:300; margin-bottom:64px; }
+
+/* 3D Fence */
+.fence-3d{ margin-bottom:64px; }
+.fence-scene{
+  background:linear-gradient(180deg, #e8eef5 0%, #d5dde8 60%, #c2ccd8 60.1%, #b8c4d0 100%);
+  border-radius:4px; padding:60px 40px 40px; position:relative;
+  min-height:320px; display:flex; align-items:flex-end; justify-content:center;
+  perspective:800px; overflow:hidden;
+}
+.fence-ground{
+  position:absolute; bottom:0; left:0; right:0; height:40%;
+  background:linear-gradient(180deg, #b5c4a0 0%, #9aad82 100%);
+  transform:perspective(600px) rotateX(15deg); transform-origin:bottom center;
+}
+.fence-post{ position:absolute; bottom:38%; z-index:2; }
+.fp-body{
+  width:14px; height:120px; border-radius:3px 3px 1px 1px;
+  background:linear-gradient(90deg, #8b6914 0%, #c4952a 30%, #a67c1e 60%, #8b6914 100%);
+  box-shadow:2px 2px 8px rgba(0,0,0,.25);
+}
+.fp-shadow{
+  position:absolute; bottom:-4px; left:50%; width:40px; height:6px;
+  background:rgba(0,0,0,.15); border-radius:50%; transform:translateX(-50%);
+}
+.fp1{ left:8%; } .fp2{ left:20%; } .fp3{ left:32%; } .fp4{ left:44%; }
+.fp5{ left:56%; } .fp6{ left:68%; } .fp7{ left:80%; }
+.fence-wires{
+  position:absolute; left:8%; right:20%; bottom:calc(38% + 20px);
+  height:100px; z-index:1;
+  display:flex; flex-direction:column; justify-content:space-between;
+}
+.fw{ height:1px; background:rgba(120,120,120,.6); }
+.fence-label{
+  position:absolute; bottom:12px; left:50%; transform:translateX(-50%);
+  font-size:11px; letter-spacing:3px; color:rgba(0,0,0,.35);
+  font-family:'Barlow',sans-serif; text-transform:uppercase;
+}
+.fence-dims{
+  display:flex; justify-content:center; gap:48px; margin-top:32px;
+}
+.dim-post{ display:flex; align-items:center; gap:24px; }
+.dim-svg{ width:60px; height:100px; }
+.dim-info{ text-align:center; }
+.dim-label{ display:block; font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--lima); font-weight:600; margin-bottom:4px; }
+.dim-value{ display:block; font-family:'Cormorant Garamond',serif; font-size:32px; color:#fff; font-weight:300; line-height:1; }
+.dim-note{ display:block; font-size:11px; color:rgba(255,255,255,.35); margin-top:2px; }
+
+/* Cliente Info */
+.cliente-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:48px; }
+.cliente-row{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); padding:22px 28px; display:flex; align-items:baseline; gap:16px; }
+.cliente-row span{ font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--lima); font-weight:600; width:110px; flex-shrink:0; }
+.cliente-row strong{ color:#fff; font-size:16px; font-weight:500; }
+
+/* Tech Grid */
+.tech-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; margin-bottom:48px; }
+.tech-grid.single{ grid-template-columns:1fr; }
+.mat-table thead th{ text-align:left; font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--lima); font-weight:600; padding-bottom:14px; border-bottom:1px solid rgba(255,255,255,.1); }
+.mat-table thead th:last-child{ text-align:right; }
+.mat-table td:last-child{ text-align:right; }
+.tech-card{ background:rgba(255,255,255,.04); border:1px solid rgba(255,255,255,.08); padding:40px 36px; }
+.tech-card h3{ font-family:'Cormorant Garamond',serif; font-size:22px; font-weight:400; color:#fff; margin-bottom:24px; }
+.mat-count{ font-family:'Barlow',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--lima); font-weight:600; margin-left:12px; }
+.tech-row{ display:flex; justify-content:space-between; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.06); }
+.tech-row span{ color:rgba(255,255,255,.45); font-size:14px; font-weight:300; }
+.tech-row strong{ color:#fff; font-size:18px; font-weight:500; }
+.mat-table{ width:100%; border-collapse:collapse; }
+.mat-table tr{ border-bottom:1px solid rgba(255,255,255,.06); }
+.mat-table td{ padding:14px 0; font-size:14px; color:rgba(255,255,255,.7); font-weight:300; }
+.mat-qty{ font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--lima); font-weight:400; padding-left:20px; }
+
+/* Medida Box */
+.medida-box{ margin-top:16px; }
+.medida-alert{
+  background:rgba(138,184,0,.08); border:1px solid rgba(138,184,0,.2);
+  padding:36px 40px;
+}
+.medida-alert h4{ font-family:'Cormorant Garamond',serif; font-size:24px; color:var(--lima); font-weight:400; margin-bottom:12px; }
+.medida-alert p{ color:rgba(255,255,255,.55); font-size:14px; line-height:1.75; font-weight:300; }
+.medida-alert p strong{ color:#fff; font-weight:500; }
+
+/* ─── CONDIÇÕES ─── */
+.condicoes{ background:var(--branco); padding:110px 60px; }
+.cond-inner{ max-width:1140px; margin:0 auto; }
+.cond-inner h2{ font-family:'Cormorant Garamond',serif; font-size:clamp(36px,3.8vw,56px); font-weight:300; color:var(--verde); margin-bottom:52px; }
+.conds-grid{ display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+.cond-card{ background:var(--creme); border:1px solid rgba(0,0,0,.04); padding:36px; }
+.cond-card h4{ font-size:9px; letter-spacing:3px; text-transform:uppercase; color:var(--lima); margin-bottom:14px; font-weight:600; }
+.cond-card p{ font-size:14px; color:var(--cinza); line-height:1.8; font-weight:300; }
+.cond-card p strong{ color:var(--escuro); font-weight:500; }
+
+@media(max-width:768px){
+  .projeto-tecnico{ padding:64px 24px; }
+  .tech-grid,.conds-grid,.cliente-grid{ grid-template-columns:1fr; }
+  .fence-scene{ min-height:220px; padding:40px 20px 30px; }
+  .fp-body{ height:80px; width:10px; }
+  .fence-wires{ height:65px; }
+  .condicoes{ padding:64px 24px; }
+}
+</style>
+</head>
+<body>
+
+<section class="hero">
+  <img class="hero-bg" src="assets/img1.webp" fetchpriority="high" decoding="async" alt="Cerca em eucalipto citriodora tratado">
+  <div class="hero-overlay"></div>
+  <nav class="navbar">
+    <img class="navbar-logo" src="assets/img2.webp" loading="lazy" decoding="async" alt="Eucalyptus Tratados">
+    <div class="nav-links">
+      <a href="#sobre">Cercas</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#galeria">Galeria</a>
+      <a href="#processo">Processo</a>
+      <a href="#contato" class="nav-cta">Orçamento</a>
+    </div>
+  </nav>
+  <div class="hero-body">
+    <div class="tag"><div class="tag-dot"></div><span>Cercas em eucalipto citriodora tratado</span></div>
+    <h1>Cercas que<br>resistem ao <em>tempo.</em></h1>
+    <p class="hero-sub">Mourões e palanques de eucalipto citriodora tratado em autoclave — a madeira mais densa do mercado, com garantia de 10 anos contra cupins e apodrecimento.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/551532831253?text=Ol%C3%A1%2C%20quero%20um%20or%C3%A7amento%20de%20cercas!" class="btn-primary">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.554 4.103 1.527 5.82L.057 23.882l6.264-1.64A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.494-5.193-1.358l-.372-.22-3.862 1.013 1.033-3.77-.242-.386A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Solicitar Orçamento
+      </a>
+      <a href="#galeria" class="btn-secondary">Ver nossas cercas</a>
+    </div>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>conheça</div>
+</section>
+
+<div class="numeros">
+  <div class="num-item"><div class="num-val">10</div><div class="num-label">Anos de garantia</div></div>
+  <div class="num-item"><div class="num-val">1000+</div><div class="num-label">Cercas entregues</div></div>
+  <div class="num-item"><div class="num-val">CCA</div><div class="num-label">Tratamento importado</div></div>
+  <div class="num-item"><div class="num-val">NBR</div><div class="num-label">9480 — ABNT</div></div>
+</div>
+
+<section class="sobre" id="sobre">
+  <div class="sobre-inner">
+    <div class="sobre-texto reveal">
+      <div class="sec-label">Cercas</div>
+      <h2>Proteção real para sua propriedade.</h2>
+      <p>A cerca de eucalipto citriodora tratado é a solução definitiva para quem precisa de <strong>resistência, durabilidade e economia a longo prazo</strong>. Ideal para fazendas, sítios, chácaras e propriedades rurais.</p>
+      <p>Nossos mourões e palanques são selecionados à mão, com tratamento em autoclave usando CCA importado — penetração total no alburno, protegendo contra cupins, fungos e apodrecimento.</p>
+      <p>Uma cerca bem feita com citriodora tratado dura <strong>décadas sem necessidade de troca</strong>.</p>
+    </div>
+    <div class="sobre-decorativo reveal">
+      <div class="deco-label">Por que escolher nossas cercas</div>
+      <div class="deco-item">
+        <div class="deco-num">01 ——</div>
+        <h4>Mourões de alta densidade</h4>
+        <p>Citriodora: a espécie mais densa do mercado. Mourões que aguentam tensão do arame e impacto animal sem ceder.</p>
+      </div>
+      <div class="deco-item">
+        <div class="deco-num">02 ——</div>
+        <h4>Resistência no solo</h4>
+        <p>Tratamento CCA garante proteção total da parte enterrada — a mais vulnerável. Sem apodrecimento por décadas.</p>
+      </div>
+      <div class="deco-item">
+        <div class="deco-num">03 ——</div>
+        <h4>Garantia de 10 anos</h4>
+        <p>Laudo técnico contra cupins, fungos e apodrecimento. Certificado entregue com a madeira.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="vantagens" id="vantagens">
+  <div class="vant-inner">
+    <div class="sec-label reveal">Vantagens</div>
+    <h2 class="reveal">Por que cercar com citriodora tratado?</h2>
+    <p class="reveal">A escolha do mourão certo define a vida útil da sua cerca. Veja como o citriodora tratado se destaca.</p>
+    <div class="vant-grid">
+      <div class="vant-card reveal">
+        <div class="vant-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3>Resistência extrema</h3>
+        <p>Densidade entre 900–1.100 kg/m³. Suporta tensão de arame farpado, impacto de gado e intempéries sem deformar.</p>
+      </div>
+      <div class="vant-card reveal">
+        <div class="vant-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+        <h3>Vida útil de décadas</h3>
+        <p>Tratamento CCA importado com penetração total. Proteção contra cupins, fungos e apodrecimento por mais de 25 anos — mesmo enterrado no solo.</p>
+      </div>
+      <div class="vant-card reveal">
+        <div class="vant-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+        <h3>Economia real</h3>
+        <p>Mourão de citriodora custa mais que eucalipto comum, mas dura 3x mais. Menos troca, menos mão de obra, menos prejuízo.</p>
+      </div>
+      <div class="vant-card reveal">
+        <div class="vant-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <h3>Linha completa</h3>
+        <p>Mourões finos e grossos, palanques, varas e lascas. Todos os tamanhos para montar sua cerca do início ao fim.</p>
+      </div>
+      <div class="vant-card reveal">
+        <div class="vant-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3>Certificação ABNT</h3>
+        <p>Padrão NBR 9480 — documentação para laudos técnicos, financiamentos rurais e programas de conformidade.</p>
+      </div>
+      <div class="vant-card reveal">
+        <div class="vant-icon"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="23 7 16 12 16 7"/></svg></div>
+        <h3>Fotos antes da entrega</h3>
+        <p>Fotografamos cada lote de mourões antes do carregamento. Você aprova antes de receber.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="obras" id="galeria">
+  <div class="obras-header">
+    <div class="sec-label" style="color:var(--lima)">Nossas cercas</div>
+    <h2 class="reveal">Cercas instaladas<br>por todo o Brasil.</h2>
+    <p class="reveal">Veja o resultado real dos nossos mourões e palanques de citriodora tratado em propriedades rurais.</p>
+  </div>
+  <div class="obras-grid">
+    <div class="obra-item"><img src="assets/img3.webp" loading="lazy" decoding="async" alt="Cerca rural"><div class="obra-cap">Cerca com mourões tratados</div></div>
+    <div class="obra-item"><img src="assets/img4.webp" loading="lazy" decoding="async" alt="Cerca fazenda"><div class="obra-cap">Cercamento de pastagem</div></div>
+    <div class="obra-item"><img src="assets/img5.webp" loading="lazy" decoding="async" alt="Mourão detalhe"><div class="obra-cap">Detalhe do mourão citriodora</div></div>
+    <div class="obra-item"><img src="assets/img6.webp" loading="lazy" decoding="async" alt="Cerca propriedade"><div class="obra-cap">Cerca completa em propriedade rural</div></div>
+  </div>
+</section>
+
+<section class="madeira">
+  <div class="mad-inner">
+    <div class="sec-label" style="color:var(--lima)">A madeira certa</div>
+    <h2 class="reveal">Três razões para escolher citriodora na sua cerca.</h2>
+    <div class="pilares">
+      <div class="pilar reveal">
+        <div class="pilar-num">01</div>
+        <h3>Maior densidade do mercado</h3>
+        <p>Densidade entre 900–1.100 kg/m³. Resistência mecânica muito superior ao eucalipto grandis ou saligna. Para mourões que ficam enterrados e sob tensão constante, a diferença é decisiva.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">02</div>
+        <h3>A que menos racha</h3>
+        <p>Estrutura celular densa reduz significativamente as trincas naturais. Para mourões expostos ao sol e chuva, isso significa menos quebra e mais anos de uso.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="pilar-num">03</div>
+        <h3>Tratamento CCA importado</h3>
+        <p>Autoclave com penetração total no alburno, protegendo o cerne. A parte enterrada — a mais crítica — fica 100% protegida. 10 anos de garantia documentada.</p>
+      </div>
+    </div>
+    <div class="mad-stats reveal">
+      <div><div class="stat-val">10</div><div class="stat-label">Anos de garantia</div></div>
+      <div><div class="stat-val">NBR</div><div class="stat-label">9480 padrão ABNT</div></div>
+      <div><div class="stat-val">CCA</div><div class="stat-label">Tratamento importado</div></div>
+      <div><div class="stat-val">100%</div><div class="stat-label">Selecionada à mão</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="processo" id="processo">
+  <div class="proc-inner">
+    <div class="sec-label reveal">Como funciona</div>
+    <h2 class="reveal">Do orçamento à entrega na fazenda.</h2>
+    <p class="reveal">Um processo simples e transparente, do primeiro contato até os mourões na sua propriedade.</p>
+    <div class="proc-steps">
+      <div class="proc-step reveal" data-step="01">
+        <h4>Consulta</h4>
+        <p>Informe a metragem da cerca, tipo de terreno e finalidade. Calculamos a quantidade exata de mourões e palanques.</p>
+      </div>
+      <div class="proc-step reveal" data-step="02">
+        <h4>Orçamento</h4>
+        <p>Receba uma proposta detalhada com todos os itens, medidas, valores e condições de pagamento.</p>
+      </div>
+      <div class="proc-step reveal" data-step="03">
+        <h4>Seleção & Fotos</h4>
+        <p>Selecionamos seus mourões à mão e enviamos fotos reais para aprovação antes do carregamento.</p>
+      </div>
+      <div class="proc-step reveal" data-step="04">
+        <h4>Entrega</h4>
+        <p>Entrega em todo o Brasil. Prazo médio de 25 a 30 dias úteis com rastreamento.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="garantias">
+  <div class="gar-inner">
+    <div class="sec-label reveal">Garantias incluídas</div>
+    <h2 class="reveal">Cada mourão com respaldo técnico e legal.</h2>
+    <div class="gar-grid">
+      <div class="gar-item reveal">
+        <div class="gar-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4.5 8L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Espécie citriodora garantida</strong><p>Trabalhamos exclusivamente com citriodora — sem mistura de espécies.</p></div>
+      </div>
+      <div class="gar-item reveal">
+        <div class="gar-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4.5 8L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Certificado de garantia 10 anos</strong><p>Laudo válido contra cupins, fungos e apodrecimento — entregue com a madeira.</p></div>
+      </div>
+      <div class="gar-item reveal">
+        <div class="gar-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4.5 8L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Padrão ABNT e NBR 9480</strong><p>Documentação para laudos de engenharia, financiamentos rurais e conformidade.</p></div>
+      </div>
+      <div class="gar-item reveal">
+        <div class="gar-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4.5 8L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Fotos reais antes da entrega</strong><p>Fotografamos seus mourões antes de carregar. Você aprova antes de receber.</p></div>
+      </div>
+      <div class="gar-item reveal">
+        <div class="gar-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4.5 8L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Tratamento CCA penetração total</strong><p>Autoclave que atinge o alburno inteiro, protegendo o cerne. Parte enterrada 100% protegida.</p></div>
+      </div>
+      <div class="gar-item reveal">
+        <div class="gar-chk"><svg width="11" height="9" viewBox="0 0 11 9" fill="none"><path d="M1 4.5L4.5 8L10 1" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <div><strong>Medida sempre a seu favor</strong><p>A base é sempre mais grossa que a ponta especificada. Você recebe mais do que comprou.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ DESENHO TÉCNICO 3D ═══ -->
+<section class="projeto-tecnico" id="projeto">
+  <div class="pt-inner">
+    <div class="sec-label" style="color:var(--lima)">Projeto de cercamento</div>
+    <h2 class="reveal">Orçamento <em>#2042</em></h2>
+    <p class="pt-sub reveal">Proposta personalizada para AEA Distribuidora de Materiais Elétricos LTDA</p>
+
+    <!-- Dados do Cliente -->
+    <div class="cliente-grid reveal">
+      <div class="cliente-row"><span>Nome</span><strong>AEA Distribuidora de Materiais Elétricos LTDA</strong></div>
+      <div class="cliente-row"><span>Cidade</span><strong>Mogi Guaçu - SP</strong></div>
+      <div class="cliente-row"><span>Telefone</span><strong>(15) 3032-7900</strong></div>
+      <div class="cliente-row"><span>Orçamento N°</span><strong>2042</strong></div>
+    </div>
+
+    <!-- 3D Fence Visualization -->
+    <div class="fence-3d reveal">
+      <div class="fence-scene">
+        <div class="fence-ground"></div>
+        <div class="fence-post fp1"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-post fp2"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-post fp3"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-post fp4"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-post fp5"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-post fp6"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-post fp7"><div class="fp-body"></div><div class="fp-shadow"></div></div>
+        <div class="fence-wires">
+          <div class="fw"></div><div class="fw"></div><div class="fw"></div><div class="fw"></div><div class="fw"></div>
+        </div>
+        <div class="fence-label">VISTA DO PADRÃO (LISO — 5 FIOS)</div>
+      </div>
+      <!-- Dimension annotations -->
+      <div class="fence-dims">
+        <div class="dim-post">
+          <svg viewBox="0 0 120 200" class="dim-svg">
+            <line x1="60" y1="10" x2="60" y2="190" stroke="var(--lima)" stroke-width="1.5" stroke-dasharray="4,3"/>
+            <line x1="45" y1="10" x2="75" y2="10" stroke="var(--lima)" stroke-width="1.5"/>
+            <line x1="45" y1="190" x2="75" y2="190" stroke="var(--lima)" stroke-width="1.5"/>
+            <text x="80" y="105" fill="var(--lima)" font-size="13" font-family="Barlow">2,20m</text>
+          </svg>
+          <div class="dim-info">
+            <span class="dim-label">PONTA</span>
+            <span class="dim-value">8cm</span>
+            <span class="dim-note">mínimo</span>
+          </div>
+          <div class="dim-info">
+            <span class="dim-label">BASE</span>
+            <span class="dim-value">~10cm</span>
+            <span class="dim-note">aprox.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Lista de Materiais -->
+    <div class="tech-grid single reveal">
+      <div class="tech-card materiais">
+        <h3>Lista de Materiais <span class="mat-count">2 itens</span></h3>
+        <table class="mat-table">
+          <thead><tr><th>Medida na Base</th><th>Qtd.</th></tr></thead>
+          <tbody>
+            <tr><td>Mourão Grosso 2,20m (10 a 12)</td><td class="mat-qty">230</td></tr>
+            <tr><td>Palanque Grosso 3,20m (16 a 18)</td><td class="mat-qty">10</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Padrão de Medidas -->
+    <div class="medida-box reveal">
+      <div class="medida-alert">
+        <h4>A medida comercial é a ponta!</h4>
+        <p>Nossa madeira segue rigorosamente as normas ABNT e NBR 9480. Comercializamos peças com medida de ponta (lado mais fino). Isso garante que você recebe uma peça com a base sempre <strong>mais grossa</strong> que o especificado. (variação aproximada 0,7cm por metro)</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══ CONDIÇÕES ═══ -->
+<section class="condicoes">
+  <div class="cond-inner">
+    <div class="sec-label reveal">Condições</div>
+    <h2 class="reveal">Detalhes da proposta.</h2>
+    <div class="conds-grid">
+      <div class="cond-card reveal">
+        <h4>Pagamento</h4>
+        <p><strong>À vista:</strong> transferência bancária ou PIX<br><strong>A prazo:</strong> cartão de crédito ou boleto (mediante consulta)</p>
+      </div>
+      <div class="cond-card reveal">
+        <h4>Entrega</h4>
+        <p><strong>Prazo:</strong> 25/30 dias úteis<br><strong>Frete:</strong> consultar valor para sua região</p>
+      </div>
+      <div class="cond-card reveal">
+        <h4>Madeira selecionada</h4>
+        <p>Peças retas, selecionadas individualmente. Fotos enviadas antes do carregamento — você aprova antes de receber.</p>
+      </div>
+      <div class="cond-card reveal">
+        <h4>Medição (padrão NBR)</h4>
+        <p>Medida comercial na ponta. A base é sempre mais grossa — você recebe mais do que paga.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contato">
+  <img class="cta-logo" src="assets/img7.webp" loading="lazy" decoding="async" alt="Eucalyptus Tratados">
+  <h2 class="reveal">Sua cerca começa<br>com a <em>madeira certa.</em></h2>
+  <p class="cta-sub">Entrega em todo o Brasil · Prazo de 25/30 dias · Garantia de 10 anos</p>
+  <div class="cta-site"><a href="http://new.eucalyptustratados.com.br" target="_blank">new.eucalyptustratados.com.br</a></div>
+  <a href="https://wa.me/551532831253?text=Ol%C3%A1%2C%20quero%20um%20or%C3%A7amento%20de%20cercas!" class="btn-wpp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.115.554 4.103 1.527 5.82L.057 23.882l6.264-1.64A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.886 0-3.655-.494-5.193-1.358l-.372-.22-3.862 1.013 1.033-3.77-.242-.386A9.944 9.944 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Solicitar Orçamento pelo WhatsApp
+  </a>
+  <div class="cta-info">EUCALYPTUS TRATADOS · CNPJ 25.298.732/0001-30<br>Estrada do Moinho, km 2.1 · Laranjal Paulista – SP</div>
+</section>
+
+<footer>
+  <img class="footer-logo" src="assets/img8.webp" loading="lazy" decoding="async" alt="Eucalyptus Tratados">
+  <div class="footer-right">
+    <a class="footer-site" href="http://new.eucalyptustratados.com.br" target="_blank">new.eucalyptustratados.com.br</a>
+    <div class="footer-info">Cercas em Eucalipto Citriodora Tratado<br>Laranjal Paulista – SP · (15) 3283-1253</div>
+  </div>
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); observer.unobserve(entry.target); } });
+}, { threshold: 0.15 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
