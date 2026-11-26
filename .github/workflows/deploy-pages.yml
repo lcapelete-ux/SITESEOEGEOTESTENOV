@@ -3,7 +3,7 @@ name: Deploy GitHub Pages
 on:
   push:
     branches:
-      - claude/vigilant-volta-pbq80e
+      - main
   workflow_dispatch:
 
 permissions:
