@@ -82,6 +82,10 @@
 .galeria-grid a:hover img { transform: scale(1.04); }
 @media (max-width: 640px) { .galeria-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .galeria-grid img { transition: none; } .galeria-grid a:hover img { transform: none; } }
+/* Grade conforme a quantidade de fotos: 1 grande, 2 e 4 em pares, 3/5+ em três colunas */
+.galeria-grid:has(> a:only-child) { grid-template-columns: 1fr; max-width: 640px; }
+.galeria-grid:has(> a:nth-child(2):last-child),
 .galeria-grid:has(> a:nth-child(4):last-child) { grid-template-columns: repeat(2, 1fr); }
-.galeria-grid:has(> a:nth-child(3):last-child) { grid-template-columns: repeat(3, 1fr); }
-@media (max-width: 640px) { .galeria-grid:has(> a:nth-child(3):last-child) { grid-template-columns: 1fr; } }
+@media (max-width: 640px) {
+  .galeria-grid:has(> a:nth-child(3):last-child) { grid-template-columns: 1fr; }
+}

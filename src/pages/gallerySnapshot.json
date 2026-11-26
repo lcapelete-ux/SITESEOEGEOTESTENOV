@@ -2,6 +2,147 @@
   "_nota": "Cópia de segurança das fotos marcadas no painel (usada se o build não alcançar o Supabase). Atualizada em 2026-11-26.",
   "rows": [
     {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393925359-he1cnq.webp",
+      "category": "civil",
+      "order": 0,
+      "pages": [
+        "palanque"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393954351-9pftu2.webp",
+      "category": "civil",
+      "order": 2,
+      "pages": [
+        "palanque"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393973214-y15ypq.webp",
+      "category": "civil",
+      "order": 3,
+      "pages": [
+        "poste"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393991516-w2kj0m.webp",
+      "category": "civil",
+      "order": 4,
+      "pages": [
+        "poste"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394008973-khozt.webp",
+      "category": "civil",
+      "order": 5,
+      "pages": [
+        "vara"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394024973-b1wb6p.webp",
+      "category": "civil",
+      "order": 6,
+      "pages": [
+        "palanque"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394224928-vqda1i.webp",
+      "category": "ideias",
+      "order": 1,
+      "pages": [
+        "palanque"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394038754-t6szfe.webp",
+      "category": "paisagismo",
+      "order": 0,
+      "pages": [
+        "palanque",
+        "construcoes"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394050338-uns44k.webp",
+      "category": "paisagismo",
+      "order": 1,
+      "pages": [
+        "construcoes"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394073473-7zuyis.webp",
+      "category": "paisagismo",
+      "order": 2,
+      "pages": [
+        "palanque",
+        "construcoes"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394093789-1acxfm.webp",
+      "category": "paisagismo",
+      "order": 3,
+      "pages": [
+        "construcoes",
+        "palanque",
+        "vara"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394111343-yri7ot.webp",
+      "category": "paisagismo",
+      "order": 4,
+      "pages": [
+        "mourao",
+        "construcoes"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394128743-osid7.webp",
+      "category": "paisagismo",
+      "order": 5,
+      "pages": [
+        "mourao",
+        "construcoes"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394144770-xn2ix7.webp",
+      "category": "paisagismo",
+      "order": 7,
+      "pages": [
+        "mourao"
+      ],
+      "alt": null
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394176031-z59waa.webp",
+      "category": "paisagismo",
+      "order": 9,
+      "pages": [
+        "palanque"
+      ],
+      "alt": null
+    },
+    {
       "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393756817-r2fhz.webp",
       "category": "rural",
       "order": 0,
@@ -67,6 +208,25 @@
         "cerca"
       ],
       "alt": "Cerca de arame farpado com mourões e esticador de eucalipto citriodora tratado"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393894983-bs20z5.webp",
+      "category": "rural",
+      "order": 7,
+      "pages": [
+        "palanque",
+        "construcoes"
+      ],
+      "alt": "Curral de eucalipto tratado com palanques e tábuas em área de pastagem"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393910252-vbq4o.webp",
+      "category": "rural",
+      "order": 8,
+      "pages": [
+        "construcoes"
+      ],
+      "alt": "Estufa agrícola com estrutura de eucalipto tratado"
     }
   ]
 }

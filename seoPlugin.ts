@@ -78,7 +78,7 @@ async function loadGalleries(): Promise<void> {
   for (const gp of GALLERY_PAGES) {
     PAGE_PHOTOS[gp.key] = rows
       .filter((r) => r.pages!.includes(gp.key))
-      .map((r, i) => ({ url: r.url, alt: r.alt?.trim() || `${gp.label} de eucalipto tratado da ${B.name}, foto ${i + 1}` }));
+      .map((r, i) => ({ url: r.url, alt: r.alt?.trim() || `${gp.altBase} pela ${B.name}, foto ${i + 1}` }));
   }
   console.log(`[seo] fotos por página (${origem}): ${GALLERY_PAGES.map((g) => `${g.key}=${PAGE_PHOTOS[g.key].length}`).join(' ')}`);
 }
