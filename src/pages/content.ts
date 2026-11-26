@@ -476,6 +476,8 @@ ${comoMedimos}`,
 <li><strong>10 anos de garantia</strong> nas peças tratadas e durabilidade superior a 20 a 30 anos em contato com o solo.</li>
 <li><strong>100% reflorestamento:</strong> madeira de áreas plantadas, que retém carbono e poupa as matas nativas.</li>
 </ul>
+<h2>O que dizem nossos clientes</h2>
+<p>Veja as <a href="${B.reviewsUrl}">avaliações da Eucalyptus Tratados no Google</a>. Comprou com a gente? Sua avaliação ajuda outros produtores a escolher madeira de qualidade.</p>
 <h2>Atendimento</h2>
 <p>Atendemos produtores rurais, construtoras, paisagistas e revendas. O orçamento é rápido pelo WhatsApp: informe as peças, medidas, quantidade e cidade de entrega.</p>`,
     whatsappText: "Olá! Gostaria de falar com a Eucalyptus Tratados.",
@@ -495,6 +497,7 @@ ${comoMedimos}`,
 <a class="card" href="tel:${B.phone}"><h2>Telefone</h2><p>${B.phoneDisplay}</p></a>
 <a class="card" href="mailto:${B.email}"><h2>E-mail</h2><p>${B.email}</p></a>
 <a class="card" href="${B.mapsUrl}"><h2>Endereço</h2><p>${B.street}, ${B.city} - ${B.region}</p></a>
+<a class="card" href="${B.reviewsUrl}"><h2>Avaliações no Google</h2><p>Veja o que nossos clientes dizem e deixe a sua avaliação.</p></a>
 </div>
 <h2>O que informar no orçamento</h2>
 <ul>

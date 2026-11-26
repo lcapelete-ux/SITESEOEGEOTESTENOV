@@ -17,6 +17,8 @@ export const BUSINESS = {
   region: "SP",
   foundingYear: "1992",
   mapsUrl: "https://maps.app.goo.gl/6pimRc4R7dyMVghZ7",
+  // Perfil no Google (avaliações). Link curto de compartilhamento enviado pelo dono.
+  reviewsUrl: "https://share.google/hQkp3RdFSdnMS4v39",
 };
 
 export const PRODUCTS: { name: string; description: string }[] = [

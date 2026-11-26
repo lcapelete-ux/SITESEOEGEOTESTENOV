@@ -16,6 +16,7 @@ import {
   Hammer,
   Sprout,
   Sparkles,
+  Star,
 } from "lucide-react";
 import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence, MotionConfig } from "motion/react";
@@ -1275,6 +1276,24 @@ export default function App() {
                     </div>
                   </div>
                 </a>
+                <a
+                  href="https://share.google/hQkp3RdFSdnMS4v39"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="bg-brand-100 p-4 rounded-full text-brand-600 group-hover:bg-brand-200 transition-colors">
+                    <Star className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-stone-700 font-medium">
+                      Avaliações no Google
+                    </div>
+                    <div className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors">
+                      Veja o que nossos clientes dizem
+                    </div>
+                  </div>
+                </a>
               </div>
             </motion.div>
 
@@ -1411,6 +1430,7 @@ export default function App() {
                 <a className="inline-block py-1.5 hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a>
                 <a className="inline-block py-1.5 hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a>
                 <a className="inline-block py-1.5 hover:text-white break-all" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
+                <a className="inline-block py-1.5 text-[#A1C913] hover:text-white font-semibold" href="https://share.google/hQkp3RdFSdnMS4v39" target="_blank" rel="noopener noreferrer">★ Avaliações no Google</a>
               </p>
             </div>
             {FOOTER_GROUPS.map((group) => (
