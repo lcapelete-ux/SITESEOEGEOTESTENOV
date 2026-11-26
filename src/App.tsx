@@ -23,6 +23,7 @@ const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 const CatalogModal = lazy(() => import("./components/CatalogModal"));
 import { Toaster, toast } from "react-hot-toast";
+import { FAQ } from "./seoContent";
 
 const getSupabase = async () => (await import("./supabase")).supabase;
 
@@ -578,6 +579,12 @@ export default function App() {
                 Normas
               </a>
               <a
+                href="#perguntas"
+                className="text-stone-200 hover:text-white font-medium transition-colors"
+              >
+                Dúvidas
+              </a>
+              <a
                 href="#contato"
                 className="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors"
               >
@@ -641,6 +648,13 @@ export default function App() {
                 Normas
               </a>
               <a
+                href="#perguntas"
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
+              >
+                Dúvidas
+              </a>
+              <a
                 href="#contato"
                 onClick={() => setIsMenuOpen(false)}
                 className="block px-3 py-2 text-[#A1C913] font-bold"
@@ -654,7 +668,7 @@ export default function App() {
 
       <main id="main-content">
       {/* Hero Section */}
-      <section className="relative min-h-[100svh] pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <section id="sobre" className="relative min-h-[100svh] pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         {siteImages.hero !== initialImages.hero && (
           <div className="absolute inset-0 z-0">
             <img
@@ -681,13 +695,14 @@ export default function App() {
               QUALIDADE E CONFIABILIDADE DESDE 1992
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Eucalyptus{" "}
-              <span className="text-brand-400">Tratados</span>
+              Eucalipto{" "}
+              <span className="text-brand-400">Citriodora</span> Tratado
             </h1>
             <p className="text-lg md:text-xl text-stone-200 mb-10 leading-relaxed">
-              O seu destino definitivo para madeira de eucalipto tratado de alta
-              qualidade, com foco na espécie Citriodora. Soluções duráveis e
-              sustentáveis, com tratamento CCA.
+              A Eucalyptus Tratados, em Laranjal Paulista (SP), fornece postes,
+              mourões, palanques e madeira serrada de eucalipto citriodora
+              tratado em autoclave com CCA, conforme a ABNT NBR 9480, com 10
+              anos de garantia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -1110,6 +1125,35 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
+      {/* FAQ */}
+      <section id="perguntas" className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
+              Perguntas Frequentes sobre Eucalipto Tratado
+            </h2>
+            <p className="text-lg text-stone-600">
+              Tudo o que você precisa saber antes de comprar postes, mourões e
+              madeira de eucalipto citriodora tratado.
+            </p>
+          </div>
+          <div className="space-y-4">
+            {FAQ.map((item) => (
+              <details
+                key={item.q}
+                className="group bg-stone-50 border border-stone-200 rounded-2xl p-6 open:shadow-md transition-shadow"
+              >
+                <summary className="flex justify-between items-center gap-4 cursor-pointer list-none font-bold text-lg text-stone-900">
+                  <h3 className="text-lg font-bold">{item.q}</h3>
+                  <ChevronRight className="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="mt-4 text-stone-700 leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section id="contato" className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">

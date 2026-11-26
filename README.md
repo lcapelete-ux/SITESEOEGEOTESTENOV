@@ -1,20 +1,25 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://ai.google.dev/static/site-assets/images/share-ais-513315318.png" />
-</div>
+# Eucalyptus Tratados — site
 
-# Run and deploy your AI Studio app
+Site institucional da Eucalyptus Tratados (eucalipto citriodora tratado, Laranjal Paulista - SP).
+Vite + React + TypeScript + Tailwind, com conteúdo dinâmico (galeria e banners) no Supabase.
 
-This contains everything you need to run your app locally.
+## Rodar localmente
 
-View your app in AI Studio: https://ai.studio/apps/46dc1527-ea1d-42db-81b1-e05dcb1bdfee
+```bash
+npm install
+cp .env.example .env   # preencha VITE_SUPABASE_URL e VITE_SUPABASE_ANON_KEY
+npm run dev
+```
 
-## Run Locally
+## SEO e GEO (buscas por IA)
 
-**Prerequisites:**  Node.js
+- `src/seoContent.ts`: fonte única de dados da empresa, produtos e FAQ. Edite aqui.
+- `seoPlugin.ts`: no build, gera o JSON-LD (LocalBusiness, catálogo, FAQPage) e um
+  HTML estático dentro de `#root` para robôs que não executam JavaScript.
+- `public/robots.txt`: libera buscadores e robôs de IA; bloqueia `/cercas/`.
+- `public/llms.txt`: resumo da empresa para assistentes de IA.
+- `public/sitemap.xml`: atualize o `lastmod` ao mudar conteúdo.
 
+## Deploy
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Push na `main` dispara `.github/workflows/deploy-pages.yml` (GitHub Pages).
