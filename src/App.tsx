@@ -24,6 +24,9 @@ const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 const CatalogModal = lazy(() => import("./components/CatalogModal"));
 import { Toaster, toast } from "react-hot-toast";
 import { FAQ } from "./seoContent";
+import { FOOTER_GROUPS } from "./pages/nav";
+
+const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 
 const getSupabase = async () => (await import("./supabase")).supabase;
 
@@ -561,6 +564,12 @@ export default function App() {
                 Sobre
               </a>
               <a
+                href={pageHref("produtos")}
+                className="text-stone-200 hover:text-white font-medium transition-colors"
+              >
+                Produtos
+              </a>
+              <a
                 href="#citriodora"
                 className="text-stone-200 hover:text-white font-medium transition-colors"
               >
@@ -625,6 +634,12 @@ export default function App() {
                 className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
               >
                 Sobre
+              </a>
+              <a
+                href={pageHref("produtos")}
+                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
+              >
+                Produtos
               </a>
               <a
                 href="#citriodora"
@@ -1151,6 +1166,11 @@ export default function App() {
               </details>
             ))}
           </div>
+          <p className="text-center mt-8">
+            <a href={pageHref("perguntas-frequentes")} className="inline-block font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">
+              Ver todas as perguntas frequentes
+            </a>
+          </p>
         </div>
       </section>
 
@@ -1345,12 +1365,32 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-[#183e26] text-stone-300 py-12 border-t border-[#143320] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-sm">
+            <div>
               <Logo />
+              <p className="mt-4">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</p>
+              <p className="mt-2">
+                <a className="hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a><br />
+                <a className="hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a><br />
+                <a className="hover:text-white" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
+              </p>
             </div>
-            <div className="text-sm">Qualidade e confiabilidade desde 1992</div>
-            <div className="text-sm flex items-center gap-2">
+            {FOOTER_GROUPS.map((group) => (
+              <nav key={group.title} aria-label={group.title}>
+                <h2 className="text-white font-bold mb-3 text-base">{group.title}</h2>
+                <ul className="space-y-2">
+                  {group.links.map((link) => (
+                    <li key={link.slug}>
+                      <a className="hover:text-white transition-colors" href={pageHref(link.slug)}>{link.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
+          </div>
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
+            <div>Qualidade e confiabilidade desde 1992</div>
+            <div className="flex items-center gap-2">
               © 2026 Eucalyptus Tratados. Todos os direitos reservados.
               <button
                 onClick={() => setIsLoginModalOpen(true)}

@@ -28,7 +28,47 @@
 
 /* Skip layout and paint work for sections until they approach the viewport.
    The elements remain available to search engines and motion observers. */
-main > section:not(:first-child) {
+#main-content > section:not(:first-child) {
   content-visibility: auto;
   contain-intrinsic-size: auto 820px;
 }
+
+/* ───────── Páginas estáticas (src/pages/content.ts) ───────── */
+.conteudo h1 { font-size: 2.25rem; line-height: 1.15; font-weight: 800; color: var(--color-stone-900); margin: 1.25rem 0 1rem; letter-spacing: -0.01em; }
+.conteudo h2 { font-size: 1.6rem; line-height: 1.25; font-weight: 700; color: var(--color-stone-900); margin: 2.5rem 0 1rem; }
+.conteudo h3 { font-size: 1.15rem; font-weight: 700; color: var(--color-stone-900); margin: 1.5rem 0 .5rem; }
+.conteudo p, .conteudo li { font-size: 1.0625rem; line-height: 1.75; color: var(--color-stone-700); }
+.conteudo p { margin: 0 0 1rem; }
+.conteudo ul, .conteudo ol { margin: 0 0 1.25rem; padding-left: 1.4rem; }
+.conteudo ul { list-style: disc; } .conteudo ol { list-style: decimal; }
+.conteudo li { margin: .35rem 0; }
+.conteudo strong { color: var(--color-stone-900); }
+.conteudo a:not(.cta):not(.card) { color: #2f6b3f; text-decoration: underline; text-underline-offset: 3px; }
+.conteudo a:not(.cta):not(.card):hover { color: #183e26; }
+.conteudo .lead { font-size: 1.2rem; color: var(--color-stone-800); }
+.conteudo .nota { font-size: .9rem; color: var(--color-stone-600); }
+.cta { display: inline-block; background: #15803d; color: #fff; font-weight: 700; padding: .85rem 1.5rem; border-radius: 999px; text-decoration: none; box-shadow: 0 6px 16px rgb(21 128 61 / .3); }
+.cta:hover { background: #166534; }
+.cta-box { margin-top: 3rem; padding: 1.75rem; border-radius: 1.25rem; background: var(--color-brand-50); border: 1px solid var(--color-brand-200); }
+.cta-box h2 { margin-top: 0; }
+.tabela-wrap { overflow-x: auto; margin: 1rem 0; border: 1px solid var(--color-stone-200); border-radius: 1rem; }
+.tabela-wrap table { width: 100%; border-collapse: collapse; font-size: .95rem; }
+.tabela-wrap caption { text-align: left; padding: .9rem 1rem; font-weight: 700; color: var(--color-stone-900); background: var(--color-stone-50); }
+.tabela-wrap th { text-align: left; background: #183e26; color: #fff; padding: .6rem 1rem; font-weight: 600; white-space: nowrap; }
+.tabela-wrap td { padding: .55rem 1rem; border-top: 1px solid var(--color-stone-200); color: var(--color-stone-700); }
+.tabela-wrap tbody tr:nth-child(even) td { background: var(--color-stone-50); }
+.cards { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); margin: 1.25rem 0; }
+.card { display: block; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--color-stone-200); background: #fff; text-decoration: none; transition: box-shadow .2s, border-color .2s; }
+.card:hover { border-color: var(--color-brand-500); box-shadow: 0 8px 24px rgb(0 0 0 / .08); }
+.card h2, .card h3 { margin: 0 0 .4rem; font-size: 1.1rem; font-weight: 700; color: #183e26; }
+.card p { margin: 0; font-size: .95rem; line-height: 1.55; color: var(--color-stone-700); }
+.faq details { border: 1px solid var(--color-stone-200); border-radius: 1rem; padding: 1rem 1.25rem; margin: .75rem 0; background: var(--color-stone-50); }
+.faq summary { cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary h3 { margin: 0; font-size: 1.05rem; line-height: 1.45; }
+.faq summary::after { content: "+"; flex-shrink: 0; font-weight: 700; font-size: 1.25rem; line-height: 1.4; color: #2f6b3f; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: .75rem 0 0; }
+.breadcrumbs a { text-decoration: underline; text-underline-offset: 3px; }
+.menu-mobile[open] summary { color: #A1C913; }
+@media (max-width: 640px) { .conteudo h1 { font-size: 1.8rem; } .conteudo h2 { font-size: 1.35rem; } }

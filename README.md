@@ -13,12 +13,16 @@ npm run dev
 
 ## SEO e GEO (buscas por IA)
 
-- `src/seoContent.ts`: fonte única de dados da empresa, produtos e FAQ. Edite aqui.
-- `seoPlugin.ts`: no build, gera o JSON-LD (LocalBusiness, catálogo, FAQPage) e um
-  HTML estático dentro de `#root` para robôs que não executam JavaScript.
+- `src/seoContent.ts`: dados da empresa, linhas de produto e FAQ da home.
+- `src/pages/content.ts`: as 15 páginas estáticas (produtos, guias, FAQ, sobre, contato).
+  Para criar uma página nova, adicione um item em `PAGES` e o link em `src/pages/nav.ts`.
+- `src/catalogData.ts`: catálogo de medidas e pesos (modal do site e tabelas das páginas).
+- `seoPlugin.ts`: no build gera as páginas em HTML puro, o JSON-LD de cada uma
+  (empresa, produto, breadcrumbs, FAQ), o HTML estático da home para robôs sem JS,
+  o `sitemap.xml` e o `llms.txt`.
 - `public/robots.txt`: libera buscadores e robôs de IA; bloqueia `/cercas/`.
-- `public/llms.txt`: resumo da empresa para assistentes de IA.
-- `public/sitemap.xml`: atualize o `lastmod` ao mudar conteúdo.
+
+As páginas estáticas existem só no build: use `npm run build && npm run preview` para vê-las.
 
 ## Deploy
 
