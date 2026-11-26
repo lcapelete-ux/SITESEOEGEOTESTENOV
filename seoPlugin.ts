@@ -14,6 +14,7 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import { BUSINESS as B, FAQ, PRODUCTS } from './src/seoContent';
 import { CONTENT_UPDATED, PAGES, whatsappLink, type PageFaq, type SitePage } from './src/pages/content';
 import { FOOTER_GROUPS, HEADER_LINKS } from './src/pages/nav';
+import { readFileSync } from 'node:fs';
 import { blogIndexPage, dataPorExtenso, loadBlogPosts, type BlogPost } from './blogLoader';
 
 const SITE = B.url; // domínio oficial (canonical), com barra final
@@ -41,6 +42,46 @@ const bySlug = (slug: string): SitePage => {
   return p;
 };
 const articleOf = (p: SitePage) => (p as Partial<BlogPost>).article;
+
+// Fotos da galeria (Supabase), buscadas no build. Sem acesso, usa a cópia em src/pages/gallerySnapshot.json.
+let GALLERIES: Record<string, string[]> = {};
+async function loadGalleries(): Promise<void> {
+  const snapshot = JSON.parse(readFileSync(new URL('./src/pages/gallerySnapshot.json', import.meta.url), 'utf8'));
+  const cats = [...new Set(PAGES.flatMap((p) => (p.gallery ? [p.gallery.category] : [])))];
+  const url = process.env.VITE_SUPABASE_URL;
+  const key = process.env.VITE_SUPABASE_ANON_KEY;
+  GALLERIES = {};
+  for (const cat of cats) {
+    let urls: string[] = [];
+    if (url && key) {
+      try {
+        const res = await fetch(
+          `${url}/rest/v1/gallery?category=eq.${cat}&select=url,order,created_at&order=order.asc.nullslast,created_at.desc`,
+          { headers: { apikey: key, Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(10000) },
+        );
+        if (res.ok) urls = ((await res.json()) as { url: string }[]).map((r) => r.url).filter((u) => /^https:\/\//.test(u));
+      } catch {
+        /* usa a cópia */
+      }
+    }
+    GALLERIES[cat] = urls.length ? urls : (snapshot[cat] ?? []);
+    console.log(`[seo] galeria ${cat}: ${GALLERIES[cat].length} fotos (${urls.length ? 'Supabase' : 'cópia local'})`);
+  }
+}
+const galleryOf = (p: SitePage) => (p.gallery ? (GALLERIES[p.gallery.category] ?? []) : []);
+
+function galleryHtml(p: SitePage): string {
+  const imgs = galleryOf(p);
+  if (!p.gallery || !imgs.length) return '';
+  return `<section class="galeria" aria-labelledby="galeria-titulo"><h2 id="galeria-titulo">${esc(p.gallery.title)}</h2>
+<div class="galeria-grid">${imgs
+    .map(
+      (u, i) =>
+        `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="${esc(p.gallery!.alt)}, foto ${i + 1}" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async" width="400" height="300"></a>`,
+    )
+    .join('')}</div>
+<p class="nota">Fotos de obras feitas com madeira da Eucalyptus Tratados. Toque para ampliar.</p></section>`;
+}
 
 function businessLd() {
   return {
@@ -318,6 +359,7 @@ ${ctx.gtm}
 <h1>${esc(p.h1)}</h1>${articleOf(p) ? `\n<p class="nota">${esc(articleOf(p)!.category)} · <time datetime="${articleOf(p)!.date}">${dataPorExtenso(articleOf(p)!.date)}</time>${articleOf(p)!.updated ? ` · atualizado em <time datetime="${articleOf(p)!.updated}">${dataPorExtenso(articleOf(p)!.updated!)}</time>` : ''} · ${articleOf(p)!.readMinutes} min de leitura</p>` : ''}
 <p class="lead">${esc(p.intro)}</p>
 <p><a class="cta" href="${wa}">Pedir orçamento pelo WhatsApp</a></p>
+${galleryHtml(p)}
 ${resolve(p.body)}
 ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
 <aside class="cta-box" aria-label="Orçamento">
@@ -347,7 +389,7 @@ ${footer}
 function sitemap(): string {
   const urls = [
     `<url><loc>${SITE}</loc><lastmod>${[CONTENT_UPDATED, ...POSTS.map((x) => x.article.date)].sort().pop()}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
-    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod></url>`),
+    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${galleryOf(p).map((u) => `<image:image><image:loc>${esc(u)}</image:loc></image:image>`).join('')}</url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
@@ -444,8 +486,9 @@ export function seoPlugin(): Plugin {
     configResolved(c) {
       config = c;
     },
-    buildStart() {
+    async buildStart() {
       refreshBlog();
+      await loadGalleries();
     },
     // Módulo virtual com os 3 artigos mais recentes, usado na home React.
     resolveId(id) {
