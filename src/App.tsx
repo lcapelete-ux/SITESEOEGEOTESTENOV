@@ -41,6 +41,9 @@ const HOME_PRODUCTS = [
   { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado.", photoIndex: 3 },
 ];
 
+// Amostra curta da galeria, sem repetir as fotos da capa e dos cartões de produtos.
+const FEATURED_GALLERY = [20, 1, 7].map(index => gallerySnapshot.rows[index]);
+
 const getSupabase = async () => (await import("./supabase")).supabase;
 
 export enum OperationType {
@@ -261,7 +264,7 @@ export default function App() {
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
   const [siteImages, setSiteImages] = useState<SiteImages>(initialImages);
-  const [activeGalleryTab, setActiveGalleryTab] = useState<"rural" | "civil" | "paisagismo" | "ideias">("rural");
+  const [activeGalleryTab, setActiveGalleryTab] = useState<"destaques" | "rural" | "civil" | "paisagismo" | "ideias">("destaques");
   const [isAuthReady, setIsAuthReady] = useState(false);
   const [isDataLoaded, setIsDataLoaded] = useState({ site: false, gallery: false });
 
@@ -555,6 +558,10 @@ export default function App() {
     viewport: { once: true },
     transition: { duration: 0.32, ease: "easeOut" },
   };
+
+  const galleryItems = activeGalleryTab === "destaques"
+    ? FEATURED_GALLERY
+    : siteImages.gallery[activeGalleryTab];
 
   return (
     <MotionConfig reducedMotion="user">
@@ -1112,13 +1119,14 @@ export default function App() {
           {/* Gallery Tabs Header Hint */}
           <div className="text-center mb-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-[#183e26] text-xs font-semibold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-brand-700" aria-hidden="true" /> Clique para ver as fotos
+              <Sparkles className="w-3.5 h-3.5 text-brand-700" aria-hidden="true" /> Explore por categoria
             </span>
           </div>
 
           {/* Gallery Tabs */}
           <div className="p-2 bg-stone-50 rounded-2xl border border-stone-200 shadow-sm max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-12">
             {[
+              { id: "destaques", label: "Destaques", icon: <Sparkles className="w-4 h-4" /> },
               { id: "rural", label: "Construção Rural", icon: <Fence className="w-4 h-4" /> },
               { id: "civil", label: "Construção Civil", icon: <Hammer className="w-4 h-4" /> },
               { id: "paisagismo", label: "Paisagismo", icon: <Sprout className="w-4 h-4" /> },
@@ -1145,9 +1153,9 @@ export default function App() {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {siteImages.gallery[activeGalleryTab].map((item, idx) => (
+            {galleryItems.map((item, idx) => (
               <motion.div
-                key={item.id}
+                key={item.url}
                 className="relative aspect-square rounded-2xl overflow-hidden shadow-md group"
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
@@ -1158,13 +1166,13 @@ export default function App() {
                   src={item.url}
                   loading="lazy"
                   decoding="async"
-                  alt={`Eucalipto citriodora tratado em ${({ rural: "construção rural", civil: "construção civil", paisagismo: "paisagismo", ideias: "projetos" } as const)[activeGalleryTab]}, foto ${idx + 1}`}
+                  alt={item.alt || "Eucalipto citriodora tratado em projeto da Eucalyptus Tratados"}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
-            {siteImages.gallery[activeGalleryTab].length === 0 && (
+            {galleryItems.length === 0 && (
               <div className="col-span-full py-12 text-center text-stone-600">
                 Nenhuma imagem nesta categoria.
               </div>
