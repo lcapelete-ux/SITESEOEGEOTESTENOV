@@ -25,6 +25,7 @@ const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 import { Toaster, toast } from "react-hot-toast";
 import { FOOTER_GROUPS, HEADER_LINKS } from "./pages/nav";
 import LATEST_POSTS from "virtual:blog-latest";
+import gallerySnapshot from "./pages/gallerySnapshot.json";
 
 const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 
@@ -32,12 +33,12 @@ const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 const MEDINDO_FOTO = "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394252700-a4xrqn.webp";
 
 const HOME_PRODUCTS = [
-  { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca." },
-  { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame." },
-  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Currais, mangueiras, porteiras e esteios de galpão." },
-  { slug: "produtos/poste-de-eucalipto-tratado", name: "Poste de eucalipto tratado", size: "8 m a 12 m · 10 a 32 cm", desc: "Galpões, barracões, coberturas e estruturas de grande carga." },
-  { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50 m a 8 m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo." },
-  { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado." },
+  { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca.", photoIndex: 15 },
+  { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame.", photoIndex: 16 },
+  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Currais, mangueiras, porteiras e esteios de galpão.", photoIndex: 6 },
+  { slug: "produtos/poste-de-eucalipto-tratado", name: "Poste de eucalipto tratado", size: "8 m a 12 m · 10 a 32 cm", desc: "Galpões, barracões, coberturas e estruturas de grande carga.", photoIndex: 2 },
+  { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50 m a 8 m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo.", photoIndex: 4 },
+  { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado.", photoIndex: 3 },
 ];
 
 const getSupabase = async () => (await import("./supabase")).supabase;
@@ -726,32 +727,42 @@ export default function App() {
       </section>
 
       {/* Products */}
-      <section id="produtos" className="py-24 bg-white">
+      <section id="produtos" className="py-20 md:py-28 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
+          <div className="max-w-3xl mb-10 md:mb-14">
+            <span className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.18em] text-[#5b6906] mb-4">
+              <span className="h-px w-8 bg-[#8ba41b]" aria-hidden="true" /> Nossa linha de produtos
+            </span>
+            <h2 className="text-3xl md:text-5xl font-bold leading-[1.12] tracking-tight text-[#183e26] mb-5">
               Produtos de Eucalipto Citriodora Tratado
             </h2>
-            <p className="text-lg text-stone-700 max-w-2xl mx-auto">
+            <p className="text-base md:text-lg leading-relaxed text-stone-700 max-w-2xl">
               Peças roliças e serradas tratadas em autoclave, com medidas pela
               NBR 9480 e 10 anos de garantia. Veja medidas e pesos de cada linha.
             </p>
           </div>
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {HOME_PRODUCTS.map((product) => (
+          <div className="grid gap-4 md:gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {HOME_PRODUCTS.map((product) => {
+              const photo = gallerySnapshot.rows[product.photoIndex];
+              return (
               <a
                 key={product.slug}
                 href={pageHref(product.slug)}
-                className="group block bg-stone-50 border border-stone-200 rounded-2xl p-6 hover:border-brand-500 hover:shadow-lg transition-all"
+                className="group flex h-full flex-col overflow-hidden rounded-3xl border border-[#e1e7dc] bg-white shadow-[0_2px_12px_rgba(24,62,38,0.03)] transition-all duration-200 hover:-translate-y-1 hover:border-[#9bab73] hover:shadow-[0_18px_36px_rgba(24,62,38,0.10)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#5b6906]"
               >
-                <div className="text-sm font-semibold text-brand-800 mb-1">{product.size}</div>
-                <h3 className="text-xl font-bold text-[#183e26] mb-2">{product.name}</h3>
-                <p className="text-stone-700 mb-4">{product.desc}</p>
-                <span className="inline-flex items-center gap-1 font-bold text-[#183e26] group-hover:gap-2 transition-all">
-                  Ver medidas <ChevronRight className="w-4 h-4" />
-                </span>
+                <div className="aspect-[4/3] overflow-hidden bg-[#eef3e6]">
+                  <img src={photo.url} alt={photo.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                </div>
+                <div className="flex flex-1 flex-col p-6 md:p-7">
+                  <div className="mb-4 self-start rounded-full bg-[#f1f5e8] px-3 py-1.5 text-xs font-bold text-[#526610]">{product.size}</div>
+                  <h3 className="text-xl md:text-[1.35rem] leading-snug font-bold text-[#183e26] mb-3">{product.name}</h3>
+                  <p className="text-sm md:text-base leading-relaxed text-stone-700 mb-7">{product.desc}</p>
+                  <span className="mt-auto flex items-center justify-between border-t border-[#e9ede6] pt-5 font-bold text-[#183e26]">
+                    Ver medidas <ChevronRight className="h-5 w-5 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+                  </span>
+                </div>
               </a>
-            ))}
+            )})}
           </div>
         </div>
       </section>
