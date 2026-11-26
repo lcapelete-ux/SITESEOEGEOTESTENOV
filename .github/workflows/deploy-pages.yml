@@ -34,6 +34,8 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          # Página de teste: fora do Google. Remover esta linha no lançamento oficial.
+          SITE_NOINDEX: "true"
           # Publishable browser key: access is still constrained by Supabase RLS.
           VITE_SUPABASE_URL: https://ycnxgshttjdlsyabhcks.supabase.co
           VITE_SUPABASE_ANON_KEY: sb_publishable_kVKaVh057S4L1WNk1J5bxQ_s1NVFFyf

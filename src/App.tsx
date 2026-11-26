@@ -23,6 +23,10 @@ const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 const CatalogModal = lazy(() => import("./components/CatalogModal"));
 import { Toaster, toast } from "react-hot-toast";
+import { FAQ } from "./seoContent";
+import { FOOTER_GROUPS } from "./pages/nav";
+
+const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 
 const getSupabase = async () => (await import("./supabase")).supabase;
 
@@ -560,6 +564,12 @@ export default function App() {
                 Sobre
               </a>
               <a
+                href={pageHref("produtos")}
+                className="text-stone-200 hover:text-white font-medium transition-colors"
+              >
+                Produtos
+              </a>
+              <a
                 href="#citriodora"
                 className="text-stone-200 hover:text-white font-medium transition-colors"
               >
@@ -576,6 +586,12 @@ export default function App() {
                 className="text-stone-200 hover:text-white font-medium transition-colors"
               >
                 Normas
+              </a>
+              <a
+                href="#perguntas"
+                className="text-stone-200 hover:text-white font-medium transition-colors"
+              >
+                Dúvidas
               </a>
               <a
                 href="#contato"
@@ -620,6 +636,12 @@ export default function App() {
                 Sobre
               </a>
               <a
+                href={pageHref("produtos")}
+                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
+              >
+                Produtos
+              </a>
+              <a
                 href="#citriodora"
                 onClick={() => setIsMenuOpen(false)}
                 className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
@@ -641,6 +663,13 @@ export default function App() {
                 Normas
               </a>
               <a
+                href="#perguntas"
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
+              >
+                Dúvidas
+              </a>
+              <a
                 href="#contato"
                 onClick={() => setIsMenuOpen(false)}
                 className="block px-3 py-2 text-[#A1C913] font-bold"
@@ -654,7 +683,7 @@ export default function App() {
 
       <main id="main-content">
       {/* Hero Section */}
-      <section className="relative min-h-[100svh] pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+      <section id="sobre" className="relative min-h-[100svh] pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         {siteImages.hero !== initialImages.hero && (
           <div className="absolute inset-0 z-0">
             <img
@@ -662,7 +691,7 @@ export default function App() {
               sizes="100vw"
               loading="eager"
               fetchPriority="high"
-              alt="Plantação de Eucalipto"
+              alt=""
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -681,13 +710,14 @@ export default function App() {
               QUALIDADE E CONFIABILIDADE DESDE 1992
             </span>
             <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
-              Eucalyptus{" "}
-              <span className="text-brand-400">Tratados</span>
+              Eucalipto{" "}
+              <span className="text-brand-400">Citriodora</span> Tratado
             </h1>
             <p className="text-lg md:text-xl text-stone-200 mb-10 leading-relaxed">
-              O seu destino definitivo para madeira de eucalipto tratado de alta
-              qualidade, com foco na espécie Citriodora. Soluções duráveis e
-              sustentáveis, com tratamento CCA.
+              A Eucalyptus Tratados, em Laranjal Paulista (SP), fornece postes,
+              mourões, palanques e madeira serrada de eucalipto citriodora
+              tratado em autoclave com CCA, conforme a ABNT NBR 9480, com 10
+              anos de garantia.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -740,7 +770,7 @@ export default function App() {
                 Por que trabalhamos com{" "}
                 <span className="text-[#365414]">Eucalyptus Citriodora</span>?
               </h2>
-              <p className="text-lg text-stone-600 mb-8">
+              <p className="text-lg text-stone-700 mb-8">
                 O Eucalyptus Citriodora é reconhecido como a espécie mais
                 resistente e durável do mercado brasileiro. Suas características
                 únicas o tornam a escolha ideal para tratamento em autoclave.
@@ -792,7 +822,7 @@ export default function App() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 loading="lazy"
                 decoding="async"
-                alt="Eucalipto Citriodora"
+                alt="Carga de toras de eucalipto citriodora tratado em autoclave com CCA"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -821,7 +851,7 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Processo de Tratamento em Autoclave
             </h2>
-            <p className="text-lg text-stone-600">
+            <p className="text-lg text-stone-700">
               Nosso processo de imunização segue rigorosamente as normas ABNT e
               NBR 9480, garantindo máxima proteção contra cupins, fungos e
               umidade.
@@ -869,7 +899,7 @@ export default function App() {
                 <h3 className="text-xl font-bold text-stone-900 mb-3">
                   {step.title}
                 </h3>
-                <p className="text-stone-600">{step.desc}</p>
+                <p className="text-stone-700">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -948,7 +978,7 @@ export default function App() {
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       loading="lazy"
                       decoding="async"
-                      alt="Ilustração de Medição"
+                      alt="Medição de poste de eucalipto pelo diâmetro do topo, conforme a NBR 9480"
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />
@@ -1023,7 +1053,7 @@ export default function App() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 loading="lazy"
                 decoding="async"
-                alt="Reflorestamento"
+                alt="Área de reflorestamento de eucalipto"
                 className="rounded-3xl aspect-[16/10] w-full object-cover shadow-2xl"
                 referrerPolicy="no-referrer"
               />
@@ -1039,7 +1069,7 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Nossa Estrutura e Produtos
             </h2>
-            <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+            <p className="text-lg text-stone-700 max-w-2xl mx-auto">
               Conheça um pouco mais sobre o nosso processo de tratamento e a
               qualidade da madeira que entregamos.
             </p>
@@ -1094,14 +1124,14 @@ export default function App() {
                   src={item.url}
                   loading="lazy"
                   decoding="async"
-                  alt={`Galeria ${activeGalleryTab} ${idx + 1}`}
+                  alt={`Eucalipto citriodora tratado em ${({ rural: "construção rural", civil: "construção civil", paisagismo: "paisagismo", ideias: "projetos" } as const)[activeGalleryTab]}, foto ${idx + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
             {siteImages.gallery[activeGalleryTab].length === 0 && (
-              <div className="col-span-full py-12 text-center text-stone-500">
+              <div className="col-span-full py-12 text-center text-stone-600">
                 Nenhuma imagem nesta categoria.
               </div>
             )}
@@ -1110,6 +1140,40 @@ export default function App() {
       </section>
 
       {/* Contact Section */}
+      {/* FAQ */}
+      <section id="perguntas" className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
+              Perguntas Frequentes sobre Eucalipto Tratado
+            </h2>
+            <p className="text-lg text-stone-700">
+              Tudo o que você precisa saber antes de comprar postes, mourões e
+              madeira de eucalipto citriodora tratado.
+            </p>
+          </div>
+          <div className="space-y-4">
+            {FAQ.map((item) => (
+              <details
+                key={item.q}
+                className="group bg-stone-50 border border-stone-200 rounded-2xl p-6 open:shadow-md transition-shadow"
+              >
+                <summary className="flex justify-between items-center gap-4 cursor-pointer list-none font-bold text-lg text-stone-900">
+                  <h3 className="text-lg font-bold">{item.q}</h3>
+                  <ChevronRight className="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="mt-4 text-stone-700 leading-relaxed">{item.a}</p>
+              </details>
+            ))}
+          </div>
+          <p className="text-center mt-8">
+            <a href={pageHref("perguntas-frequentes")} className="inline-block font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">
+              Ver todas as perguntas frequentes
+            </a>
+          </p>
+        </div>
+      </section>
+
       <section id="contato" className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
@@ -1117,7 +1181,7 @@ export default function App() {
               <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
                 Solicite seu Orçamento
               </h2>
-              <p className="text-lg text-stone-600 mb-10">
+              <p className="text-lg text-stone-700 mb-10">
                 Preencha o formulário ou entre em contato diretamente. Nossa
                 equipe está pronta para atender você com as melhores soluções em
                 eucalipto tratado.
@@ -1301,12 +1365,32 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-[#183e26] text-stone-300 py-12 border-t border-[#143320] relative">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div className="flex items-center">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-sm">
+            <div>
               <Logo />
+              <p className="mt-4">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</p>
+              <p className="mt-2">
+                <a className="hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a><br />
+                <a className="hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a><br />
+                <a className="hover:text-white" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
+              </p>
             </div>
-            <div className="text-sm">Qualidade e confiabilidade desde 1992</div>
-            <div className="text-sm flex items-center gap-2">
+            {FOOTER_GROUPS.map((group) => (
+              <nav key={group.title} aria-label={group.title}>
+                <h2 className="text-white font-bold mb-3 text-base">{group.title}</h2>
+                <ul className="space-y-2">
+                  {group.links.map((link) => (
+                    <li key={link.slug}>
+                      <a className="hover:text-white transition-colors" href={pageHref(link.slug)}>{link.name}</a>
+                    </li>
+                  ))}
+                </ul>
+              </nav>
+            ))}
+          </div>
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
+            <div>Qualidade e confiabilidade desde 1992</div>
+            <div className="flex items-center gap-2">
               © 2026 Eucalyptus Tratados. Todos os direitos reservados.
               <button
                 onClick={() => setIsLoginModalOpen(true)}
@@ -1340,6 +1424,7 @@ export default function App() {
       )}
 
       {/* Floating WhatsApp Button */}
+      <aside aria-label="Contato rápido pelo WhatsApp">
       <a
         href="https://wa.me/5515996854945?text=Olá! Gostaria de solicitar um orçamento."
         onClick={(e) => {
@@ -1369,6 +1454,7 @@ export default function App() {
           Falar com um vendedor
         </span>
       </a>
+      </aside>
     </div>
   );
 }
