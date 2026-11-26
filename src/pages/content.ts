@@ -286,12 +286,12 @@ ${comoMedimos}`,
 <div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Comparação geral entre espécies usadas em madeira tratada</caption>
 <thead><tr><th scope="col">Característica</th><th scope="col">Citriodora</th><th scope="col">Espécies de crescimento rápido (grandis, urograndis, saligna)</th></tr></thead>
 <tbody>
-<tr><td>Tendência a rachar</td><td>Baixa</td><td>Maior, principalmente em peças grossas</td></tr>
+<tr><td>Tendência a rachar</td><td>Baixa</td><td>Maior, principalmente em peças grossas. A cloeziana é a espécie que mais racha, na nossa experiência.</td></tr>
 <tr><td>Densidade</td><td>Alta</td><td>Menor</td></tr>
 <tr><td>Resistência a cargas</td><td>Alta</td><td>Menor</td></tr>
 <tr><td>Indicação</td><td>Postes, esticadores, currais e estruturas</td><td>Usos mais leves</td></tr>
 </tbody></table></div>
-<p>Rachaduras não são só estética: uma trinca profunda expõe o cerne não tratado e abre caminho para fungos e cupins. Escolher a espécie certa protege o investimento.</p>
+<p>Rachaduras não são só estética: uma trinca profunda expõe o cerne não tratado e abre caminho para fungos e cupins. Entre as espécies que comparamos (grandis, urograndis, saligna e cloeziana), a cloeziana é a que mais racha na nossa experiência. Escolher a espécie certa protege o investimento.</p>
 <h2>Como reconhecer</h2>
 <p>A árvore de citriodora tem casca lisa, que se solta em placas, e folhas com aroma cítrico forte, de onde vem o nome. Na madeira tratada, a densidade se percebe no peso: uma peça de citriodora pesa mais que outra do mesmo tamanho de espécie mais leve.</p>
 <p>Veja também <a href="{{tratamento-em-autoclave}}">como funciona o tratamento em autoclave</a> e <a href="{{produtos}}">todos os produtos em citriodora</a>.</p>`,
