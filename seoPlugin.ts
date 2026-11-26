@@ -248,8 +248,8 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
     .join('');
 
   const footer = FOOTER_GROUPS.map(
-    (g) => `<div><h2 class="text-white font-bold mb-3">${esc(g.title)}</h2><ul class="space-y-2">${g.links
-      .map((l) => `<li><a class="hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a></li>`)
+    (g) => `<div><h2 class="text-white font-bold mb-3">${esc(g.title)}</h2><ul class="space-y-1">${g.links
+      .map((l) => `<li><a class="inline-block py-1.5 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a></li>`)
       .join('')}</ul></div>`,
   ).join('');
 
@@ -284,8 +284,8 @@ ${ctx.gtm}
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
 <a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a>
 <nav aria-label="Principal" class="hidden lg:flex space-x-8 items-center">${nav}<a href="${href('contato')}" class="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors">Orçamento</a></nav>
-<details class="lg:hidden relative menu-mobile"><summary class="list-none cursor-pointer text-stone-200 p-2" aria-label="Abrir menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
-<nav aria-label="Menu" class="absolute right-0 top-12 w-60 bg-[#183e26] rounded-xl shadow-xl p-3 flex flex-col gap-1">${HEADER_LINKS.map((l) => `<a class="block px-3 py-2 text-stone-100 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a>`).join('')}<a class="block px-3 py-2 text-[#A1C913] font-bold" href="${href('contato')}">Orçamento</a></nav></details>
+<details class="lg:hidden relative menu-mobile"><summary class="list-none cursor-pointer text-stone-200 p-2.5 -mr-2.5 rounded-lg" aria-label="Abrir menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav aria-label="Menu" class="absolute right-0 top-12 w-60 bg-[#183e26] rounded-xl shadow-xl p-3 flex flex-col gap-1">${HEADER_LINKS.map((l) => `<a class="block px-3 py-3 text-stone-100 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a>`).join('')}<a class="block px-3 py-3 text-[#A1C913] font-bold" href="${href('contato')}">Orçamento</a></nav></details>
 </div>
 </header>
 <nav aria-label="Você está em" class="max-w-3xl mx-auto px-4 pt-6 text-sm text-stone-600 breadcrumbs">${crumbs}</nav>
@@ -308,7 +308,7 @@ ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
 <div class="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm">
 <div><a href="${base}" aria-label="Página inicial">${logoHtml}</a>
 <p class="mt-4">${esc(B.street)}<br>${esc(B.city)} - ${B.region}</p>
-<p class="mt-2"><a class="hover:text-white" href="https://wa.me/${B.whatsapp}">WhatsApp ${esc(B.whatsappDisplay)}</a><br><a class="hover:text-white" href="tel:${B.phone}">Tel. ${esc(B.phoneDisplay)}</a><br><a class="hover:text-white" href="mailto:${B.email}">${esc(B.email)}</a></p></div>
+<p class="mt-2 flex flex-col items-start"><a class="inline-block py-1.5 hover:text-white" href="https://wa.me/${B.whatsapp}">WhatsApp ${esc(B.whatsappDisplay)}</a><a class="inline-block py-1.5 hover:text-white" href="tel:${B.phone}">Tel. ${esc(B.phoneDisplay)}</a><a class="inline-block py-1.5 hover:text-white break-all" href="mailto:${B.email}">${esc(B.email)}</a></p></div>
 ${footer}
 </div>
 <p class="max-w-6xl mx-auto px-4 mt-10 text-xs text-stone-400">© ${new Date().getFullYear()} ${esc(B.name)}. Eucalipto citriodora tratado desde ${B.foundingYear}.</p>

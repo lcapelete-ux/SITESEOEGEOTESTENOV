@@ -69,6 +69,7 @@
 .faq summary::after { content: "+"; flex-shrink: 0; font-weight: 700; font-size: 1.25rem; line-height: 1.4; color: #2f6b3f; }
 .faq details[open] summary::after { content: "−"; }
 .faq details p { margin: .75rem 0 0; }
-.breadcrumbs a { text-decoration: underline; text-underline-offset: 3px; }
+.breadcrumbs a { display: inline-block; padding: .4rem 0; text-decoration: underline; text-underline-offset: 3px; }
+.tabela-wrap:focus-visible { outline: 3px solid #2f6b3f; outline-offset: 2px; }
 .menu-mobile[open] summary { color: #A1C913; }
 @media (max-width: 640px) { .conteudo h1 { font-size: 1.8rem; } .conteudo h2 { font-size: 1.35rem; } }

@@ -18,7 +18,7 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useState, useEffect, lazy, Suspense } from "react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion, AnimatePresence, MotionConfig } from "motion/react";
 const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 import { Toaster, toast } from "react-hot-toast";
@@ -545,6 +545,7 @@ export default function App() {
   };
 
   return (
+    <MotionConfig reducedMotion="user">
     <div className="min-h-screen font-sans text-stone-800">
 
       <AnimatePresence>
@@ -584,7 +585,7 @@ export default function App() {
             <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-stone-200"
+                className="text-stone-200 p-2.5 -mr-2.5 rounded-lg"
                 aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
                 aria-expanded={isMenuOpen}
               >
@@ -613,7 +614,7 @@ export default function App() {
                   key={link.slug}
                   href={pageHref(link.slug)}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block px-3 py-2 text-stone-200 hover:text-white font-medium"
+                  className="block px-3 py-3 text-stone-200 hover:text-white font-medium"
                 >
                   {link.name}
                 </a>
@@ -621,7 +622,7 @@ export default function App() {
               <a
                 href="#contato"
                 onClick={() => setIsMenuOpen(false)}
-                className="block px-3 py-2 text-[#A1C913] font-bold"
+                className="block px-3 py-3 text-[#A1C913] font-bold"
               >
                 Orçamento
               </a>
@@ -673,13 +674,13 @@ export default function App() {
                 href="#contato"
                 className="bg-brand-500 text-[#183e26] px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
               >
-                Solicite um Orçamento <ChevronRight className="h-5 w-5" />
+                Pedir orçamento <ChevronRight className="h-5 w-5" />
               </a>
               <a
                 href={pageHref("produtos")}
                 className="bg-white/10 text-white border-2 border-white/20 backdrop-blur-sm px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center"
               >
-                Ver Produtos e Medidas
+                Ver produtos e medidas
               </a>
             </div>
           </motion.div>
@@ -980,7 +981,7 @@ export default function App() {
       </section>
 
       {/* Environmental Commitment */}
-      <section className="py-20 bg-gradient-to-br from-brand-600 to-brand-800 text-white relative overflow-hidden">
+      <section className="py-20 bg-gradient-to-br from-[#2d5016] to-[#183e26] text-white relative overflow-hidden">
         <div className="absolute top-0 right-0 -mt-20 -mr-20 opacity-10">
           <Leaf className="w-96 h-96" />
         </div>
@@ -996,16 +997,16 @@ export default function App() {
               </p>
               <ul className="space-y-4">
                 <li className="flex items-center gap-3">
-                  <div className="bg-brand-600 p-2 rounded-full">
-                    <CheckCircle2 className="h-5 w-5 text-white" />
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
                   </div>
                   <span className="font-medium">
                     Madeira 100% de áreas de reflorestamento certificadas
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="bg-brand-600 p-2 rounded-full">
-                    <CheckCircle2 className="h-5 w-5 text-white" />
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
                   </div>
                   <span className="font-medium">
                     Recurso renovável com ciclo sustentável do cultivo à
@@ -1013,16 +1014,16 @@ export default function App() {
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="bg-brand-600 p-2 rounded-full">
-                    <CheckCircle2 className="h-5 w-5 text-white" />
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
                   </div>
                   <span className="font-medium">
                     Retira e retém dióxido de carbono da atmosfera
                   </span>
                 </li>
                 <li className="flex items-center gap-3">
-                  <div className="bg-brand-600 p-2 rounded-full">
-                    <CheckCircle2 className="h-5 w-5 text-white" />
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
                   </div>
                   <span className="font-medium">
                     Diminui a pressão sobre matas nativas brasileiras
@@ -1067,7 +1068,7 @@ export default function App() {
           {/* Gallery Tabs Header Hint */}
           <div className="text-center mb-6">
             <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-[#183e26] text-xs font-semibold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-brand-600 animate-pulse" /> CLIQUE ABAIXO PARA VER AS FOTOS:
+              <Sparkles className="w-3.5 h-3.5 text-brand-700" aria-hidden="true" /> Clique para ver as fotos
             </span>
           </div>
 
@@ -1211,7 +1212,7 @@ export default function App() {
                     <div className="text-sm text-stone-700 font-medium">
                       Email
                     </div>
-                    <div className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors">
+                    <div className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors break-all">
                       vendas@eucalyptustratados.com.br
                     </div>
                   </div>
@@ -1271,6 +1272,7 @@ export default function App() {
                     type="text"
                     id="nome"
                     name="nome"
+                    autoComplete="name"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
                     placeholder="Seu nome"
@@ -1288,6 +1290,7 @@ export default function App() {
                       type="tel"
                       id="telefone"
                       name="telefone"
+                      autoComplete="tel"
                       required
                       className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
                       placeholder="(15) 99685-4945"
@@ -1304,6 +1307,7 @@ export default function App() {
                       type="email"
                       id="email"
                       name="email"
+                      autoComplete="email"
                       required
                       className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
                       placeholder="seu@email.com"
@@ -1321,6 +1325,7 @@ export default function App() {
                     type="text"
                     id="cidade"
                     name="cidade"
+                    autoComplete="address-level2"
                     required
                     className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
                     placeholder="Sua cidade"
@@ -1346,7 +1351,7 @@ export default function App() {
                   type="submit"
                   className="w-full bg-brand-500 text-[#183e26] py-4 rounded-xl font-bold text-lg hover:bg-brand-600 transition-colors shadow-md"
                 >
-                  Enviar Mensagem
+                  Enviar pedido de orçamento
                 </button>
               </form>
             </motion.div>
@@ -1362,19 +1367,19 @@ export default function App() {
             <div>
               <Logo />
               <p className="mt-4">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</p>
-              <p className="mt-2">
-                <a className="hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a><br />
-                <a className="hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a><br />
-                <a className="hover:text-white" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
+              <p className="mt-2 flex flex-col items-start">
+                <a className="inline-block py-1.5 hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a>
+                <a className="inline-block py-1.5 hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a>
+                <a className="inline-block py-1.5 hover:text-white break-all" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
               </p>
             </div>
             {FOOTER_GROUPS.map((group) => (
               <nav key={group.title} aria-label={group.title}>
                 <h2 className="text-white font-bold mb-3 text-base">{group.title}</h2>
-                <ul className="space-y-2">
+                <ul className="space-y-1">
                   {group.links.map((link) => (
                     <li key={link.slug}>
-                      <a className="hover:text-white transition-colors" href={pageHref(link.slug)}>{link.name}</a>
+                      <a className="inline-block py-1.5 hover:text-white transition-colors" href={pageHref(link.slug)}>{link.name}</a>
                     </li>
                   ))}
                 </ul>
@@ -1387,7 +1392,7 @@ export default function App() {
               © 2026 Eucalyptus Tratados. Todos os direitos reservados.
               <button
                 onClick={() => setIsLoginModalOpen(true)}
-                className="opacity-70 hover:opacity-100 transition-opacity p-1" aria-label="Acesso restrito"
+                className="opacity-70 hover:opacity-100 transition-opacity p-2 -m-1" aria-label="Acesso restrito"
                 title="Acesso Restrito"
               >
                 <Lock className="w-4 h-4" />
@@ -1441,5 +1446,6 @@ export default function App() {
       </a>
       </aside>
     </div>
+    </MotionConfig>
   );
 }
