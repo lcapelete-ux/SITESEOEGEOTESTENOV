@@ -41,7 +41,7 @@ function sizeTable(categoryTitle: string): string {
       return `<tr><td>${esc(name)}</td><td>${diam}</td><td>${weight}</td></tr>`;
     })
     .join("");
-  return `<div class="tabela-wrap"><table>
+  return `<div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table>
 <caption>${esc(cat.title)}: medidas disponíveis</caption>
 <thead><tr><th scope="col">Peça</th><th scope="col">Diâmetro no topo</th><th scope="col">Peso aproximado</th></tr></thead>
 <tbody>${rows}</tbody></table></div>
@@ -242,7 +242,7 @@ ${comoMedimos}`,
     intro:
       "Além das peças roliças, fornecemos madeira serrada de eucalipto tratado vendida por metro: caibro, caibrão, terça, viga, pranchas e ripa. Também temos ripão, balancim de 1,20 m, birira e esteira de bambu tratado.",
     body: `<h2>Madeira serrada (vendida por metro)</h2>
-<div class="tabela-wrap"><table><caption>Bitolas disponíveis (em cm)</caption>
+<div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Bitolas disponíveis (em cm)</caption>
 <thead><tr><th scope="col">Peça</th><th scope="col">Bitola</th><th scope="col">Uso comum</th></tr></thead>
 <tbody>
 <tr><td>Ripa</td><td>2,5 x 5</td><td>Telhados e acabamentos</td></tr>
@@ -282,7 +282,7 @@ ${comoMedimos}`,
 <li><strong>Uso externo:</strong> ideal para peças em contato com o solo e expostas a sol e chuva.</li>
 </ul>
 <h2>Citriodora x outros eucaliptos</h2>
-<div class="tabela-wrap"><table><caption>Comparação geral entre espécies usadas em madeira tratada</caption>
+<div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Comparação geral entre espécies usadas em madeira tratada</caption>
 <thead><tr><th scope="col">Característica</th><th scope="col">Citriodora</th><th scope="col">Espécies de crescimento rápido (grandis, urograndis, saligna)</th></tr></thead>
 <tbody>
 <tr><td>Tendência a rachar</td><td>Baixa</td><td>Maior, principalmente em peças grossas</td></tr>
@@ -418,7 +418,7 @@ ${comoMedimos}`,
     intro:
       "O eucalipto citriodora tratado é uma alternativa forte, econômica e sustentável para galpões, barracões, coberturas, pergolados, quiosques e decks. A densidade alta suporta cargas e o tratamento em autoclave garante durabilidade ao ar livre.",
     body: `<h2>Qual peça usar em cada obra</h2>
-<div class="tabela-wrap"><table><caption>Peças indicadas por tipo de construção</caption>
+<div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Peças indicadas por tipo de construção</caption>
 <thead><tr><th scope="col">Obra</th><th scope="col">Peças indicadas</th></tr></thead>
 <tbody>
 <tr><td>Galpão e barracão</td><td><a href="{{produtos/poste-de-eucalipto-tratado}}">Postes</a> ou <a href="{{produtos/palanque-de-eucalipto-tratado}}">palanques de 6 m a 7 m</a> como esteios, com terças e caibros serrados</td></tr>
