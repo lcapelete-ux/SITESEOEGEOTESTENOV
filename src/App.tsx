@@ -23,7 +23,6 @@ import { motion, AnimatePresence, MotionConfig } from "motion/react";
 const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
 import { Toaster, toast } from "react-hot-toast";
-import { FAQ } from "./seoContent";
 import { FOOTER_GROUPS, HEADER_LINKS } from "./pages/nav";
 import LATEST_POSTS from "virtual:blog-latest";
 
@@ -1184,40 +1183,6 @@ export default function App() {
           </div>
         </section>
       )}
-
-      {/* FAQ */}
-      <section id="perguntas" className="py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
-              Perguntas Frequentes sobre Eucalipto Tratado
-            </h2>
-            <p className="text-lg text-stone-700">
-              Tudo o que você precisa saber antes de comprar postes, mourões e
-              madeira de eucalipto citriodora tratado.
-            </p>
-          </div>
-          <div className="space-y-4">
-            {FAQ.map((item) => (
-              <details
-                key={item.q}
-                className="group bg-stone-50 border border-stone-200 rounded-2xl p-6 open:shadow-md transition-shadow"
-              >
-                <summary className="flex justify-between items-center gap-4 cursor-pointer list-none font-bold text-lg text-stone-900">
-                  <h3 className="text-lg font-bold">{item.q}</h3>
-                  <ChevronRight className="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-90" />
-                </summary>
-                <p className="mt-4 text-stone-700 leading-relaxed">{item.a}</p>
-              </details>
-            ))}
-          </div>
-          <p className="text-center mt-8">
-            <a href={pageHref("perguntas-frequentes")} className="inline-block font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">
-              Ver todas as perguntas frequentes
-            </a>
-          </p>
-        </div>
-      </section>
 
       <section id="contato" className="py-24 bg-stone-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
