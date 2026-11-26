@@ -676,7 +676,7 @@ export default function App() {
               sizes="100vw"
               loading="eager"
               fetchPriority="high"
-              alt="Plantação de Eucalipto"
+              alt=""
               className="w-full h-full object-cover"
               referrerPolicy="no-referrer"
             />
@@ -755,7 +755,7 @@ export default function App() {
                 Por que trabalhamos com{" "}
                 <span className="text-[#365414]">Eucalyptus Citriodora</span>?
               </h2>
-              <p className="text-lg text-stone-600 mb-8">
+              <p className="text-lg text-stone-700 mb-8">
                 O Eucalyptus Citriodora é reconhecido como a espécie mais
                 resistente e durável do mercado brasileiro. Suas características
                 únicas o tornam a escolha ideal para tratamento em autoclave.
@@ -807,7 +807,7 @@ export default function App() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 loading="lazy"
                 decoding="async"
-                alt="Eucalipto Citriodora"
+                alt="Carga de toras de eucalipto citriodora tratado em autoclave com CCA"
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
@@ -836,7 +836,7 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Processo de Tratamento em Autoclave
             </h2>
-            <p className="text-lg text-stone-600">
+            <p className="text-lg text-stone-700">
               Nosso processo de imunização segue rigorosamente as normas ABNT e
               NBR 9480, garantindo máxima proteção contra cupins, fungos e
               umidade.
@@ -884,7 +884,7 @@ export default function App() {
                 <h3 className="text-xl font-bold text-stone-900 mb-3">
                   {step.title}
                 </h3>
-                <p className="text-stone-600">{step.desc}</p>
+                <p className="text-stone-700">{step.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -963,7 +963,7 @@ export default function App() {
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       loading="lazy"
                       decoding="async"
-                      alt="Ilustração de Medição"
+                      alt="Medição de poste de eucalipto pelo diâmetro do topo, conforme a NBR 9480"
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
                     />
@@ -1038,7 +1038,7 @@ export default function App() {
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 loading="lazy"
                 decoding="async"
-                alt="Reflorestamento"
+                alt="Área de reflorestamento de eucalipto"
                 className="rounded-3xl aspect-[16/10] w-full object-cover shadow-2xl"
                 referrerPolicy="no-referrer"
               />
@@ -1054,7 +1054,7 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Nossa Estrutura e Produtos
             </h2>
-            <p className="text-lg text-stone-600 max-w-2xl mx-auto">
+            <p className="text-lg text-stone-700 max-w-2xl mx-auto">
               Conheça um pouco mais sobre o nosso processo de tratamento e a
               qualidade da madeira que entregamos.
             </p>
@@ -1109,14 +1109,14 @@ export default function App() {
                   src={item.url}
                   loading="lazy"
                   decoding="async"
-                  alt={`Galeria ${activeGalleryTab} ${idx + 1}`}
+                  alt={`Eucalipto citriodora tratado em ${({ rural: "construção rural", civil: "construção civil", paisagismo: "paisagismo", ideias: "projetos" } as const)[activeGalleryTab]}, foto ${idx + 1}`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
             {siteImages.gallery[activeGalleryTab].length === 0 && (
-              <div className="col-span-full py-12 text-center text-stone-500">
+              <div className="col-span-full py-12 text-center text-stone-600">
                 Nenhuma imagem nesta categoria.
               </div>
             )}
@@ -1132,7 +1132,7 @@ export default function App() {
             <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Perguntas Frequentes sobre Eucalipto Tratado
             </h2>
-            <p className="text-lg text-stone-600">
+            <p className="text-lg text-stone-700">
               Tudo o que você precisa saber antes de comprar postes, mourões e
               madeira de eucalipto citriodora tratado.
             </p>
@@ -1161,7 +1161,7 @@ export default function App() {
               <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
                 Solicite seu Orçamento
               </h2>
-              <p className="text-lg text-stone-600 mb-10">
+              <p className="text-lg text-stone-700 mb-10">
                 Preencha o formulário ou entre em contato diretamente. Nossa
                 equipe está pronta para atender você com as melhores soluções em
                 eucalipto tratado.
@@ -1384,6 +1384,7 @@ export default function App() {
       )}
 
       {/* Floating WhatsApp Button */}
+      <aside aria-label="Contato rápido pelo WhatsApp">
       <a
         href="https://wa.me/5515996854945?text=Olá! Gostaria de solicitar um orçamento."
         onClick={(e) => {
@@ -1413,6 +1414,7 @@ export default function App() {
           Falar com um vendedor
         </span>
       </a>
+      </aside>
     </div>
   );
 }

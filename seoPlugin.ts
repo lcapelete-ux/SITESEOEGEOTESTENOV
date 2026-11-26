@@ -124,6 +124,13 @@ export function seoPlugin(): Plugin {
   return {
     name: 'eucalyptus-seo',
     transformIndexHtml(html) {
+      // SITE_NOINDEX=true: versão de teste fica fora dos buscadores (não concorre com o site oficial).
+      if (process.env.SITE_NOINDEX === 'true') {
+        html = html.replace(
+          /<meta name="robots"[^>]*>/,
+          '<meta name="robots" content="noindex, nofollow">',
+        );
+      }
       return html
         .replace('<!--SEO_JSONLD-->', jsonLd())
         .replace('<div id="root"></div>', `<div id="root">${staticContent()}</div>`);

@@ -23,3 +23,6 @@ npm run dev
 ## Deploy
 
 Push na `main` dispara `.github/workflows/deploy-pages.yml` (GitHub Pages).
+
+A versão de teste é publicada com `SITE_NOINDEX=true` (meta robots `noindex`).
+No lançamento oficial, remova essa variável do workflow.
