@@ -167,16 +167,16 @@ const responsiveImage = (source: string, widths: number[]) => {
   };
 };
 
-const Logo = ({ className = "", tone = "dark" }: { className?: string; tone?: "dark" | "light" }) => (
+const Logo = ({ className = "" }: { className?: string }) => (
   <div className={`flex items-center gap-3 ${className}`}>
-    <div className="flex flex-col justify-between h-[24px] w-[28px]" aria-hidden="true">
-      <div className="h-[5px] w-full bg-[#A1C913]"></div>
-      <div className="h-[5px] w-full bg-[#A1C913]"></div>
-      <div className="h-[5px] w-full bg-[#A1C913]"></div>
+    <div className="flex flex-col justify-between h-[28px] w-[32px]">
+      <div className="h-[6px] w-full bg-[#A1C913]"></div>
+      <div className="h-[6px] w-full bg-[#A1C913]"></div>
+      <div className="h-[6px] w-full bg-[#A1C913]"></div>
     </div>
     <div className="flex flex-col justify-center">
-      <span className={`${tone === "light" ? "text-[#4a4037]" : "text-[#FDF8E7]"} font-black text-[19px] leading-[0.85] tracking-wide`} style={{ fontFamily: 'Arial, sans-serif' }}>EUCALYPTUS</span>
-      <span className={`${tone === "light" ? "text-[#7d5a2f]" : "text-[#D8B990]"} text-[9px] font-normal tracking-[0.45em] leading-none ml-[2px] mt-[3px]`} style={{ fontFamily: 'Arial, sans-serif' }}>TRATADOS</span>
+      <span className="text-[#FDF8E7] font-black text-[22px] leading-[0.85] tracking-wide" style={{ fontFamily: 'Arial, sans-serif' }}>EUCALYPTUS</span>
+      <span className="text-[#D8B990] text-[10px] font-normal tracking-[0.45em] leading-none ml-[2px] mt-[3px]" style={{ fontFamily: 'Arial, sans-serif' }}>TRATADOS</span>
     </div>
   </div>
 );
@@ -537,17 +537,16 @@ export default function App() {
     );
   }
 
-  // Mola criticamente amortecida (sem overshoot), como nas interfaces da Apple
   const fadeIn = {
-    initial: { opacity: 0, y: 24 },
+    initial: { opacity: 0, y: 20 },
     whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true, margin: "-60px" },
-    transition: { type: "spring" as const, bounce: 0, duration: 0.8 },
+    viewport: { once: true },
+    transition: { duration: 0.32, ease: "easeOut" },
   };
 
   return (
     <MotionConfig reducedMotion="user">
-    <div className="min-h-screen text-[#1d1d1f]">
+    <div className="min-h-screen font-sans text-stone-800">
 
       <AnimatePresence>
         {isPromoOpen && siteImages.promotion && (
@@ -557,21 +556,28 @@ export default function App() {
 
 
       <Toaster position="top-right" />
-      {/* Navigation: material translúcido claro */}
-      <nav className="ap-nav fixed top-0 w-full z-50">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <div className="flex justify-between h-14 items-center">
+      {/* Navigation */}
+      <nav className="fixed w-full z-50 bg-[#183e26]/95 backdrop-blur-md border-b border-[#183e26]">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between h-20 items-center">
             <a href={import.meta.env.BASE_URL} aria-label="Eucalyptus Tratados, página inicial" className="flex-shrink-0 flex items-center">
-              <Logo tone="light" />
+              <Logo />
             </a>
 
-            <div className="hidden lg:flex gap-7 items-center">
+            <div className="hidden lg:flex space-x-8 items-center">
               {HEADER_LINKS.map((link) => (
-                <a key={link.slug} href={pageHref(link.slug)} className="ap-nav-link">
+                <a
+                  key={link.slug}
+                  href={pageHref(link.slug)}
+                  className="text-stone-200 hover:text-white font-medium transition-colors"
+                >
                   {link.name}
                 </a>
               ))}
-              <a href="#contato" className="ap-pill">
+              <a
+                href="#contato"
+                className="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors"
+              >
                 Orçamento
               </a>
             </div>
@@ -579,37 +585,46 @@ export default function App() {
             <div className="lg:hidden flex items-center">
               <button
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
-                className="text-[#1d1d1f] p-2.5 -mr-2.5 rounded-lg"
+                className="text-stone-200 p-2.5 -mr-2.5 rounded-lg"
                 aria-label={isMenuOpen ? "Fechar menu" : "Abrir menu"}
                 aria-expanded={isMenuOpen}
               >
-                {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+                {isMenuOpen ? (
+                  <X className="h-6 w-6" />
+                ) : (
+                  <Menu className="h-6 w-6" />
+                )}
               </button>
             </div>
           </div>
         </div>
 
+        {/* Mobile menu */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
-              className="lg:hidden px-5 pb-6 pt-2"
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              transition={{ type: "spring", bounce: 0, duration: 0.3 }}
+              className="lg:hidden bg-[#183e26] border-b border-[#183e26] px-4 pt-2 pb-4 space-y-1 shadow-lg overflow-hidden"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.18, ease: "easeOut" }}
             >
               {HEADER_LINKS.map((link) => (
                 <a
                   key={link.slug}
                   href={pageHref(link.slug)}
                   onClick={() => setIsMenuOpen(false)}
-                  className="block py-3 text-[1.5rem] font-semibold tracking-[-0.015em] text-[#1d1d1f] border-b border-black/5"
+                  className="block px-3 py-3 text-stone-200 hover:text-white font-medium"
                 >
                   {link.name}
                 </a>
               ))}
-              <a href="#contato" onClick={() => setIsMenuOpen(false)} className="ap-pill mt-5 w-full">
-                Pedir orçamento
+              <a
+                href="#contato"
+                onClick={() => setIsMenuOpen(false)}
+                className="block px-3 py-3 text-[#A1C913] font-bold"
+              >
+                Orçamento
               </a>
             </motion.div>
           )}
@@ -617,8 +632,8 @@ export default function App() {
       </nav>
 
       <main id="main-content">
-      {/* Hero */}
-      <section id="sobre" className="relative min-h-[100svh] flex items-center pt-24 pb-20 overflow-hidden">
+      {/* Hero Section */}
+      <section id="sobre" className="relative min-h-[100svh] pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
         {siteImages.hero !== initialImages.hero && (
           <div className="absolute inset-0 z-0">
             <img
@@ -634,30 +649,37 @@ export default function App() {
           </div>
         )}
 
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6 relative z-10 w-full">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
-            className="text-center max-w-[820px] mx-auto"
-            initial={{ opacity: 0, y: 24 }}
+            className="text-center max-w-3xl mx-auto"
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ type: "spring", bounce: 0, duration: 0.8 }}
+            transition={{ duration: 0.35, ease: "easeOut" }}
           >
-            <p className="text-[1.0625rem] sm:text-[1.1875rem] font-semibold text-[#A1C913] mb-4 tracking-[-0.005em]">
-              Desde 1992 em Laranjal Paulista
-            </p>
-            <h1 className="ap-h1 text-white mb-6">
-              Eucalipto Citriodora Tratado
+            <span className="inline-block py-1 px-3 rounded-full bg-brand-500/20 text-brand-100 border border-brand-400/30 text-sm font-semibold tracking-wider mb-6 backdrop-blur-sm">
+              QUALIDADE E CONFIABILIDADE DESDE 1992
+            </span>
+            <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight mb-6 leading-tight">
+              Eucalipto{" "}
+              <span className="text-brand-400">Citriodora</span> Tratado
             </h1>
-            <p className="ap-lead !text-[#e8e8ed] max-w-[680px] mx-auto mb-10">
+            <p className="text-lg md:text-xl text-stone-200 mb-10 leading-relaxed">
               A Eucalyptus Tratados, em Laranjal Paulista (SP), fornece postes,
               mourões, palanques e madeira serrada de eucalipto citriodora
               tratado em autoclave com CCA, conforme a ABNT NBR 9480, com 10
               anos de garantia.
             </p>
-            <div className="flex flex-col sm:flex-row gap-x-8 gap-y-3 justify-center items-center">
-              <a href="#contato" className="ap-pill ap-pill-lime">
-                Pedir orçamento
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a
+                href="#contato"
+                className="bg-brand-500 text-[#183e26] px-8 py-4 rounded-full font-bold text-lg hover:bg-brand-400 transition-all shadow-lg hover:shadow-xl flex items-center justify-center gap-2"
+              >
+                Pedir orçamento <ChevronRight className="h-5 w-5" />
               </a>
-              <a href={pageHref("produtos")} className="ap-link !text-white">
+              <a
+                href={pageHref("produtos")}
+                className="bg-white/10 text-white border-2 border-white/20 backdrop-blur-sm px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center"
+              >
                 Ver produtos e medidas
               </a>
             </div>
@@ -665,63 +687,77 @@ export default function App() {
         </div>
       </section>
 
-      {/* Números */}
-      <section className="py-16 sm:py-20 bg-white" aria-label="A Eucalyptus Tratados em números">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6 grid grid-cols-1 sm:grid-cols-3 gap-10 text-center">
-          {[
-            { n: "30+", l: "anos de experiência no mercado" },
-            { n: "10 anos", l: "de garantia nos produtos" },
-            { n: "100%", l: "madeira de reflorestamento" },
-          ].map((s) => (
-            <motion.div key={s.n} {...fadeIn}>
-              <div className="text-[clamp(2.75rem,6vw,4rem)] font-semibold tracking-[-0.03em] leading-none text-[#1d1d1f]">{s.n}</div>
-              <div className="ap-body mt-3">{s.l}</div>
-            </motion.div>
-          ))}
+      {/* Stats Section */}
+      <section className="py-12 bg-[#183e26] text-brand-50 relative z-20 -mt-8 mx-4 md:mx-auto max-w-6xl rounded-2xl shadow-2xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 px-8">
+          <motion.div className="text-center" {...fadeIn}>
+            <div className="text-4xl font-black mb-2">30+ Anos</div>
+            <div className="text-brand-200 font-medium">
+              de experiência no mercado
+            </div>
+          </motion.div>
+          <motion.div className="text-center" {...fadeIn}>
+            <div className="text-4xl font-black mb-2">10 Anos</div>
+            <div className="text-brand-200 font-medium">
+              de garantia nos produtos
+            </div>
+          </motion.div>
+          <motion.div className="text-center" {...fadeIn}>
+            <div className="text-4xl font-black mb-2">100%</div>
+            <div className="text-brand-200 font-medium">
+              madeira de reflorestamento
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Produtos */}
-      <section id="produtos" className="ap-section ap-alt">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <motion.div className="text-center max-w-[760px] mx-auto mb-14" {...fadeIn}>
-            <p className="ap-eyebrow mb-3">Linha completa</p>
-            <h2 className="ap-h2 mb-5">
+      {/* Products */}
+      <section id="produtos" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Produtos de Eucalipto Citriodora Tratado
             </h2>
-            <p className="ap-lead">
+            <p className="text-lg text-stone-700 max-w-2xl mx-auto">
               Peças roliças e serradas tratadas em autoclave, com medidas pela
               NBR 9480 e 10 anos de garantia. Veja medidas e pesos de cada linha.
             </p>
-          </motion.div>
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {HOME_PRODUCTS.map((product) => (
-              <a key={product.slug} href={pageHref(product.slug)} className="ap-card group flex flex-col">
-                <div className="text-[.9375rem] text-[#6e6e73] mb-2">{product.size}</div>
-                <h3 className="ap-h3 mb-3">{product.name}</h3>
-                <p className="ap-body mb-6 flex-1">{product.desc}</p>
-                <span className="ap-link !py-0">Ver medidas</span>
+              <a
+                key={product.slug}
+                href={pageHref(product.slug)}
+                className="group block bg-stone-50 border border-stone-200 rounded-2xl p-6 hover:border-brand-500 hover:shadow-lg transition-all"
+              >
+                <div className="text-sm font-semibold text-brand-800 mb-1">{product.size}</div>
+                <h3 className="text-xl font-bold text-[#183e26] mb-2">{product.name}</h3>
+                <p className="text-stone-700 mb-4">{product.desc}</p>
+                <span className="inline-flex items-center gap-1 font-bold text-[#183e26] group-hover:gap-2 transition-all">
+                  Ver medidas <ChevronRight className="w-4 h-4" />
+                </span>
               </a>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Citriodora */}
-      <section id="citriodora" className="ap-section bg-white">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
+      {/* Why Choose Us / Citriodora */}
+      <section id="citriodora" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <motion.div {...fadeIn}>
-              <p className="ap-eyebrow mb-3">A espécie mais resistente do Brasil</p>
-              <h2 className="ap-h2 mb-6">
-                Por que trabalhamos com Eucalyptus Citriodora?
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
+                Por que trabalhamos com{" "}
+                <span className="text-[#365414]">Eucalyptus Citriodora</span>?
               </h2>
-              <p className="ap-lead mb-8">
+              <p className="text-lg text-stone-700 mb-8">
                 O Eucalyptus Citriodora é reconhecido como a espécie mais
                 resistente e durável do mercado brasileiro. Suas características
                 únicas o tornam a escolha ideal para tratamento em autoclave.
               </p>
-              <ul className="ap-rows">
+
+              <ul className="space-y-4">
                 {[
                   "Fibras retorcidas que aumentam a resistência estrutural",
                   "Maior resistência a trincas e rachaduras",
@@ -730,19 +766,41 @@ export default function App() {
                   "Laudos de tratamento aprovado pelo IPT (Instituto de Pesquisas Tecnológicas)",
                   "Densidade e resistência mecânica superiores",
                   "Ideal para uso em ambientes externos e rurais",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 py-3.5 text-[1.0625rem] text-[#1d1d1f]">
-                    <CheckCircle2 className="h-5 w-5 mt-[3px] text-[#2f6b3f] flex-shrink-0" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
+                ].map((item, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-center gap-4 p-4 rounded-xl border border-transparent hover:border-brand-100 hover:bg-brand-50/50 transition-colors cursor-default"
+                    initial={{ opacity: 0, x: -18 }}
+                    whileInView={{
+                      opacity: 1,
+                      x: 0,
+                      transition: { type: "spring", stiffness: 180, damping: 22, delay: index * 0.035 }
+                    }}
+                    viewport={{ once: true, margin: "-20px" }}
+                    whileHover={{ scale: 1.02, x: 5 }}
+                  >
+                    <motion.div
+                      className="bg-brand-100 p-2 rounded-full flex-shrink-0"
+                      whileHover={{ rotate: 15, scale: 1.1 }}
+                    >
+                      <CheckCircle2 className="h-6 w-6 text-brand-600" />
+                    </motion.div>
+                    <span className="text-stone-700 font-medium text-lg">{item}</span>
+                  </motion.li>
                 ))}
               </ul>
-              <p className="mt-6">
-                <a href={pageHref("eucalipto-citriodora")} className="ap-link">Por que o citriodora racha menos que outros eucaliptos</a>
+              <p className="mt-8">
+                <a href={pageHref("eucalipto-citriodora")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Por que o citriodora racha menos que outros eucaliptos <ChevronRight className="w-4 h-4" /></a>
               </p>
             </motion.div>
 
-            <motion.div className="ap-media relative aspect-[4/5] lg:aspect-[4/5]" {...fadeIn}>
+            <motion.div
+              className="relative h-[500px] rounded-2xl overflow-hidden shadow-2xl"
+              initial={{ opacity: 0, scale: 0.95 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.32, ease: "easeOut" }}
+            >
               <img
                 {...responsiveImage(siteImages.about, [480, 800, 1200])}
                 sizes="(min-width: 1024px) 50vw, 100vw"
@@ -752,276 +810,443 @@ export default function App() {
                 className="w-full h-full object-cover"
                 referrerPolicy="no-referrer"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-900/80 to-transparent flex items-end p-8">
+                <div>
+                  <div className="text-brand-400 font-bold tracking-wider uppercase text-sm mb-1">
+                    A ESPÉCIE MAIS RESISTENTE DO BRASIL
+                  </div>
+                  <div className="text-white text-2xl font-bold">
+                    Eucalipto Citriodora
+                  </div>
+                </div>
+              </div>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Processo */}
-      <section id="processo" className="ap-section ap-alt">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <motion.div className="text-center max-w-[760px] mx-auto mb-14" {...fadeIn}>
-            <p className="ap-eyebrow mb-3">Quatro etapas, sem atalhos</p>
-            <h2 className="ap-h2 mb-5">
+      {/* Treatment Process */}
+      <section id="processo" className="py-24 bg-stone-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            {...fadeIn}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Processo de Tratamento em Autoclave
             </h2>
-            <p className="ap-lead">
+            <p className="text-lg text-stone-700">
               Nosso processo de imunização segue rigorosamente as normas ABNT e
               NBR 9480, garantindo máxima proteção contra cupins, fungos e
               umidade.
             </p>
           </motion.div>
 
-          <ol className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
-              { title: "Seleção e Preparo", desc: "Eucalipto Citriodora selecionado de áreas certificadas. Madeira cortada sob medida e descascada artesanalmente." },
-              { title: "Secagem", desc: "30 a 60 dias de secagem controlada ao ar livre para atingir o nível ideal de umidade antes do tratamento." },
-              { title: "Autoclave (Célula Cheia)", desc: "Remoção do ar e umidade das células. Alta pressão de até 18 kg/cm² para injeção do preservativo CCA." },
-              { title: "Fixação e Garantia", desc: "20 dias de repouso para fixação completa. Eucalipto tratado com 10 anos de garantia, pronto para uso." },
+              {
+                icon: <TreePine className="h-8 w-8 text-brand-600" />,
+                title: "Seleção e Preparo",
+                desc: "Eucalipto Citriodora selecionado de áreas certificadas. Madeira cortada sob medida e descascada artesanalmente.",
+              },
+              {
+                icon: <Droplets className="h-8 w-8 text-brand-600" />,
+                title: "Secagem",
+                desc: "30 a 60 dias de secagem controlada ao ar livre para atingir o nível ideal de umidade antes do tratamento.",
+              },
+              {
+                icon: <ShieldCheck className="h-8 w-8 text-brand-600" />,
+                title: "Autoclave (Célula Cheia)",
+                desc: "Remoção do ar e umidade das células. Alta pressão de até 18 kg/cm² para injeção do preservativo CCA.",
+              },
+              {
+                icon: <CheckCircle2 className="h-8 w-8 text-brand-600" />,
+                title: "Fixação e Garantia",
+                desc: "20 dias de repouso para fixação completa. Eucalipto tratado com 10 anos de garantia, pronto para uso.",
+              },
             ].map((step, index) => (
-              <motion.li
-                key={step.title}
-                className="ap-card"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-60px" }}
-                transition={{ type: "spring", bounce: 0, duration: 0.7, delay: index * 0.06 }}
+              <motion.div
+                key={index}
+                className="bg-white p-8 rounded-2xl shadow-sm border border-stone-200 hover:shadow-lg transition-shadow relative"
+                initial={{ opacity: 0, x: -24 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: "spring", stiffness: 160, damping: 22, delay: index * 0.05 }}
+                whileHover={{ y: -5, scale: 1.02 }}
               >
-                <div className="text-[2.5rem] font-semibold tracking-[-0.03em] leading-none text-[#2f6b3f] mb-6" aria-hidden="true">{index + 1}</div>
-                <h3 className="ap-h3 mb-3">{step.title}</h3>
-                <p className="ap-body">{step.desc}</p>
-              </motion.li>
+                <div className="absolute -top-5 -left-5 w-10 h-10 bg-brand-100 text-brand-700 rounded-full flex items-center justify-center font-bold text-lg border-4 border-stone-100">
+                  {index + 1}
+                </div>
+                <div className="bg-brand-50 w-16 h-16 rounded-xl flex items-center justify-center mb-6">
+                  {step.icon}
+                </div>
+                <h3 className="text-xl font-bold text-stone-900 mb-3">
+                  {step.title}
+                </h3>
+                <p className="text-stone-700">{step.desc}</p>
+              </motion.div>
             ))}
-          </ol>
-          <p className="text-center mt-10">
-            <a href={pageHref("tratamento-em-autoclave")} className="ap-link">Veja o processo completo de tratamento em autoclave</a>
+          </div>
+          <p className="text-center mt-12">
+            <a href={pageHref("tratamento-em-autoclave")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Veja o processo completo de tratamento em autoclave <ChevronRight className="w-4 h-4" /></a>
           </p>
         </div>
       </section>
 
-      {/* Normas (seção escura) */}
-      <section id="normas" className="ap-section ap-dark">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <motion.div {...fadeIn}>
-              <p className="ap-eyebrow mb-3 flex items-center gap-2"><Ruler className="h-5 w-5" aria-hidden="true" /> Medida honesta</p>
-              <h2 className="ap-h2 mb-6">
-                Padrão ABNT NBR 9480
-              </h2>
-              <p className="ap-lead mb-8">
-                Todas as nossas medidas seguem rigorosamente a norma ABNT NBR
-                9480 para medição de postes de madeira.
-              </p>
-              <div className="ap-rows">
-                {[
-                  { t: "Medição pelo Topo", d: "Esta é a medida de venda. Sempre medimos pelo diâmetro da ponta mais fina do poste (topo), seguindo a NBR 9480." },
-                  { t: "Variação da Base", d: "A base é naturalmente mais grossa e varia conforme o crescimento da árvore. Não é usada como medida padrão." },
-                  { t: "Laudos IPT", d: "Nossos laudos de tratamento são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas), garantindo a eficácia da imunização." },
-                ].map((item) => (
-                  <div key={item.t} className="py-5">
-                    <h3 className="ap-h3 !text-[1.1875rem] mb-1.5">{item.t}</h3>
-                    <p className="ap-body">{item.d}</p>
+      {/* Measurement Standards */}
+      <section id="normas" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="bg-[#183e26] rounded-3xl overflow-hidden shadow-2xl" {...fadeIn}>
+            <div className="grid grid-cols-1 lg:grid-cols-2">
+              <div className="p-12 lg:p-16 flex flex-col justify-center">
+                <div className="flex items-center gap-3 mb-6">
+                  <Ruler className="h-8 w-8 text-brand-400" />
+                  <h2 className="text-3xl font-bold text-white">
+                    Padrão ABNT NBR 9480
+                  </h2>
+                </div>
+                <p className="text-brand-100 text-lg mb-8 leading-relaxed">
+                  Todas as nossas medidas seguem rigorosamente a norma ABNT NBR
+                  9480 para medição de postes de madeira.
+                </p>
+                <div className="space-y-6">
+                  <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                    <h3 className="text-white font-bold mb-2">
+                      Medição pelo Topo
+                    </h3>
+                    <p className="text-brand-200 text-sm">
+                      Esta é a medida de venda. Sempre medimos pelo diâmetro da
+                      ponta mais fina do poste (topo), seguindo a NBR 9480.
+                    </p>
                   </div>
-                ))}
+                  <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                    <h3 className="text-white font-bold mb-2">
+                      Variação da Base
+                    </h3>
+                    <p className="text-brand-200 text-sm">
+                      A base é naturalmente mais grossa e varia conforme o
+                      crescimento da árvore. Não é usada como medida padrão.
+                    </p>
+                  </div>
+                  <div className="bg-black/20 p-6 rounded-xl border border-white/10">
+                    <h3 className="text-white font-bold mb-2">
+                      Laudos IPT
+                    </h3>
+                    <p className="text-brand-200 text-sm">
+                      Nossos laudos de tratamento são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas), garantindo a eficácia da imunização.
+                    </p>
+                  </div>
+                </div>
+                <p className="mt-8">
+                  <a href={pageHref("norma-nbr-9480")} className="inline-flex items-center gap-1 font-bold text-brand-300 underline underline-offset-4 hover:text-white">Como medir postes e mourões pela NBR 9480 <ChevronRight className="w-4 h-4" /></a>
+                </p>
               </div>
-              <p className="mt-6">
-                <a href={pageHref("norma-nbr-9480")} className="ap-link">Como medir postes e mourões pela NBR 9480</a>
-              </p>
-            </motion.div>
-            <motion.div className="ap-media !bg-white/5 aspect-[4/3]" {...fadeIn}>
-              <img
-                {...responsiveImage(siteImages.medicao, [480, 800, 1200])}
-                sizes="(min-width: 1024px) 50vw, 100vw"
-                loading="lazy"
-                decoding="async"
-                alt="Medição de poste de eucalipto pelo diâmetro do topo, conforme a NBR 9480"
-                className="w-full h-full object-cover"
-                referrerPolicy="no-referrer"
-              />
-            </motion.div>
-          </div>
+              <div className="bg-stone-100 p-12 flex items-center justify-center relative">
+                <div
+                  className="absolute inset-0 opacity-10"
+                  style={{
+                    backgroundImage:
+                      "radial-gradient(#047857 2px, transparent 2px)",
+                    backgroundSize: "30px 30px",
+                  }}
+                ></div>
+                <motion.div
+                  className="relative z-10 bg-white p-8 rounded-2xl shadow-xl w-full max-w-md"
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.32, ease: "easeOut" }}
+                >
+                  <div className="text-center mb-6">
+                    <div className="text-sm font-bold text-[#365414] uppercase tracking-wider">
+                      Ilustração de Medição
+                    </div>
+                  </div>
+                  <div className="relative aspect-video border-4 border-stone-200 rounded-2xl flex items-center justify-center bg-stone-50 overflow-hidden shadow-xl">
+                    <img
+                      {...responsiveImage(siteImages.medicao, [480, 800, 1200])}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      loading="lazy"
+                      decoding="async"
+                      alt="Medição de poste de eucalipto pelo diâmetro do topo, conforme a NBR 9480"
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </motion.div>
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Compromisso ambiental */}
-      <section className="ap-section bg-white">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-14 lg:gap-20 items-center">
-            <motion.div className="ap-media aspect-[16/11] order-last lg:order-first" {...fadeIn}>
+      {/* Environmental Commitment */}
+      <section className="py-20 bg-gradient-to-br from-[#2d5016] to-[#183e26] text-white relative overflow-hidden">
+        <div className="absolute top-0 right-0 -mt-20 -mr-20 opacity-10">
+          <Leaf className="w-96 h-96" />
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <motion.div {...fadeIn}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">
+                Compromisso Ambiental
+              </h2>
+              <p className="text-brand-100 text-lg mb-8">
+                Toda nossa madeira é proveniente de áreas de reflorestamento
+                certificadas, contribuindo para a preservação do meio ambiente.
+              </p>
+              <ul className="space-y-4">
+                <li className="flex items-center gap-3">
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
+                  </div>
+                  <span className="font-medium">
+                    Madeira 100% de áreas de reflorestamento certificadas
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
+                  </div>
+                  <span className="font-medium">
+                    Recurso renovável com ciclo sustentável do cultivo à
+                    colheita
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
+                  </div>
+                  <span className="font-medium">
+                    Retira e retém dióxido de carbono da atmosfera
+                  </span>
+                </li>
+                <li className="flex items-center gap-3">
+                  <div className="bg-white/10 p-2 rounded-full">
+                    <CheckCircle2 className="h-5 w-5 text-brand-400" />
+                  </div>
+                  <span className="font-medium">
+                    Diminui a pressão sobre matas nativas brasileiras
+                  </span>
+                </li>
+              </ul>
+            </motion.div>
+            <motion.div
+              className="w-full"
+              initial={{ opacity: 0, x: 14 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.32, ease: "easeOut" }}
+            >
               <img
                 {...responsiveImage(siteImages.sust1, [480, 800, 1200])}
                 sizes="(min-width: 1024px) 50vw, 100vw"
                 loading="lazy"
                 decoding="async"
                 alt="Área de reflorestamento de eucalipto"
-                className="w-full h-full object-cover"
+                className="rounded-3xl aspect-[16/10] w-full object-cover shadow-2xl"
                 referrerPolicy="no-referrer"
               />
-            </motion.div>
-            <motion.div {...fadeIn}>
-              <p className="ap-eyebrow mb-3 flex items-center gap-2"><Leaf className="h-5 w-5" aria-hidden="true" /> Reflorestamento</p>
-              <h2 className="ap-h2 mb-6">
-                Compromisso Ambiental
-              </h2>
-              <p className="ap-lead mb-8">
-                Toda nossa madeira é proveniente de áreas de reflorestamento
-                certificadas, contribuindo para a preservação do meio ambiente.
-              </p>
-              <ul className="ap-rows">
-                {[
-                  "Madeira 100% de áreas de reflorestamento certificadas",
-                  "Recurso renovável com ciclo sustentável do cultivo à colheita",
-                  "Retira e retém dióxido de carbono da atmosfera",
-                  "Diminui a pressão sobre matas nativas brasileiras",
-                ].map((item) => (
-                  <li key={item} className="flex items-start gap-3 py-3.5 text-[1.0625rem] text-[#1d1d1f]">
-                    <CheckCircle2 className="h-5 w-5 mt-[3px] text-[#2f6b3f] flex-shrink-0" aria-hidden="true" />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
             </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Galeria */}
-      <section id="galeria" className="ap-section ap-alt">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <motion.div className="text-center max-w-[760px] mx-auto mb-10" {...fadeIn}>
-            <h2 className="ap-h2 mb-5">
+      {/* Gallery Section */}
+      <section id="galeria" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div className="text-center mb-12" {...fadeIn}>
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Nossa Estrutura e Produtos
             </h2>
-            <p className="ap-lead">
+            <p className="text-lg text-stone-700 max-w-2xl mx-auto">
               Conheça um pouco mais sobre o nosso processo de tratamento e a
               qualidade da madeira que entregamos.
             </p>
           </motion.div>
 
-          <div className="flex justify-center mb-10">
-            <div className="ap-segmented" role="group" aria-label="Categorias de fotos">
-              {[
-                { id: "rural", label: "Construção Rural" },
-                { id: "civil", label: "Construção Civil" },
-                { id: "paisagismo", label: "Paisagismo" },
-                { id: "ideias", label: "Nossas Madeiras" },
-              ].map((tab) => (
+          {/* Gallery Tabs Header Hint */}
+          <div className="text-center mb-6">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-50 border border-brand-200 text-[#183e26] text-xs font-semibold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-brand-700" aria-hidden="true" /> Clique para ver as fotos
+            </span>
+          </div>
+
+          {/* Gallery Tabs */}
+          <div className="p-2 bg-stone-50 rounded-2xl border border-stone-200 shadow-sm max-w-3xl mx-auto flex flex-wrap justify-center gap-2 mb-12">
+            {[
+              { id: "rural", label: "Construção Rural", icon: <Fence className="w-4 h-4" /> },
+              { id: "civil", label: "Construção Civil", icon: <Hammer className="w-4 h-4" /> },
+              { id: "paisagismo", label: "Paisagismo", icon: <Sprout className="w-4 h-4" /> },
+              { id: "ideias", label: "Nossas Madeiras", icon: <TreePine className="w-4 h-4" /> },
+            ].map((tab) => {
+              const isActive = activeGalleryTab === tab.id;
+              return (
                 <button
                   key={tab.id}
-                  type="button"
-                  aria-pressed={activeGalleryTab === tab.id}
                   onClick={() => setActiveGalleryTab(tab.id as any)}
+                  className={`flex items-center gap-2 px-5 py-3 rounded-xl font-bold text-sm transition-all duration-200 cursor-pointer transform hover:scale-[1.03] active:scale-[0.97] ${
+                    isActive
+                      ? "bg-[#183e26] text-white shadow-md shadow-brand-600/20"
+                      : "bg-white text-stone-700 border border-stone-200 hover:bg-stone-100 hover:border-stone-300 hover:text-brand-700"
+                  }`}
                 >
+                  <span className={isActive ? "text-white" : "text-stone-400 group-hover:text-brand-500 transition-colors"}>
+                    {tab.icon}
+                  </span>
                   {tab.label}
                 </button>
-              ))}
-            </div>
+              );
+            })}
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
             {siteImages.gallery[activeGalleryTab].map((item, idx) => (
               <motion.div
                 key={item.id}
-                className="relative aspect-square rounded-[22px] overflow-hidden bg-white"
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                className="relative aspect-square rounded-2xl overflow-hidden shadow-md group"
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ type: "spring", bounce: 0, duration: 0.6, delay: idx * 0.04 }}
+                transition={{ duration: 0.28, delay: idx * 0.04, ease: "easeOut" }}
               >
                 <img
                   src={item.url}
                   loading="lazy"
                   decoding="async"
                   alt={`Eucalipto citriodora tratado em ${({ rural: "construção rural", civil: "construção civil", paisagismo: "paisagismo", ideias: "projetos" } as const)[activeGalleryTab]}, foto ${idx + 1}`}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   referrerPolicy="no-referrer"
                 />
               </motion.div>
             ))}
             {siteImages.gallery[activeGalleryTab].length === 0 && (
-              <div className="col-span-full py-12 text-center ap-body">
+              <div className="col-span-full py-12 text-center text-stone-600">
                 Nenhuma imagem nesta categoria.
               </div>
             )}
           </div>
-          <div className="mt-10 flex flex-col sm:flex-row gap-x-10 gap-y-1 justify-center items-center">
-            <a href={pageHref("cerca-de-eucalipto-tratado")} className="ap-link">Guia: como fazer cerca de eucalipto tratado</a>
-            <a href={pageHref("construcoes-com-eucalipto-tratado")} className="ap-link">Galpões, currais e pergolados com eucalipto</a>
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-10 justify-center items-center">
+            <a href={pageHref("cerca-de-eucalipto-tratado")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Guia: como fazer cerca de eucalipto tratado <ChevronRight className="w-4 h-4" /></a>
+            <a href={pageHref("construcoes-com-eucalipto-tratado")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Galpões, currais e pergolados com eucalipto <ChevronRight className="w-4 h-4" /></a>
           </div>
         </div>
       </section>
 
+      {/* Contact Section */}
       {/* FAQ */}
-      <section id="perguntas" className="ap-section bg-white">
-        <div className="max-w-[820px] mx-auto px-5 sm:px-6">
+      <section id="perguntas" className="py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="ap-h2 mb-5">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
               Perguntas Frequentes sobre Eucalipto Tratado
             </h2>
-            <p className="ap-lead">
+            <p className="text-lg text-stone-700">
               Tudo o que você precisa saber antes de comprar postes, mourões e
               madeira de eucalipto citriodora tratado.
             </p>
           </div>
-          <div className="ap-faq">
+          <div className="space-y-4">
             {FAQ.map((item) => (
-              <details key={item.q}>
-                <summary>
-                  <h3>{item.q}</h3>
+              <details
+                key={item.q}
+                className="group bg-stone-50 border border-stone-200 rounded-2xl p-6 open:shadow-md transition-shadow"
+              >
+                <summary className="flex justify-between items-center gap-4 cursor-pointer list-none font-bold text-lg text-stone-900">
+                  <h3 className="text-lg font-bold">{item.q}</h3>
+                  <ChevronRight className="w-5 h-5 shrink-0 text-brand-600 transition-transform group-open:rotate-90" />
                 </summary>
-                <p>{item.a}</p>
+                <p className="mt-4 text-stone-700 leading-relaxed">{item.a}</p>
               </details>
             ))}
           </div>
           <p className="text-center mt-8">
-            <a href={pageHref("perguntas-frequentes")} className="ap-link">
+            <a href={pageHref("perguntas-frequentes")} className="inline-block font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">
               Ver todas as perguntas frequentes
             </a>
           </p>
         </div>
       </section>
 
-      {/* Contato */}
-      <section id="contato" className="ap-section ap-alt">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+      <section id="contato" className="py-24 bg-stone-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <motion.div {...fadeIn}>
-              <p className="ap-eyebrow mb-3">Resposta rápida pelo WhatsApp</p>
-              <h2 className="ap-h2 mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-6">
                 Solicite seu Orçamento
               </h2>
-              <p className="ap-lead mb-10">
+              <p className="text-lg text-stone-700 mb-10">
                 Preencha o formulário ou entre em contato diretamente. Nossa
                 equipe está pronta para atender você com as melhores soluções em
                 eucalipto tratado.
               </p>
 
-              <div className="ap-rows">
-                {[
-                  { href: "https://wa.me/5515996854945", label: "Telefone / WhatsApp", value: "(15) 3283-1253 / (15) 99685-4945", icon: <Phone className="h-5 w-5" />, wa: true },
-                  { href: "mailto:vendas@eucalyptustratados.com.br", label: "Email", value: "vendas@eucalyptustratados.com.br", icon: <Mail className="h-5 w-5" /> },
-                  { href: "https://maps.app.goo.gl/6pimRc4R7dyMVghZ7?g_st=ic", label: "Endereço", value: "Estrada do Moinho Km 2.1, Laranjal Paulista", icon: <MapPin className="h-5 w-5" /> },
-                ].map((c) => (
-                  <a
-                    key={c.label}
-                    href={c.href}
-                    {...(c.href.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    onClick={c.wa ? () => { if (typeof window !== "undefined" && (window as any).dataLayer) (window as any).dataLayer.push({ event: "whatsapp_click", source: "contact_section" }); } : undefined}
-                    className="flex items-center gap-4 py-4 group"
-                  >
-                    <span className="text-[#2f6b3f]" aria-hidden="true">{c.icon}</span>
-                    <span>
-                      <span className="block text-[.9375rem] text-[#6e6e73]">{c.label}</span>
-                      <span className="block text-[1.0625rem] font-semibold text-[#1d1d1f] group-hover:underline underline-offset-4 [overflow-wrap:anywhere]">{c.value}</span>
-                    </span>
-                  </a>
-                ))}
+              <div className="space-y-6 mb-10">
+                <a
+                  href="https://wa.me/5515996854945"
+                  onClick={() => { if (typeof window !== "undefined" && (window as any).dataLayer) (window as any).dataLayer.push({ event: "whatsapp_click", source: "contact_section" }); }}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="bg-brand-100 p-4 rounded-full text-brand-600 group-hover:bg-brand-200 transition-colors">
+                    <Phone className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-stone-700 font-medium">
+                      Telefone / WhatsApp
+                    </div>
+                    <div className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors">
+                      (15) 3283-1253 / (15) 99685-4945
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="mailto:vendas@eucalyptustratados.com.br"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="bg-brand-100 p-4 rounded-full text-brand-600 group-hover:bg-brand-200 transition-colors">
+                    <Mail className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-stone-700 font-medium">
+                      Email
+                    </div>
+                    <div className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors break-all">
+                      vendas@eucalyptustratados.com.br
+                    </div>
+                  </div>
+                </a>
+                <a
+                  href="https://maps.app.goo.gl/6pimRc4R7dyMVghZ7?g_st=ic"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-4 group cursor-pointer"
+                >
+                  <div className="bg-brand-100 p-4 rounded-full text-brand-600 group-hover:bg-brand-200 transition-colors">
+                    <MapPin className="h-6 w-6" />
+                  </div>
+                  <div>
+                    <div className="text-sm text-stone-700 font-medium">
+                      Endereço
+                    </div>
+                    <div className="text-lg font-bold text-stone-900 group-hover:text-brand-600 transition-colors">
+                      Estrada do Moinho Km 2.1, Laranjal Paulista
+                    </div>
+                  </div>
+                </a>
               </div>
             </motion.div>
 
-            <motion.div className="bg-white p-7 sm:p-10 rounded-[28px]" {...fadeIn}>
+            <motion.div
+              className="bg-white p-8 md:p-10 rounded-3xl shadow-xl border border-stone-100"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.32, ease: "easeOut" }}
+            >
               <form
-                className="space-y-5"
+                className="space-y-6"
                 action="https://formsubmit.co/madeiratratada@icloud.com"
                 method="POST"
                 onSubmit={() => {
@@ -1037,28 +1262,95 @@ export default function App() {
                 <input type="hidden" name="_cc" value="contatoeucaliptotratado@gmail.com" />
 
                 <div>
-                  <label htmlFor="nome" className="ap-label">Nome Completo</label>
-                  <input type="text" id="nome" name="nome" autoComplete="name" required className="ap-input" placeholder="Seu nome" />
+                  <label
+                    htmlFor="nome"
+                    className="block text-sm font-medium text-stone-700 mb-2"
+                  >
+                    Nome Completo
+                  </label>
+                  <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    autoComplete="name"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
+                    placeholder="Seu nome"
+                  />
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div>
-                    <label htmlFor="telefone" className="ap-label">Telefone / WhatsApp</label>
-                    <input type="tel" id="telefone" name="telefone" autoComplete="tel" required className="ap-input" placeholder="(15) 99685-4945" />
+                    <label
+                      htmlFor="telefone"
+                      className="block text-sm font-medium text-stone-700 mb-2"
+                    >
+                      Telefone / WhatsApp
+                    </label>
+                    <input
+                      type="tel"
+                      id="telefone"
+                      name="telefone"
+                      autoComplete="tel"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
+                      placeholder="(15) 99685-4945"
+                    />
                   </div>
                   <div>
-                    <label htmlFor="email" className="ap-label">Email</label>
-                    <input type="email" id="email" name="email" autoComplete="email" required className="ap-input" placeholder="seu@email.com" />
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-stone-700 mb-2"
+                    >
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      autoComplete="email"
+                      required
+                      className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
+                      placeholder="seu@email.com"
+                    />
                   </div>
                 </div>
                 <div>
-                  <label htmlFor="cidade" className="ap-label">Cidade</label>
-                  <input type="text" id="cidade" name="cidade" autoComplete="address-level2" required className="ap-input" placeholder="Sua cidade" />
+                  <label
+                    htmlFor="cidade"
+                    className="block text-sm font-medium text-stone-700 mb-2"
+                  >
+                    Cidade
+                  </label>
+                  <input
+                    type="text"
+                    id="cidade"
+                    name="cidade"
+                    autoComplete="address-level2"
+                    required
+                    className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all"
+                    placeholder="Sua cidade"
+                  />
                 </div>
                 <div>
-                  <label htmlFor="mensagem" className="ap-label">Mensagem</label>
-                  <textarea id="mensagem" name="mensagem" required rows={4} className="ap-input resize-none" placeholder="Descreva o que você precisa... (medidas, quantidade, aplicação)"></textarea>
+                  <label
+                    htmlFor="mensagem"
+                    className="block text-sm font-medium text-stone-700 mb-2"
+                  >
+                    Mensagem
+                  </label>
+                  <textarea
+                    id="mensagem"
+                    name="mensagem"
+                    required
+                    rows={4}
+                    className="w-full px-4 py-3 rounded-xl border border-stone-300 focus:ring-2 focus:ring-brand-500 focus:border-brand-500 outline-none transition-all resize-none"
+                    placeholder="Descreva o que você precisa... (medidas, quantidade, aplicação)"
+                  ></textarea>
                 </div>
-                <button type="submit" className="ap-pill w-full !min-h-[52px]">
+                <button
+                  type="submit"
+                  className="w-full bg-brand-500 text-[#183e26] py-4 rounded-xl font-bold text-lg hover:bg-brand-600 transition-colors shadow-md"
+                >
                   Enviar pedido de orçamento
                 </button>
               </form>
@@ -1068,33 +1360,33 @@ export default function App() {
       </section>
 
       </main>
-      {/* Rodapé claro */}
-      <footer className="ap-footer py-12">
-        <div className="max-w-[1080px] mx-auto px-5 sm:px-6">
-          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+      {/* Footer */}
+      <footer className="bg-[#183e26] text-stone-300 py-12 border-t border-[#143320] relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-sm">
             <div>
-              <Logo tone="light" />
+              <Logo />
               <p className="mt-4">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</p>
               <p className="mt-2 flex flex-col items-start">
-                <a href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a>
-                <a href="tel:+551532831253">Tel. (15) 3283-1253</a>
-                <a className="[overflow-wrap:anywhere]" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
+                <a className="inline-block py-1.5 hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a>
+                <a className="inline-block py-1.5 hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a>
+                <a className="inline-block py-1.5 hover:text-white break-all" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
               </p>
             </div>
             {FOOTER_GROUPS.map((group) => (
               <nav key={group.title} aria-label={group.title}>
-                <h2>{group.title}</h2>
-                <ul>
+                <h2 className="text-white font-bold mb-3 text-base">{group.title}</h2>
+                <ul className="space-y-1">
                   {group.links.map((link) => (
                     <li key={link.slug}>
-                      <a href={pageHref(link.slug)}>{link.name}</a>
+                      <a className="inline-block py-1.5 hover:text-white transition-colors" href={pageHref(link.slug)}>{link.name}</a>
                     </li>
                   ))}
                 </ul>
               </nav>
             ))}
           </div>
-          <div className="mt-10 pt-5 border-t border-[#d2d2d7] flex flex-col md:flex-row justify-between items-center gap-3 text-[.8125rem]">
+          <div className="mt-10 pt-6 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-stone-400">
             <div>Qualidade e confiabilidade desde 1992</div>
             <div className="flex items-center gap-2">
               © 2026 Eucalyptus Tratados. Todos os direitos reservados.
@@ -1134,7 +1426,7 @@ export default function App() {
         }}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#1ebe5b] transition-transform duration-100 active:scale-95 flex items-center justify-center group"
+        className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#128C7E] transition-all hover:scale-110 flex items-center justify-center group"
         aria-label="Falar com um vendedor no WhatsApp"
         title="Falar com um vendedor"
       >
