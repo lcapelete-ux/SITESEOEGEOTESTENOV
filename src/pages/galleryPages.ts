@@ -16,5 +16,6 @@ export const GALLERY_PAGES: GalleryPage[] = [
   { key: "vara", label: "Varas", slug: "produtos/vara-de-eucalipto-tratado", title: "Projetos com nossas varas", altBase: "Projeto com varas de eucalipto tratado" },
   { key: "serrada", label: "Madeira serrada", slug: "produtos/madeira-serrada-de-eucalipto", title: "Projetos com nossa madeira serrada", altBase: "Projeto com madeira serrada de eucalipto tratado" },
   { key: "cerca", label: "Cerca (guia)", slug: "cerca-de-eucalipto-tratado", title: "Cercas feitas com nossos mourões", altBase: "Cerca rural com mourões de eucalipto tratado" },
+ { key: "norma", label: "Normas (NBR 9480)", slug: "norma-nbr-9480", title: "Medição pelo topo na prática", altBase: "Medição de poste de eucalipto tratado" },
   { key: "construcoes", label: "Construções (guia)", slug: "construcoes-com-eucalipto-tratado", title: "Construções com nossa madeira", altBase: "Construção com eucalipto citriodora tratado" },
 ];

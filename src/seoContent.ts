@@ -61,7 +61,7 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Quanto tempo dura o eucalipto tratado da Eucalyptus Tratados?",
-    a: "Em contato com o solo, o eucalipto citriodora tratado em autoclave tem durabilidade superior a 20 a 30 anos, e oferecemos 10 anos de garantia. A durabilidade vem da combinação da espécie citriodora, da secagem controlada e da impregnação do preservativo CCA sob alta pressão, que protege a madeira contra cupins, fungos e apodrecimento. Nossos laudos de tratamento são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas).",
+    a: "Em contato com o solo, o eucalipto citriodora tratado em autoclave tem durabilidade superior a 20 a 30 anos, e oferecemos 10 anos de garantia. A durabilidade vem da combinação da espécie citriodora, da secagem controlada e da impregnação do preservativo CCA sob alta pressão, que protege a madeira contra cupins, fungos e apodrecimento. Temos laudo de retenção de CCA emitido pelo IPT (Instituto de Pesquisas Tecnológicas), com retenção de 6,8 a 10,4 kg/m³ nas amostras ensaiadas.",
   },
   {
     q: "Como é feito o tratamento do eucalipto em autoclave?",

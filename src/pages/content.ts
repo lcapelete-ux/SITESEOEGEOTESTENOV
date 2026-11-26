@@ -55,7 +55,7 @@ const porQueCitriodora = `<h2>Por que eucalipto citriodora?</h2>
 <li><strong>Densidade alta:</strong> madeira mais pesada e resistente, que suporta cargas altas e impactos.</li>
 <li><strong>Absorve bem o tratamento:</strong> o preservativo CCA penetra no alburno e protege contra cupins, fungos e apodrecimento.</li>
 <li><strong>10 anos de garantia</strong> e durabilidade superior a 20 a 30 anos em contato com o solo.</li>
-<li><strong>Laudos de tratamento aprovados pelo IPT.</strong></li>
+<li><strong>Laudo de retenção de CCA emitido pelo IPT</strong> (<a href="{{tratamento-em-autoclave}}#laudo">veja o laudo</a>).</li>
 </ul>
 <p>Saiba mais em <a href="{{eucalipto-citriodora}}">por que trabalhamos só com eucalipto citriodora</a> e em <a href="{{tratamento-em-autoclave}}">como é o tratamento em autoclave</a>.</p>`;
 
@@ -326,8 +326,23 @@ ${comoMedimos}`,
 </ol>
 <h2>O que é o CCA</h2>
 <p>CCA é o preservativo à base de cobre, cromo e arsênio, o mais usado no Brasil para madeira em contato com o solo. O cobre e o arsênio protegem contra fungos e insetos, e o cromo fixa o produto na madeira. Por isso a madeira tratada fica com a cor esverdeada característica.</p>
-<h2>Laudos aprovados pelo IPT</h2>
-<p>Nossos laudos de tratamento são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas), referência nacional em ensaios de madeira. Isso comprova a eficácia da imunização: a retenção e a penetração do preservativo na madeira.</p>
+<h2 id="laudo">Laudo de retenção de CCA emitido pelo IPT</h2>
+<p>O Instituto de Pesquisas Tecnológicas (IPT) mediu a retenção do preservativo CCA em 4 amostras da nossa madeira de eucalipto citriodora. O método segue a ABNT NBR 6232:2013 (penetração e retenção de preservativos em madeira tratada sob pressão). O resultado está no Relatório de Ensaio nº 1 129 012-203, de 25 de novembro de 2026. O laudo conclui: "madeira apta a certificação, amostras bem acima do nível mínimo de solução preservativa na madeira".</p>
+<div class="tabela-wrap" tabindex="0" role="region" aria-label="Resultados do laudo (role para os lados no celular)"><table>
+<caption>Retenção dos ingredientes ativos do CCA (kg/m³), resultados médios</caption>
+<thead><tr><th scope="col">Amostra (diâmetro)</th><th scope="col">CuO</th><th scope="col">CrO₃</th><th scope="col">As₂O₅</th><th scope="col">Total</th></tr></thead>
+<tbody>
+<tr><td>1 · 8 a 10 cm</td><td>2,8</td><td>2,3</td><td>2,6</td><td><strong>7,7</strong></td></tr>
+<tr><td>2 · 14 a 16 cm</td><td>1,1</td><td>2,9</td><td>2,8</td><td><strong>6,8</strong></td></tr>
+<tr><td>3 · 11 a 13 cm</td><td>3,2</td><td>2,1</td><td>3,3</td><td><strong>8,6</strong></td></tr>
+<tr><td>4 · 25 a 30 cm</td><td>3,6</td><td>3,8</td><td>3,0</td><td><strong>10,4</strong></td></tr>
+</tbody></table></div>
+<p class="nota">Os resultados do laudo se aplicam somente às amostras ensaiadas. Documento reproduzido na íntegra abaixo.</p>
+<div class="laudo-paginas">
+<a href="{{BASE}}laudos/laudo-retencao-cca-ipt-2026-11.pdf" target="_blank" rel="noopener"><img src="{{BASE}}laudos/laudo-ipt-pagina-1.webp" alt="Laudo de ensaio do IPT, página 1: identificação do cliente, método ABNT NBR 6232:2013 e equipamentos usados" width="455" height="643" loading="lazy" decoding="async"></a>
+<a href="{{BASE}}laudos/laudo-retencao-cca-ipt-2026-11.pdf" target="_blank" rel="noopener"><img src="{{BASE}}laudos/laudo-ipt-pagina-2.webp" alt="Laudo de ensaio do IPT, página 2: tabela de resultados de retenção de CuO, CrO3 e As2O5 em kg por metro cúbico" width="455" height="643" loading="lazy" decoding="async"></a>
+</div>
+<p><a class="cta" href="{{BASE}}laudos/laudo-retencao-cca-ipt-2026-11.pdf" target="_blank" rel="noopener">Baixar o laudo completo (PDF)</a></p>
 <h2>Por que a fixação importa</h2>
 <p>Pular ou encurtar o tempo de fixação é um atalho comum no mercado. Respeitamos os 20 dias para que o preservativo fique preso nas fibras e a proteção dure, o que sustenta nossa garantia de 10 anos.</p>
 <h2>Cuidados com a madeira tratada</h2>
@@ -472,7 +487,7 @@ ${comoMedimos}`,
 <li><strong>Só citriodora</strong> nas peças roliças: postes, mourões, esticadores e palanques.</li>
 <li><strong>Tratamento completo:</strong> secagem de 30 a 60 dias, autoclave com CCA e 20 dias de fixação. <a href="{{tratamento-em-autoclave}}">Veja o processo</a>.</li>
 <li><strong>Medida honesta:</strong> medição pelo topo, conforme a <a href="{{norma-nbr-9480}}">NBR 9480</a>.</li>
-<li><strong>Laudos aprovados pelo IPT</strong> (Instituto de Pesquisas Tecnológicas), comprovando a eficácia do tratamento.</li>
+<li><strong>Laudo de retenção de CCA emitido pelo IPT</strong> (Instituto de Pesquisas Tecnológicas), com retenção de 6,8 a 10,4 kg/m³ nas amostras ensaiadas. <a href="{{tratamento-em-autoclave}}#laudo">Veja o laudo</a>.</li>
 <li><strong>10 anos de garantia</strong> nas peças tratadas e durabilidade superior a 20 a 30 anos em contato com o solo.</li>
 <li><strong>100% reflorestamento:</strong> madeira de áreas plantadas, que retém carbono e poupa as matas nativas.</li>
 </ul>

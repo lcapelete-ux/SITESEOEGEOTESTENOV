@@ -20,7 +20,7 @@ O tratamento em autoclave injeta o preservativo CCA sob vácuo e alta pressão d
 2. **Espécie certa.** Eucalipto citriodora racha menos e tem densidade alta. Rachaduras profundas expõem o miolo não tratado. Entenda [por que o citriodora é a melhor espécie]({{eucalipto-citriodora}}).
 3. **Medida pelo topo.** Fornecedor sério vende pelo diâmetro da ponta fina, como manda a [NBR 9480]({{norma-nbr-9480}}). Assim você recebe a espessura mínima em todo o comprimento.
 4. **Garantia por escrito.** Na Eucalyptus Tratados, as peças tratadas têm 10 anos de garantia.
-5. **Laudo de tratamento.** Nossos laudos são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas), o que comprova a eficácia da imunização.
+5. **Laudo de retenção.** Peça o laudo de laboratório que mede quanto preservativo ficou na madeira. O nosso foi emitido pelo IPT (Instituto de Pesquisas Tecnológicas) e está [publicado na íntegra]({{tratamento-em-autoclave}}#laudo).
 
 ## Sinais de alerta
 

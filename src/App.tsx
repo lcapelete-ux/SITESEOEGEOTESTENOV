@@ -28,6 +28,9 @@ import LATEST_POSTS from "virtual:blog-latest";
 
 const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
 
+// Foto da galeria "Nossas Madeiras" (Nº 4): funcionária medindo o topo do poste.
+const MEDINDO_FOTO = "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394252700-a4xrqn.webp";
+
 const HOME_PRODUCTS = [
   { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca." },
   { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame." },
@@ -774,7 +777,7 @@ export default function App() {
                   "Maior resistência a trincas e rachaduras",
                   "Melhor absorção do tratamento preservativo CCA",
                   "Durabilidade superior a 20-30 anos, em contato com solo (Padrão ABNT, NBR 9480)",
-                  "Laudos de tratamento aprovado pelo IPT (Instituto de Pesquisas Tecnológicas)",
+                  "Laudo de retenção de CCA emitido pelo IPT (Instituto de Pesquisas Tecnológicas)",
                   "Densidade e resistência mecânica superiores",
                   "Ideal para uso em ambientes externos e rurais",
                 ].map((item, index) => (
@@ -941,10 +944,11 @@ export default function App() {
                   </div>
                   <div className="bg-black/20 p-6 rounded-xl border border-white/10">
                     <h3 className="text-white font-bold mb-2">
-                      Laudos IPT
+                      Laudo de retenção de CCA
                     </h3>
                     <p className="text-brand-200 text-sm">
-                      Nossos laudos de tratamento são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas), garantindo a eficácia da imunização.
+                      O IPT (Instituto de Pesquisas Tecnológicas) mediu a retenção do preservativo na nossa madeira: de 6,8 a 10,4 kg/m³ nas amostras ensaiadas.{" "}
+                      <a href={`${pageHref("tratamento-em-autoclave")}#laudo`} className="underline font-semibold hover:text-white">Ver o laudo</a>.
                     </p>
                   </div>
                 </div>
@@ -952,7 +956,7 @@ export default function App() {
                   <a href={pageHref("norma-nbr-9480")} className="inline-flex items-center gap-1 font-bold text-brand-300 underline underline-offset-4 hover:text-white">Como medir postes e mourões pela NBR 9480 <ChevronRight className="w-4 h-4" /></a>
                 </p>
               </div>
-              <div className="bg-stone-100 p-12 flex items-center justify-center relative">
+              <div className="bg-stone-100 p-12 flex flex-col gap-8 items-center justify-center relative">
                 <div
                   className="absolute inset-0 opacity-10"
                   style={{
@@ -985,6 +989,27 @@ export default function App() {
                     />
                   </div>
                 </motion.div>
+                <motion.figure
+                  className="relative z-10 w-full max-w-sm"
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.32, ease: "easeOut" }}
+                >
+                  <img
+                    src={MEDINDO_FOTO}
+                    width={598}
+                    height={598}
+                    loading="lazy"
+                    decoding="async"
+                    alt="Funcionária da Eucalyptus Tratados medindo com paquímetro o diâmetro do topo de um poste de eucalipto tratado"
+                    className="w-full h-auto rounded-2xl shadow-xl"
+                    referrerPolicy="no-referrer"
+                  />
+                  <figcaption className="mt-2 text-center text-sm text-stone-600">
+                    Medimos o diâmetro do topo de cada peça.
+                  </figcaption>
+                </motion.figure>
               </div>
             </div>
           </motion.div>
