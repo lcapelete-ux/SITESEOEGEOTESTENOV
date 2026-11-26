@@ -807,6 +807,7 @@ export default function App() {
                   "Fibras retorcidas que aumentam a resistência estrutural",
                   "Maior resistência a trincas e rachaduras",
                   "Melhor absorção do tratamento preservativo CCA",
+                  "Descascamento manual que preserva a beleza natural da madeira, sem marcas de máquinas",
                   "Durabilidade superior a 20-30 anos, em contato com solo (Padrão ABNT, NBR 9480)",
                   "Laudo de retenção de CCA emitido pelo IPT (Instituto de Pesquisas Tecnológicas)",
                   "Densidade e resistência mecânica superiores",
