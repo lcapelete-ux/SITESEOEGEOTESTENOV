@@ -28,17 +28,28 @@ import LATEST_POSTS from "virtual:blog-latest";
 import gallerySnapshot from "./pages/gallerySnapshot.json";
 
 const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
+const DECK_IMAGE = `${import.meta.env.BASE_URL}deck-tratado.jpg`;
 
 // Foto da galeria "Nossas Madeiras" (Nº 4): funcionária medindo o topo do poste.
 const MEDINDO_FOTO = "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394252700-a4xrqn.webp";
 
-const HOME_PRODUCTS = [
+type HomeProduct = {
+  slug: string;
+  name: string;
+  size: string;
+  desc: string;
+  photoIndex: number;
+  photoUrl?: string;
+  photoAlt?: string;
+};
+
+const HOME_PRODUCTS: HomeProduct[] = [
   { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca.", photoIndex: 15 },
   { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame.", photoIndex: 16 },
   { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Pergolados, currais, mangueiras, porteiras e construção civil.", photoIndex: 6 },
   { slug: "produtos/poste-de-eucalipto-tratado", name: "Pilares de eucalipto tratado", size: "8 m a 12 m · 10 a 32 cm", desc: "Força e versatilidade na construção civil: coberturas e estruturas de grande carga.", photoIndex: 2 },
   { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50 m a 8 m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo.", photoIndex: 4 },
-  { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado.", photoIndex: 3 },
+  { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Decks de eucalipto, pinus e ipê tratado de alta qualidade, além de madeiras serradas como tábuas, esteiras de bambu e vigotas tratadas.", photoIndex: 3, photoUrl: DECK_IMAGE, photoAlt: "Deck de madeira tratada com guarda-corpo em área rural" },
 ];
 
 // Amostra exibida enquanto as escolhas do painel ainda estão carregando.
@@ -760,7 +771,7 @@ export default function App() {
                 className="group flex h-full flex-col overflow-hidden rounded-3xl border border-[#e1e7dc] bg-white shadow-[0_2px_12px_rgba(24,62,38,0.03)] transition-all duration-200 hover:-translate-y-1 hover:border-[#9bab73] hover:shadow-[0_18px_36px_rgba(24,62,38,0.10)] focus-visible:outline-3 focus-visible:outline-offset-3 focus-visible:outline-[#5b6906]"
               >
                 <div className="aspect-[4/3] overflow-hidden bg-[#eef3e6]">
-                  <img src={photo.url} alt={photo.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                  <img src={product.photoUrl ?? photo.url} alt={product.photoAlt ?? photo.alt} loading="lazy" decoding="async" className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
                 </div>
                 <div className="flex flex-1 flex-col p-6 md:p-7">
                   <div className="mb-4 self-start rounded-full bg-[#f1f5e8] px-3 py-1.5 text-xs font-bold text-[#526610]">{product.size}</div>
