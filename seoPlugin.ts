@@ -283,8 +283,8 @@ ${ctx.gtm}
 <header class="bg-[#183e26] sticky top-0 z-40 shadow-md">
 <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-between gap-4">
 <a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a>
-<nav aria-label="Principal" class="hidden md:flex items-center gap-6">${nav}<a href="${wa}" class="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311]">Orçamento</a></nav>
-<details class="md:hidden relative menu-mobile"><summary class="list-none cursor-pointer text-white p-2" aria-label="Abrir menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav aria-label="Principal" class="hidden lg:flex items-center gap-6">${nav}<a href="${href('contato')}" class="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311]">Orçamento</a></nav>
+<details class="lg:hidden relative menu-mobile"><summary class="list-none cursor-pointer text-white p-2" aria-label="Abrir menu"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
 <nav aria-label="Menu" class="absolute right-0 top-12 w-60 bg-[#183e26] rounded-xl shadow-xl p-3 flex flex-col gap-1">${HEADER_LINKS.map((l) => `<a class="block px-3 py-2 text-stone-100 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a>`).join('')}<a class="block px-3 py-2 text-[#A1C913] font-bold" href="${href('contato')}">Orçamento</a></nav></details>
 </div>
 </header>

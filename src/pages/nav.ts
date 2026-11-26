@@ -37,11 +37,12 @@ export const FOOTER_GROUPS: { title: string; links: NavLink[] }[] = [
   },
 ];
 
-/** Links do menu principal das páginas estáticas. */
+/** Menu principal: o mesmo em todas as páginas (home React e páginas estáticas). */
 export const HEADER_LINKS: NavLink[] = [
+  { slug: "sobre-a-empresa", name: "Sobre" },
   { slug: "produtos", name: "Produtos" },
   { slug: "eucalipto-citriodora", name: "Citriodora" },
   { slug: "tratamento-em-autoclave", name: "Tratamento" },
-  { slug: "cerca-de-eucalipto-tratado", name: "Cercas" },
+  { slug: "norma-nbr-9480", name: "Normas" },
   { slug: "perguntas-frequentes", name: "Dúvidas" },
 ];
