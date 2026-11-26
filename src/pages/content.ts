@@ -77,6 +77,18 @@ const CERCA_FOTOS: SitePage["gallery"] = {
   ],
 };
 
+/** Fotos de esticadores escolhidas pelo dono na galeria "Construção Rural". */
+const ESTICADOR_FOTOS: SitePage["gallery"] = {
+  category: "rural",
+  title: "Esticadores instalados com nossa madeira",
+  alt: "Esticador de eucalipto tratado",
+  photos: [
+    { id: "1782393772351-9u2yiq", alt: "Conjunto de esticadores de eucalipto tratado com travessas e arame de tensão em canto de cerca ao lado de canavial" },
+    { id: "1782393810155-4pmfr7", alt: "Esticador duplo de eucalipto citriodora tratado com travessa em cerca de arame farpado" },
+    { id: "1782393834923-d0zfpe", alt: "Esticadores de eucalipto tratado com travessa e arame de tensão no início de cerca rural" },
+  ],
+};
+
 export const PAGES: SitePage[] = [
   // ───────────────────────── PRODUTOS ─────────────────────────
   {
@@ -140,6 +152,7 @@ ${comoMedimos}`,
   {
     slug: "produtos/esticador-de-eucalipto-tratado",
     nav: "Esticadores",
+    gallery: ESTICADOR_FOTOS,
     parent: { name: "Produtos", slug: "produtos" },
     product: { name: "Esticador de eucalipto citriodora tratado 2,50 m", category: "Esticadores" },
     title: "Esticador de Eucalipto Tratado 2,50 m | Citriodora",
