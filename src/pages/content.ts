@@ -22,7 +22,8 @@ export interface SitePage {
   related: string[]; // slugs de páginas relacionadas
   nav: string; // nome curto usado em links e no rodapé
   updated?: string; // AAAA-MM-DD da última revisão real do conteúdo (sitemap e schema)
-  gallery?: { category: "rural" | "civil" | "paisagismo" | "ideias"; title: string; alt: string }; // fotos da galeria do Supabase
+  // Fotos da galeria do Supabase. Com "photos", usa só essas (pelo trecho do nome do arquivo), na ordem dada.
+  gallery?: { category: "rural" | "civil" | "paisagismo" | "ideias"; title: string; alt: string; photos?: { id: string; alt: string }[] };
 }
 
 const wa = (text: string) => `https://wa.me/${B.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -63,6 +64,19 @@ const porQueCitriodora = `<h2>Por que eucalipto citriodora?</h2>
 const comoMedimos = `<h2>Como medimos as peças</h2>
 <p>Seguimos a <a href="{{norma-nbr-9480}}">norma ABNT NBR 9480</a>: a medida de venda é o <strong>diâmetro do topo</strong>, a ponta mais fina. Um mourão "10 a 12" tem entre 10 e 12 cm na ponta, e a base é ainda mais grossa. Assim você compra pela medida mínima garantida, sem surpresa na entrega.</p>`;
 
+/** Fotos de cercas escolhidas pelo dono na galeria "Construção Rural". */
+const CERCA_FOTOS: SitePage["gallery"] = {
+  category: "rural",
+  title: "Cercas feitas com nossos mourões",
+  alt: "Cerca rural com mourões de eucalipto tratado",
+  photos: [
+    { id: "1782393756817-r2fhz", alt: "Cerca de arame liso com mourões de eucalipto citriodora tratado em área de plantio" },
+    { id: "1782393785609-9ra7o", alt: "Cerca com mourões de eucalipto tratado pintados de branco ao longo de estrada rural" },
+    { id: "1782393858667-8afzl", alt: "Cerca de madeira e porteira de eucalipto tratado em frente a casa de campo" },
+    { id: "1782393871545-3dxu4r", alt: "Cerca de arame farpado com mourões e esticador de eucalipto citriodora tratado" },
+  ],
+};
+
 export const PAGES: SitePage[] = [
   // ───────────────────────── PRODUTOS ─────────────────────────
   {
@@ -92,11 +106,7 @@ ${comoMedimos}`,
     nav: "Mourões",
     parent: { name: "Produtos", slug: "produtos" },
     product: { name: "Mourão de eucalipto citriodora tratado 2,20 m", category: "Mourões" },
-    gallery: {
-      category: "rural",
-      title: "Fotos de obras rurais com nossa madeira",
-      alt: "Eucalipto citriodora tratado da Eucalyptus Tratados em construção rural",
-    },
+    gallery: CERCA_FOTOS,
     title: "Mourão de Eucalipto Tratado 2,20 m | Citriodora | Para Cerca",
     description:
       "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, racha menos e tem 10 anos de garantia.",
@@ -382,6 +392,7 @@ ${comoMedimos}`,
   {
     slug: "cerca-de-eucalipto-tratado",
     nav: "Cerca de eucalipto",
+    gallery: CERCA_FOTOS,
     title: "Cerca de Eucalipto Tratado: Como Fazer e Quais Peças Usar",
     description:
       "Guia de cerca de eucalipto tratado: mourões, esticadores e balancins, espaçamento, profundidade e por que o citriodora dura mais. Orçamento pelo WhatsApp.",

@@ -68,7 +68,16 @@ async function loadGalleries(): Promise<void> {
     console.log(`[seo] galeria ${cat}: ${GALLERIES[cat].length} fotos (${urls.length ? 'Supabase' : 'cópia local'})`);
   }
 }
-const galleryOf = (p: SitePage) => (p.gallery ? (GALLERIES[p.gallery.category] ?? []) : []);
+/** Fotos da página: com "photos", só as escolhidas (na ordem dada) e com descrição própria. */
+function galleryOf(p: SitePage): { url: string; alt: string }[] {
+  if (!p.gallery) return [];
+  const all = GALLERIES[p.gallery.category] ?? [];
+  if (!p.gallery.photos) return all.map((url, i) => ({ url, alt: `${p.gallery!.alt}, foto ${i + 1}` }));
+  return p.gallery.photos.flatMap((ph) => {
+    const url = all.find((u) => u.includes(ph.id));
+    return url ? [{ url, alt: ph.alt }] : [];
+  });
+}
 
 function galleryHtml(p: SitePage): string {
   const imgs = galleryOf(p);
@@ -76,8 +85,8 @@ function galleryHtml(p: SitePage): string {
   return `<section class="galeria" aria-labelledby="galeria-titulo"><h2 id="galeria-titulo">${esc(p.gallery.title)}</h2>
 <div class="galeria-grid">${imgs
     .map(
-      (u, i) =>
-        `<a href="${esc(u)}" target="_blank" rel="noopener"><img src="${esc(u)}" alt="${esc(p.gallery!.alt)}, foto ${i + 1}" loading="${i < 3 ? 'eager' : 'lazy'}" decoding="async" width="400" height="300"></a>`,
+      (img, i) =>
+        `<a href="${esc(img.url)}" target="_blank" rel="noopener"><img src="${esc(img.url)}" alt="${esc(img.alt)}" loading="${i < 2 ? 'eager' : 'lazy'}" decoding="async" width="400" height="300"></a>`,
     )
     .join('')}</div>
 <p class="nota">Fotos de obras feitas com madeira da Eucalyptus Tratados. Toque para ampliar.</p></section>`;
@@ -389,7 +398,7 @@ ${footer}
 function sitemap(): string {
   const urls = [
     `<url><loc>${SITE}</loc><lastmod>${[CONTENT_UPDATED, ...POSTS.map((x) => x.article.date)].sort().pop()}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
-    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${galleryOf(p).map((u) => `<image:image><image:loc>${esc(u)}</image:loc></image:image>`).join('')}</url>`),
+    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${galleryOf(p).map((img) => `<image:image><image:loc>${esc(img.url)}</image:loc></image:image>`).join('')}</url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
