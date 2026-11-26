@@ -79,6 +79,8 @@ export interface GalleryItem {
   category: string;
   order: number;
   createdAt: Date;
+  pages?: string[]; // páginas do site onde a foto aparece (ver src/pages/galleryPages.ts)
+  alt?: string | null; // descrição da foto
 }
 
 export interface SiteImages {

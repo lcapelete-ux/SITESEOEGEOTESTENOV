@@ -1,14 +1,72 @@
 {
-  "_nota": "Copia de seguranca da galeria do Supabase (usada se a busca no build falhar). Atualizada em 2026-11-26.",
-  "rural": [
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393756817-r2fhz.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393772351-9u2yiq.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393785609-9ra7o.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393810155-4pmfr7.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393834923-d0zfpe.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393858667-8afzl.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393871545-3dxu4r.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393894983-bs20z5.webp",
-    "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393910252-vbq4o.webp"
+  "_nota": "Cópia de segurança das fotos marcadas no painel (usada se o build não alcançar o Supabase). Atualizada em 2026-11-26.",
+  "rows": [
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393756817-r2fhz.webp",
+      "category": "rural",
+      "order": 0,
+      "pages": [
+        "mourao",
+        "cerca"
+      ],
+      "alt": "Cerca de arame liso com mourões de eucalipto citriodora tratado em área de plantio"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393772351-9u2yiq.webp",
+      "category": "rural",
+      "order": 1,
+      "pages": [
+        "esticador"
+      ],
+      "alt": "Conjunto de esticadores de eucalipto tratado com travessas e arame de tensão em canto de cerca ao lado de canavial"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393785609-9ra7o.webp",
+      "category": "rural",
+      "order": 2,
+      "pages": [
+        "mourao",
+        "cerca"
+      ],
+      "alt": "Cerca com mourões de eucalipto tratado pintados de branco ao longo de estrada rural"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393810155-4pmfr7.webp",
+      "category": "rural",
+      "order": 3,
+      "pages": [
+        "esticador"
+      ],
+      "alt": "Esticador duplo de eucalipto citriodora tratado com travessa em cerca de arame farpado"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393834923-d0zfpe.webp",
+      "category": "rural",
+      "order": 4,
+      "pages": [
+        "esticador"
+      ],
+      "alt": "Esticadores de eucalipto tratado com travessa e arame de tensão no início de cerca rural"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393858667-8afzl.webp",
+      "category": "rural",
+      "order": 5,
+      "pages": [
+        "mourao",
+        "cerca"
+      ],
+      "alt": "Cerca de madeira e porteira de eucalipto tratado em frente a casa de campo"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782393871545-3dxu4r.webp",
+      "category": "rural",
+      "order": 6,
+      "pages": [
+        "mourao",
+        "cerca"
+      ],
+      "alt": "Cerca de arame farpado com mourões e esticador de eucalipto citriodora tratado"
+    }
   ]
 }

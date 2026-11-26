@@ -35,9 +35,18 @@ As páginas estáticas existem só no build: use `npm run build && npm run previ
 O build gera a página do artigo (schema BlogPosting), a lista `/blog/`, os 3 mais
 recentes na home, o `sitemap.xml`, o `llms.txt` e o feed `blog/feed.xml`.
 
+## Fotos nas páginas de produto
+
+No painel (Galeria de Fotos), cada foto tem um número, botões "Mostrar nas páginas"
+e um campo de descrição. Isso grava `gallery.pages` e `gallery.alt` no Supabase.
+O build busca essas fotos e gera as páginas em HTML estático (`seoPlugin.ts`);
+a lista de páginas fica em `src/pages/galleryPages.ts`. Se o build não alcançar o
+banco, usa `src/pages/gallerySnapshot.json`.
+
 ## Deploy
 
 Push na `main` dispara `.github/workflows/deploy-pages.yml` (GitHub Pages).
+O workflow também roda todo dia às 03:17 (Brasília) e pode ser disparado manualmente em Actions → Run workflow.
 
 A versão de teste é publicada com `SITE_NOINDEX=true` (meta robots `noindex`).
 No lançamento oficial, remova essa variável do workflow.
