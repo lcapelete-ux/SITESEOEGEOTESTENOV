@@ -35,7 +35,7 @@ const MEDINDO_FOTO = "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object
 const HOME_PRODUCTS = [
   { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca.", photoIndex: 15 },
   { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame.", photoIndex: 16 },
-  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Currais, mangueiras, porteiras e esteios de galpão.", photoIndex: 6 },
+  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Pergolados, currais, mangueiras, porteiras e construção civil.", photoIndex: 6 },
   { slug: "produtos/poste-de-eucalipto-tratado", name: "Poste de eucalipto tratado", size: "8 m a 12 m · 10 a 32 cm", desc: "Galpões, barracões, coberturas e estruturas de grande carga.", photoIndex: 2 },
   { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50 m a 8 m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo.", photoIndex: 4 },
   { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado.", photoIndex: 3 },
@@ -116,6 +116,8 @@ export interface SiteImages {
 }
 
 const HERO_IMAGE = `${import.meta.env.BASE_URL}hero-autoclave.jpg`;
+const HERO_IMAGE_480 = `${import.meta.env.BASE_URL}hero-autoclave-480.jpg`;
+const HERO_IMAGE_800 = `${import.meta.env.BASE_URL}hero-autoclave-800.jpg`;
 const CITRIODORA_IMAGE = `${import.meta.env.BASE_URL}citriodora-optimized.webp`;
 const CITRIODORA_IMAGE_480 = `${import.meta.env.BASE_URL}citriodora-480.webp`;
 
@@ -164,6 +166,7 @@ const responsiveImage = (source: string, widths: number[]) => {
   if (displaySource === HERO_IMAGE) {
     return {
       src: HERO_IMAGE,
+      srcSet: `${HERO_IMAGE_480} 480w, ${HERO_IMAGE_800} 800w, ${HERO_IMAGE} 1491w`,
     };
   }
   return {
