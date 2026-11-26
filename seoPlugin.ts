@@ -211,8 +211,8 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
 }
 
 const logoHtml = `<span class="flex items-center gap-3">
-<span class="flex flex-col justify-between h-[28px] w-[32px]" aria-hidden="true"><span class="h-[6px] w-full bg-[#A1C913]"></span><span class="h-[6px] w-full bg-[#A1C913]"></span><span class="h-[6px] w-full bg-[#A1C913]"></span></span>
-<span class="flex flex-col justify-center" style="font-family:Arial,sans-serif"><span class="text-[#FDF8E7] font-black text-[22px] leading-[0.85] tracking-wide">EUCALYPTUS</span><span class="text-[#D8B990] text-[10px] tracking-[0.45em] leading-none ml-[2px] mt-[3px]">TRATADOS</span></span>
+<span class="flex flex-col justify-between h-[24px] w-[28px]" aria-hidden="true"><span class="h-[5px] w-full bg-[#A1C913]"></span><span class="h-[5px] w-full bg-[#A1C913]"></span><span class="h-[5px] w-full bg-[#A1C913]"></span></span>
+<span class="flex flex-col justify-center" style="font-family:Arial,sans-serif"><span class="text-[#4a4037] font-black text-[19px] leading-[0.85] tracking-wide">EUCALYPTUS</span><span class="text-[#7d5a2f] text-[9px] tracking-[0.45em] leading-none ml-[2px] mt-[3px]">TRATADOS</span></span>
 </span>`;
 
 function faqHtml(items: PageFaq[], title: string): string {
@@ -239,7 +239,7 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
 
   const nav = HEADER_LINKS.map(
     (l) =>
-      `<a href="${href(l.slug)}"${l.slug === p.slug ? ' aria-current="page"' : ''} class="text-stone-200 hover:text-white font-medium transition-colors">${esc(l.name)}</a>`,
+      `<a href="${href(l.slug)}"${l.slug === p.slug ? ' aria-current="page"' : ''} class="ap-nav-link">${esc(l.name)}</a>`,
   ).join('');
 
   const related = p.related
@@ -248,9 +248,9 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
     .join('');
 
   const footer = FOOTER_GROUPS.map(
-    (g) => `<div><h2 class="text-white font-bold mb-3">${esc(g.title)}</h2><ul class="space-y-1">${g.links
-      .map((l) => `<li><a class="inline-block py-1.5 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a></li>`)
-      .join('')}</ul></div>`,
+    (g) => `<nav aria-label="${esc(g.title)}"><h2>${esc(g.title)}</h2><ul>${g.links
+      .map((l) => `<li><a href="${href(l.slug)}">${esc(l.name)}</a></li>`)
+      .join('')}</ul></nav>`,
   ).join('');
 
   return `<!doctype html>
@@ -262,7 +262,7 @@ function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string
 <meta name="description" content="${esc(p.description)}">
 <meta name="robots" content="${ctx.noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1'}">
 <link rel="canonical" href="${canonical}">
-<meta name="theme-color" content="#183e26">
+<meta name="theme-color" content="#ffffff">
 <meta property="og:type" content="${p.product ? 'product' : 'article'}">
 <meta property="og:site_name" content="${esc(B.name)}">
 <meta property="og:locale" content="pt_BR">
@@ -278,22 +278,22 @@ ${ctx.css.map((c) => `<link rel="stylesheet" href="${base}${c}">`).join('\n')}
 ${pageLd(p, faq)}
 ${ctx.gtm}
 </head>
-<body class="bg-white text-stone-800 antialiased">
-<a href="#conteudo" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-50 bg-white text-stone-900 px-4 py-2 rounded">Pular para o conteúdo</a>
-<header class="sticky top-0 w-full z-50 bg-[#183e26]/95 backdrop-blur-md border-b border-[#183e26]">
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+<body class="bg-white antialiased">
+<a href="#conteudo" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] bg-white text-[#1d1d1f] px-4 py-2 rounded">Pular para o conteúdo</a>
+<header class="ap-nav sticky top-0 w-full z-50">
+<div class="max-w-[1080px] mx-auto px-5 sm:px-6 h-14 flex items-center justify-between">
 <a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a>
-<nav aria-label="Principal" class="hidden lg:flex space-x-8 items-center">${nav}<a href="${href('contato')}" class="bg-[#A1C913] text-[#183e26] px-5 py-2 rounded-full font-bold hover:bg-[#8eb311] transition-colors">Orçamento</a></nav>
-<details class="lg:hidden relative menu-mobile"><summary class="list-none cursor-pointer text-stone-200 p-2.5 -mr-2.5 rounded-lg" aria-label="Abrir menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
-<nav aria-label="Menu" class="absolute right-0 top-12 w-60 bg-[#183e26] rounded-xl shadow-xl p-3 flex flex-col gap-1">${HEADER_LINKS.map((l) => `<a class="block px-3 py-3 text-stone-100 hover:text-white" href="${href(l.slug)}">${esc(l.name)}</a>`).join('')}<a class="block px-3 py-3 text-[#A1C913] font-bold" href="${href('contato')}">Orçamento</a></nav></details>
+<nav aria-label="Principal" class="hidden lg:flex gap-7 items-center">${nav}<a href="${href('contato')}" class="ap-pill">Orçamento</a></nav>
+<details class="lg:hidden menu-mobile"><summary class="list-none cursor-pointer text-[#1d1d1f] p-2.5 -mr-2.5 rounded-lg" aria-label="Abrir menu"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg></summary>
+<nav aria-label="Menu" class="ap-nav absolute left-0 right-0 top-14 px-5 pb-6 pt-2">${HEADER_LINKS.map((l) => `<a class="block py-3 text-[1.5rem] font-semibold tracking-[-0.015em] text-[#1d1d1f] border-b border-black/5" href="${href(l.slug)}">${esc(l.name)}</a>`).join('')}<a class="ap-pill mt-5 w-full" href="${href('contato')}">Pedir orçamento</a></nav></details>
 </div>
 </header>
-<nav aria-label="Você está em" class="max-w-3xl mx-auto px-4 pt-6 text-sm text-stone-600 breadcrumbs">${crumbs}</nav>
-<main id="conteudo" class="max-w-3xl mx-auto px-4 pb-16">
+<nav aria-label="Você está em" class="max-w-[760px] mx-auto px-5 sm:px-6 pt-8 text-[.875rem] breadcrumbs">${crumbs}</nav>
+<main id="conteudo" class="max-w-[760px] mx-auto px-5 sm:px-6 pb-24">
 <article class="conteudo">
 <h1>${esc(p.h1)}</h1>
 <p class="lead">${esc(p.intro)}</p>
-<p><a class="cta" href="${wa}">Pedir orçamento pelo WhatsApp</a></p>
+<p class="mt-8"><a class="cta" href="${wa}">Pedir orçamento pelo WhatsApp</a></p>
 ${resolve(p.body)}
 ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
 <aside class="cta-box" aria-label="Orçamento">
@@ -302,18 +302,18 @@ ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
 <p><a class="cta" href="${wa}">Chamar no WhatsApp</a></p>
 </aside>
 </article>
-<section aria-labelledby="rel-titulo" class="mt-12"><h2 id="rel-titulo" class="text-2xl font-bold text-stone-900 mb-4">Veja também</h2><div class="cards">${related}</div></section>
+<section aria-labelledby="rel-titulo" class="mt-16"><h2 id="rel-titulo" class="text-[clamp(1.6rem,3.4vw,2.1rem)] font-semibold tracking-[-0.018em] text-[#1d1d1f] mb-4">Veja também</h2><div class="cards">${related}</div></section>
 </main>
-<footer class="bg-[#183e26] text-stone-300 py-12">
-<div class="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm">
-<div><a href="${base}" aria-label="Página inicial">${logoHtml}</a>
+<footer class="ap-footer py-12">
+<div class="max-w-[1080px] mx-auto px-5 sm:px-6 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+<div><a href="${base}" aria-label="Página inicial" class="!p-0">${logoHtml}</a>
 <p class="mt-4">${esc(B.street)}<br>${esc(B.city)} - ${B.region}</p>
-<p class="mt-2 flex flex-col items-start"><a class="inline-block py-1.5 hover:text-white" href="https://wa.me/${B.whatsapp}">WhatsApp ${esc(B.whatsappDisplay)}</a><a class="inline-block py-1.5 hover:text-white" href="tel:${B.phone}">Tel. ${esc(B.phoneDisplay)}</a><a class="inline-block py-1.5 hover:text-white break-all" href="mailto:${B.email}">${esc(B.email)}</a></p></div>
+<p class="mt-2 flex flex-col items-start"><a href="https://wa.me/${B.whatsapp}">WhatsApp ${esc(B.whatsappDisplay)}</a><a href="tel:${B.phone}">Tel. ${esc(B.phoneDisplay)}</a><a class="[overflow-wrap:anywhere]" href="mailto:${B.email}">${esc(B.email)}</a></p></div>
 ${footer}
 </div>
-<p class="max-w-6xl mx-auto px-4 mt-10 text-xs text-stone-400">© ${new Date().getFullYear()} ${esc(B.name)}. Eucalipto citriodora tratado desde ${B.foundingYear}.</p>
+<p class="max-w-[1080px] mx-auto px-5 sm:px-6 mt-10 pt-5 border-t border-[#d2d2d7] text-[.8125rem]">© ${new Date().getFullYear()} ${esc(B.name)}. Eucalipto citriodora tratado desde ${B.foundingYear}.</p>
 </footer>
-<aside aria-label="Contato rápido pelo WhatsApp"><a href="${wa}" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-2xl hover:bg-[#128C7E]" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></aside>
+<aside aria-label="Contato rápido pelo WhatsApp"><a href="${wa}" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:bg-[#1ebe5b] transition-transform duration-100 active:scale-95" aria-label="Falar no WhatsApp"><svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a></aside>
 </body>
 </html>`;
 }
