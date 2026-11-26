@@ -60,7 +60,8 @@
       "category": "ideias",
       "order": 1,
       "pages": [
-        "palanque"
+        "palanque",
+        "sobre"
       ],
       "alt": "Toras de eucalipto citriodora tratado empilhadas"
     },
@@ -236,6 +237,34 @@
         "norma"
       ],
       "alt": "Funcionária da Eucalyptus Tratados medindo com paquímetro o diâmetro do topo de um poste de eucalipto tratado"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394209249-zj2v6j.webp",
+      "category": "ideias",
+      "order": 0,
+      "pages": [
+        "sobre",
+        "contato"
+      ],
+      "alt": "Caminhão com a marca Eucalyptus Tratados carregado com peças de eucalipto em estrada de terra"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394236420-6cssy.webp",
+      "category": "ideias",
+      "order": 2,
+      "pages": [
+        "sobre"
+      ],
+      "alt": "Caminhão da Eucalyptus Tratados carregado com toras de eucalipto tratado, visto de lado"
+    },
+    {
+      "url": "https://ycnxgshttjdlsyabhcks.supabase.co/storage/v1/object/public/images/gallery/1782394274078-2vkwg9.webp",
+      "category": "ideias",
+      "order": 4,
+      "pages": [
+        "sobre"
+      ],
+      "alt": "Caminhão Iveco da Eucalyptus Tratados carregado com peças de eucalipto tratado"
     }
   ]
 }
