@@ -998,25 +998,20 @@ export default function App() {
                   }}
                 ></div>
                 <motion.div
-                  className="relative z-10 bg-white p-8 rounded-2xl shadow-xl w-full max-w-md"
+                  className="relative z-10 bg-white p-3 rounded-2xl shadow-xl w-full max-w-xl"
                   initial={{ opacity: 0, scale: 0.9 }}
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.32, ease: "easeOut" }}
                 >
-                  <div className="text-center mb-6">
-                    <div className="text-sm font-bold text-[#365414] uppercase tracking-wider">
-                      Ilustração de Medição
-                    </div>
-                  </div>
-                  <div className="relative aspect-video border-4 border-stone-200 rounded-2xl flex items-center justify-center bg-stone-50 overflow-hidden shadow-xl">
+                  <div className="overflow-hidden rounded-xl bg-stone-50">
                     <img
                       {...responsiveImage(siteImages.medicao, [480, 800, 1200])}
                       sizes="(min-width: 1024px) 50vw, 100vw"
                       loading="lazy"
                       decoding="async"
                       alt="Medição de poste de eucalipto pelo diâmetro do topo, conforme a NBR 9480"
-                      className="w-full h-full object-cover"
+                      className="block w-full h-auto"
                       referrerPolicy="no-referrer"
                     />
                   </div>
