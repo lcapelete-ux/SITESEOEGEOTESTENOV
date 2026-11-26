@@ -21,12 +21,20 @@ import { useState, useEffect, lazy, Suspense } from "react";
 import { motion, AnimatePresence } from "motion/react";
 const AdminDashboard = lazy(() => import("./components/AdminDashboard"));
 const AdminLoginModal = lazy(() => import("./components/AdminLoginModal"));
-const CatalogModal = lazy(() => import("./components/CatalogModal"));
 import { Toaster, toast } from "react-hot-toast";
 import { FAQ } from "./seoContent";
 import { FOOTER_GROUPS } from "./pages/nav";
 
 const pageHref = (slug: string) => `${import.meta.env.BASE_URL}${slug}/`;
+
+const HOME_PRODUCTS = [
+  { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca." },
+  { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame." },
+  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Currais, mangueiras, porteiras e esteios de galpão." },
+  { slug: "produtos/poste-de-eucalipto-tratado", name: "Poste de eucalipto tratado", size: "8 m a 12 m · 10 a 32 cm", desc: "Galpões, barracões, coberturas e estruturas de grande carga." },
+  { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50 m a 8 m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo." },
+  { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Também ripão, balancim e esteira de bambu tratado." },
+];
 
 const getSupabase = async () => (await import("./supabase")).supabase;
 
@@ -238,7 +246,6 @@ const PromotionModal = ({ promo, onClose }: { promo: NonNullable<SiteImages['pro
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
-  const [isCatalogModalOpen, setIsCatalogModalOpen] = useState(false);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
   const [siteImages, setSiteImages] = useState<SiteImages>(initialImages);
@@ -726,12 +733,12 @@ export default function App() {
               >
                 Solicite um Orçamento <ChevronRight className="h-5 w-5" />
               </a>
-              <button
-                onClick={() => setIsCatalogModalOpen(true)}
+              <a
+                href={pageHref("produtos")}
                 className="bg-white/10 text-white border-2 border-white/20 backdrop-blur-sm px-8 py-4 rounded-full font-bold text-lg hover:bg-white/20 transition-all flex items-center justify-center"
               >
-                Ver Catálogo
-              </button>
+                Ver Produtos e Medidas
+              </a>
             </div>
           </motion.div>
         </div>
@@ -758,6 +765,37 @@ export default function App() {
               madeira de reflorestamento
             </div>
           </motion.div>
+        </div>
+      </section>
+
+      {/* Products */}
+      <section id="produtos" className="py-24 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-stone-900 mb-4">
+              Produtos de Eucalipto Citriodora Tratado
+            </h2>
+            <p className="text-lg text-stone-700 max-w-2xl mx-auto">
+              Peças roliças e serradas tratadas em autoclave, com medidas pela
+              NBR 9480 e 10 anos de garantia. Veja medidas e pesos de cada linha.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {HOME_PRODUCTS.map((product) => (
+              <a
+                key={product.slug}
+                href={pageHref(product.slug)}
+                className="group block bg-stone-50 border border-stone-200 rounded-2xl p-6 hover:border-brand-500 hover:shadow-lg transition-all"
+              >
+                <div className="text-sm font-semibold text-brand-800 mb-1">{product.size}</div>
+                <h3 className="text-xl font-bold text-[#183e26] mb-2">{product.name}</h3>
+                <p className="text-stone-700 mb-4">{product.desc}</p>
+                <span className="inline-flex items-center gap-1 font-bold text-[#183e26] group-hover:gap-2 transition-all">
+                  Ver medidas <ChevronRight className="w-4 h-4" />
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -808,6 +846,9 @@ export default function App() {
                   </motion.li>
                 ))}
               </ul>
+              <p className="mt-8">
+                <a href={pageHref("eucalipto-citriodora")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Por que o citriodora racha menos que outros eucaliptos <ChevronRight className="w-4 h-4" /></a>
+              </p>
             </motion.div>
 
             <motion.div
@@ -903,6 +944,9 @@ export default function App() {
               </motion.div>
             ))}
           </div>
+          <p className="text-center mt-12">
+            <a href={pageHref("tratamento-em-autoclave")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Veja o processo completo de tratamento em autoclave <ChevronRight className="w-4 h-4" /></a>
+          </p>
         </div>
       </section>
 
@@ -950,6 +994,9 @@ export default function App() {
                     </p>
                   </div>
                 </div>
+                <p className="mt-8">
+                  <a href={pageHref("norma-nbr-9480")} className="inline-flex items-center gap-1 font-bold text-brand-300 underline underline-offset-4 hover:text-white">Como medir postes e mourões pela NBR 9480 <ChevronRight className="w-4 h-4" /></a>
+                </p>
               </div>
               <div className="bg-stone-100 p-12 flex items-center justify-center relative">
                 <div
@@ -1135,6 +1182,10 @@ export default function App() {
                 Nenhuma imagem nesta categoria.
               </div>
             )}
+          </div>
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 sm:gap-10 justify-center items-center">
+            <a href={pageHref("cerca-de-eucalipto-tratado")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Guia: como fazer cerca de eucalipto tratado <ChevronRight className="w-4 h-4" /></a>
+            <a href={pageHref("construcoes-com-eucalipto-tratado")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Galpões, currais e pergolados com eucalipto <ChevronRight className="w-4 h-4" /></a>
           </div>
         </div>
       </section>
@@ -1414,14 +1465,6 @@ export default function App() {
         </Suspense>
       )}
 
-      {isCatalogModalOpen && (
-        <Suspense fallback={null}>
-          <CatalogModal
-            isOpen={isCatalogModalOpen}
-            onClose={() => setIsCatalogModalOpen(false)}
-          />
-        </Suspense>
-      )}
 
       {/* Floating WhatsApp Button */}
       <aside aria-label="Contato rápido pelo WhatsApp">

@@ -1,4 +1,4 @@
-// Catálogo de produtos: usado no modal do site e nas páginas de produto.
+// Catálogo de produtos: usado nas tabelas das páginas de produto.
 
 export interface CatalogItem {
   name: string;
