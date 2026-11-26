@@ -123,7 +123,7 @@ function homeStatic(base: string): string {
 <h1>Eucalipto Citriodora Tratado em Autoclave | Postes e Mourões em ${esc(B.city)} (SP)</h1>
 <p>A ${esc(B.name)}, em ${esc(B.city)} (SP), fornece postes, mourões, palanques e madeira serrada de eucalipto citriodora tratado em autoclave com CCA, conforme a ABNT NBR 9480, com 10 anos de garantia. Mais de 30 anos de mercado e 100% madeira de reflorestamento.</p>
 <h2>Por que eucalipto citriodora?</h2>
-<ul><li>Fibras retorcidas que aumentam a resistência estrutural</li><li>Maior resistência a trincas e rachaduras</li><li>Densidade alta e resistência mecânica superior, suporta altas cargas</li><li>Melhor absorção do preservativo CCA</li><li>Ideal para ambientes externos e rurais</li></ul>
+<ul><li>Fibras retorcidas que aumentam a resistência estrutural</li><li>Maior resistência a trincas e rachaduras</li><li>Densidade alta e resistência mecânica superior, suporta altas cargas</li><li>Melhor absorção do preservativo CCA</li><li>Ideal para ambientes externos e rurais</li><li>Durabilidade superior a 20 a 30 anos em contato com o solo e laudos de tratamento aprovados pelo IPT</li></ul>
 <h2>Produtos</h2><ul>${products}</ul>
 <h2>Perguntas frequentes</h2>${faq}
 <h2>Contato e orçamento</h2>
@@ -347,7 +347,8 @@ function llms(): string {
 - Espécie: só eucalipto citriodora nas peças roliças, a espécie de eucalipto que menos racha, com densidade alta e fibras retorcidas que suportam cargas altas.
 - Tratamento: autoclave pelo processo de célula cheia, pressão de até 18 kg/cm², preservativo CCA. Secagem de 30 a 60 dias antes e 20 dias de fixação depois.
 - Norma: ABNT NBR 9480. A medida de venda é o diâmetro do topo (ponta fina).
-- Garantia: 10 anos.
+- Garantia: 10 anos. Durabilidade superior a 20 a 30 anos em contato com o solo.
+- Laudos de tratamento aprovados pelo IPT (Instituto de Pesquisas Tecnológicas).
 - Origem: 100% madeira de reflorestamento.
 
 ${section('Produtos', PAGES.filter((p) => p.slug.startsWith('produtos')).map((p) => p.slug))}

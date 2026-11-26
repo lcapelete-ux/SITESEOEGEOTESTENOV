@@ -53,7 +53,8 @@ const porQueCitriodora = `<h2>Por que eucalipto citriodora?</h2>
 <li><strong>Racha menos:</strong> as fibras retorcidas do citriodora seguram a madeira e reduzem trincas e rachaduras.</li>
 <li><strong>Densidade alta:</strong> madeira mais pesada e resistente, que suporta cargas altas e impactos.</li>
 <li><strong>Absorve bem o tratamento:</strong> o preservativo CCA penetra no alburno e protege contra cupins, fungos e apodrecimento.</li>
-<li><strong>10 anos de garantia</strong> em peças tratadas em autoclave.</li>
+<li><strong>10 anos de garantia</strong> e durabilidade superior a 20 a 30 anos em contato com o solo.</li>
+<li><strong>Laudos de tratamento aprovados pelo IPT.</strong></li>
 </ul>
 <p>Saiba mais em <a href="{{eucalipto-citriodora}}">por que trabalhamos só com eucalipto citriodora</a> e em <a href="{{tratamento-em-autoclave}}">como é o tratamento em autoclave</a>.</p>`;
 
@@ -113,7 +114,7 @@ ${comoMedimos}`,
       },
       {
         q: "Quanto dura um mourão de eucalipto tratado?",
-        a: "Nossos mourões de eucalipto citriodora tratados em autoclave têm 10 anos de garantia. O citriodora racha menos e o tratamento com CCA protege contra cupins e apodrecimento, mesmo na parte enterrada.",
+        a: "Em contato com o solo, o mourão de eucalipto citriodora tratado em autoclave tem durabilidade superior a 20 a 30 anos, e damos 10 anos de garantia. O citriodora racha menos e o tratamento com CCA protege contra cupins e apodrecimento, mesmo na parte enterrada.",
       },
     ],
     whatsappText: "Olá! Gostaria de um orçamento de mourão de eucalipto tratado 2,20 m.",
@@ -324,6 +325,8 @@ ${comoMedimos}`,
 </ol>
 <h2>O que é o CCA</h2>
 <p>CCA é o preservativo à base de cobre, cromo e arsênio, o mais usado no Brasil para madeira em contato com o solo. O cobre e o arsênio protegem contra fungos e insetos, e o cromo fixa o produto na madeira. Por isso a madeira tratada fica com a cor esverdeada característica.</p>
+<h2>Laudos aprovados pelo IPT</h2>
+<p>Nossos laudos de tratamento são aprovados pelo IPT (Instituto de Pesquisas Tecnológicas), referência nacional em ensaios de madeira. Isso comprova a eficácia da imunização: a retenção e a penetração do preservativo na madeira.</p>
 <h2>Por que a fixação importa</h2>
 <p>Pular ou encurtar o tempo de fixação é um atalho comum no mercado. Respeitamos os 20 dias para que o preservativo fique preso nas fibras e a proteção dure, o que sustenta nossa garantia de 10 anos.</p>
 <h2>Cuidados com a madeira tratada</h2>
@@ -468,7 +471,8 @@ ${comoMedimos}`,
 <li><strong>Só citriodora</strong> nas peças roliças: postes, mourões, esticadores e palanques.</li>
 <li><strong>Tratamento completo:</strong> secagem de 30 a 60 dias, autoclave com CCA e 20 dias de fixação. <a href="{{tratamento-em-autoclave}}">Veja o processo</a>.</li>
 <li><strong>Medida honesta:</strong> medição pelo topo, conforme a <a href="{{norma-nbr-9480}}">NBR 9480</a>.</li>
-<li><strong>10 anos de garantia</strong> nas peças tratadas.</li>
+<li><strong>Laudos aprovados pelo IPT</strong> (Instituto de Pesquisas Tecnológicas), comprovando a eficácia do tratamento.</li>
+<li><strong>10 anos de garantia</strong> nas peças tratadas e durabilidade superior a 20 a 30 anos em contato com o solo.</li>
 <li><strong>100% reflorestamento:</strong> madeira de áreas plantadas, que retém carbono e poupa as matas nativas.</li>
 </ul>
 <h2>Atendimento</h2>
