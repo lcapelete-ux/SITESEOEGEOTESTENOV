@@ -33,6 +33,7 @@
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "6.1.1",
     "autoprefixer": "^10.4.21",
+    "marked": "^15.0.12",
     "tailwindcss": "4.3.3",
     "typescript": "~5.8.2",
     "vite": "8.3.0"

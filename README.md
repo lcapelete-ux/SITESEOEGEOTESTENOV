@@ -24,6 +24,17 @@ npm run dev
 
 As páginas estáticas existem só no build: use `npm run build && npm run preview` para vê-las.
 
+## Blog (publicar um artigo por mês)
+
+1. Copie `src/blog/posts/_modelo.md` para `src/blog/posts/AAAA-MM-endereco-do-artigo.md`.
+2. Preencha o cabeçalho (`title`, `description`, `h1`, `date`, `category`, `whatsapp`, `related`).
+3. O primeiro parágrafo vira a introdução em destaque: responda a pergunta logo de cara.
+4. Uma seção `## Perguntas frequentes` com perguntas em `### ` vira o FAQ e o schema FAQPage.
+5. Links internos: `[texto]({{produtos/mourao-de-eucalipto-tratado}})`.
+
+O build gera a página do artigo (schema BlogPosting), a lista `/blog/`, os 3 mais
+recentes na home, o `sitemap.xml`, o `llms.txt` e o feed `blog/feed.xml`.
+
 ## Deploy
 
 Push na `main` dispara `.github/workflows/deploy-pages.yml` (GitHub Pages).
