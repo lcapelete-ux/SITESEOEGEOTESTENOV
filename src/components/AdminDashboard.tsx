@@ -6,6 +6,7 @@ import imageCompression from "browser-image-compression";
 import toast from "react-hot-toast";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "../utils/cropImage";
+import { GALLERY_PAGES } from "../pages/galleryPages";
 import { 
   BarChart, 
   Bar, 
@@ -67,6 +68,9 @@ type GalleryCategory = "rural" | "civil" | "paisagismo" | "ideias";
 
 interface SortableGalleryItemProps {
   item: GalleryItem;
+  index: number;
+  onTogglePage: (item: GalleryItem, pageKey: string) => void;
+  onSaveAlt: (item: GalleryItem, alt: string) => void;
   loading: string | null;
   handleEditGalleryImage: (id: string) => (e: React.ChangeEvent<HTMLInputElement>) => Promise<void> | void;
   handleRemoveGalleryImage: (id: string) => Promise<void> | void;
@@ -75,6 +79,9 @@ interface SortableGalleryItemProps {
 
 const SortableGalleryItem: React.FC<SortableGalleryItemProps> = ({ 
   item, 
+  index,
+  onTogglePage,
+  onSaveAlt,
   loading, 
   handleEditGalleryImage, 
   handleRemoveGalleryImage,
@@ -100,8 +107,12 @@ const SortableGalleryItem: React.FC<SortableGalleryItemProps> = ({
     <div
       ref={setNodeRef}
       style={style}
-      className="group relative rounded-xl overflow-hidden border border-stone-200 aspect-square bg-stone-100"
+      className="rounded-xl overflow-hidden border border-stone-200 bg-white"
     >
+      <div className="group relative aspect-square bg-stone-100">
+      <span className="absolute top-2 right-2 z-10 bg-[#183e26] text-white text-sm font-bold rounded-full px-2.5 py-0.5 shadow" title="Número da foto">
+        Nº {index + 1}
+      </span>
       <img
         src={item.url}
         alt={`Galeria ${activeGalleryCategory}`}
@@ -146,6 +157,38 @@ const SortableGalleryItem: React.FC<SortableGalleryItemProps> = ({
             </button>
           </>
         )}
+      </div>
+      </div>
+      <div className="p-3 space-y-2 text-sm">
+        <p className="font-semibold text-stone-700">Mostrar nas páginas:</p>
+        <div className="flex flex-wrap gap-1.5">
+          {GALLERY_PAGES.map((gp) => {
+            const on = (item.pages ?? []).includes(gp.key);
+            return (
+              <button
+                key={gp.key}
+                type="button"
+                onClick={() => onTogglePage(item, gp.key)}
+                disabled={!!loading}
+                aria-pressed={on}
+                className={`px-2.5 py-1 rounded-full border text-xs font-medium transition-colors ${on ? "bg-[#183e26] text-white border-[#183e26]" : "bg-white text-stone-600 border-stone-300 hover:border-stone-500"}`}
+              >
+                {on ? "✓ " : ""}{gp.label}
+              </button>
+            );
+          })}
+        </div>
+        <label className="block">
+          <span className="font-semibold text-stone-700">Descrição da foto</span>
+          <input
+            type="text"
+            defaultValue={item.alt ?? ""}
+            key={item.alt ?? ""}
+            placeholder="Ex.: Cerca de arame farpado com mourões tratados"
+            onBlur={(e) => { if (e.target.value.trim() !== (item.alt ?? "")) onSaveAlt(item, e.target.value.trim()); }}
+            className="mt-1 w-full px-2.5 py-1.5 rounded-lg border border-stone-300 focus:ring-2 focus:ring-brand-500 outline-none"
+          />
+        </label>
       </div>
     </div>
   );
@@ -438,6 +481,36 @@ export default function AdminDashboard({
     } catch (e) {
       console.error(e);
       toast.error("Erro ao enquadrar imagem.", { id: toastId });
+    }
+  };
+
+  // Páginas do site onde a foto aparece (publicadas no build diário do site)
+  const handleToggleGalleryPage = async (item: GalleryItem, pageKey: string) => {
+    if (!supabase) return;
+    const current = item.pages ?? [];
+    const pages = current.includes(pageKey) ? current.filter((p) => p !== pageKey) : [...current, pageKey];
+    setLoading(item.id);
+    try {
+      const { error } = await supabase.from('gallery').update({ pages }).eq('id', item.id);
+      if (error) throw error;
+      await refreshGallery();
+      toast.success("Páginas atualizadas. Entra no site na próxima publicação (todo dia de madrugada).");
+    } catch (err: any) {
+      toast.error(formatSupabaseError(err));
+    } finally {
+      setLoading(null);
+    }
+  };
+
+  const handleSaveGalleryAlt = async (item: GalleryItem, alt: string) => {
+    if (!supabase) return;
+    try {
+      const { error } = await supabase.from('gallery').update({ alt: alt || null }).eq('id', item.id);
+      if (error) throw error;
+      await refreshGallery();
+      toast.success("Descrição salva.");
+    } catch (err: any) {
+      toast.error(formatSupabaseError(err));
     }
   };
 
@@ -1159,6 +1232,9 @@ export default function AdminDashboard({
                   ))}
                 </div>
 
+                <p className="mb-4 p-3 rounded-lg bg-brand-50 border border-brand-200 text-sm text-stone-700">
+                  Marque em cada foto as páginas do site onde ela deve aparecer (Mourões, Esticadores, Palanques...) e escreva uma descrição curta do que aparece nela. A galeria da página inicial muda na hora; as páginas de produto são atualizadas na publicação automática, todo dia de madrugada.
+                </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                   <DndContext
                     sensors={sensors}
@@ -1169,10 +1245,13 @@ export default function AdminDashboard({
                       items={siteImages.gallery[activeGalleryCategory].map(i => i.id)}
                       strategy={rectSortingStrategy}
                     >
-                      {siteImages.gallery[activeGalleryCategory].map((item) => (
+                      {siteImages.gallery[activeGalleryCategory].map((item, index) => (
                         <SortableGalleryItem
                           key={item.id}
                           item={item}
+                          index={index}
+                          onTogglePage={handleToggleGalleryPage}
+                          onSaveAlt={handleSaveGalleryAlt}
                           loading={loading}
                           handleEditGalleryImage={handleEditGalleryImage}
                           handleRemoveGalleryImage={handleRemoveGalleryImage}

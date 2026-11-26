@@ -14,6 +14,7 @@ import type { Plugin, ResolvedConfig } from 'vite';
 import { BUSINESS as B, FAQ, PRODUCTS } from './src/seoContent';
 import { CONTENT_UPDATED, PAGES, whatsappLink, type PageFaq, type SitePage } from './src/pages/content';
 import { FOOTER_GROUPS, HEADER_LINKS } from './src/pages/nav';
+import { GALLERY_PAGES } from './src/pages/galleryPages';
 import { readFileSync } from 'node:fs';
 import { blogIndexPage, dataPorExtenso, loadBlogPosts, type BlogPost } from './blogLoader';
 
@@ -43,46 +44,51 @@ const bySlug = (slug: string): SitePage => {
 };
 const articleOf = (p: SitePage) => (p as Partial<BlogPost>).article;
 
-// Fotos da galeria (Supabase), buscadas no build. Sem acesso, usa a cópia em src/pages/gallerySnapshot.json.
-let GALLERIES: Record<string, string[]> = {};
+// Fotos da galeria (Supabase) marcadas no painel para cada página, buscadas no build.
+// Sem acesso ao banco, usa a cópia em src/pages/gallerySnapshot.json.
+interface GalleryRow { url: string; category: string; order: number | null; pages: string[] | null; alt: string | null }
+const CATEGORY_ORDER = ['rural', 'civil', 'paisagismo', 'ideias'];
+let PAGE_PHOTOS: Record<string, { url: string; alt: string }[]> = {};
 async function loadGalleries(): Promise<void> {
-  const snapshot = JSON.parse(readFileSync(new URL('./src/pages/gallerySnapshot.json', import.meta.url), 'utf8'));
-  const cats = [...new Set(PAGES.flatMap((p) => (p.gallery ? [p.gallery.category] : [])))];
+  let rows: GalleryRow[] = [];
+  let origem = 'cópia local';
   const url = process.env.VITE_SUPABASE_URL;
   const key = process.env.VITE_SUPABASE_ANON_KEY;
-  GALLERIES = {};
-  for (const cat of cats) {
-    let urls: string[] = [];
-    if (url && key) {
-      try {
-        const res = await fetch(
-          `${url}/rest/v1/gallery?category=eq.${cat}&select=url,order,created_at&order=order.asc.nullslast,created_at.desc`,
-          { headers: { apikey: key, Authorization: `Bearer ${key}` }, signal: AbortSignal.timeout(10000) },
-        );
-        if (res.ok) urls = ((await res.json()) as { url: string }[]).map((r) => r.url).filter((u) => /^https:\/\//.test(u));
-      } catch {
-        /* usa a cópia */
+  if (url && key) {
+    try {
+      const res = await fetch(`${url}/rest/v1/gallery?select=url,category,order,pages,alt`, {
+        headers: { apikey: key, Authorization: `Bearer ${key}` },
+        signal: AbortSignal.timeout(10000),
+      });
+      if (res.ok) {
+        rows = (await res.json()) as GalleryRow[];
+        origem = 'Supabase';
       }
+    } catch {
+      /* usa a cópia */
     }
-    GALLERIES[cat] = urls.length ? urls : (snapshot[cat] ?? []);
-    console.log(`[seo] galeria ${cat}: ${GALLERIES[cat].length} fotos (${urls.length ? 'Supabase' : 'cópia local'})`);
   }
+  if (origem !== 'Supabase') {
+    rows = JSON.parse(readFileSync(new URL('./src/pages/gallerySnapshot.json', import.meta.url), 'utf8')).rows;
+  }
+  rows = rows
+    .filter((r) => /^https:\/\//.test(r.url) && r.pages?.length)
+    .sort((a, b) => CATEGORY_ORDER.indexOf(a.category) - CATEGORY_ORDER.indexOf(b.category) || (a.order ?? 1e9) - (b.order ?? 1e9));
+  PAGE_PHOTOS = {};
+  for (const gp of GALLERY_PAGES) {
+    PAGE_PHOTOS[gp.key] = rows
+      .filter((r) => r.pages!.includes(gp.key))
+      .map((r, i) => ({ url: r.url, alt: r.alt?.trim() || `${gp.label} de eucalipto tratado da ${B.name}, foto ${i + 1}` }));
+  }
+  console.log(`[seo] fotos por página (${origem}): ${GALLERY_PAGES.map((g) => `${g.key}=${PAGE_PHOTOS[g.key].length}`).join(' ')}`);
 }
-/** Fotos da página: com "photos", só as escolhidas (na ordem dada) e com descrição própria. */
-function galleryOf(p: SitePage): { url: string; alt: string }[] {
-  if (!p.gallery) return [];
-  const all = GALLERIES[p.gallery.category] ?? [];
-  if (!p.gallery.photos) return all.map((url, i) => ({ url, alt: `${p.gallery!.alt}, foto ${i + 1}` }));
-  return p.gallery.photos.flatMap((ph) => {
-    const url = all.find((u) => u.includes(ph.id));
-    return url ? [{ url, alt: ph.alt }] : [];
-  });
-}
+const galleryPageOf = (p: SitePage) => GALLERY_PAGES.find((g) => g.slug === p.slug);
+const galleryOf = (p: SitePage) => PAGE_PHOTOS[galleryPageOf(p)?.key ?? ''] ?? [];
 
 function galleryHtml(p: SitePage): string {
   const imgs = galleryOf(p);
-  if (!p.gallery || !imgs.length) return '';
-  return `<section class="galeria" aria-labelledby="galeria-titulo"><h2 id="galeria-titulo">${esc(p.gallery.title)}</h2>
+  if (!imgs.length) return '';
+  return `<section class="galeria" aria-labelledby="galeria-titulo"><h2 id="galeria-titulo">${esc(galleryPageOf(p)!.title)}</h2>
 <div class="galeria-grid">${imgs
     .map(
       (img, i) =>

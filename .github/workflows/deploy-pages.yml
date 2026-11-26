@@ -5,6 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
+  # Republica todo dia às 03:17 (Brasília) para levar ao site as fotos marcadas no painel.
+  schedule:
+    - cron: '17 6 * * *'
 
 permissions:
   contents: read
