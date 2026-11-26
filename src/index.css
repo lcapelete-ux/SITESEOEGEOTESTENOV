@@ -83,3 +83,5 @@
 @media (max-width: 640px) { .galeria-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (prefers-reduced-motion: reduce) { .galeria-grid img { transition: none; } .galeria-grid a:hover img { transform: none; } }
 .galeria-grid:has(> a:nth-child(4):last-child) { grid-template-columns: repeat(2, 1fr); }
+.galeria-grid:has(> a:nth-child(3):last-child) { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 640px) { .galeria-grid:has(> a:nth-child(3):last-child) { grid-template-columns: 1fr; } }
