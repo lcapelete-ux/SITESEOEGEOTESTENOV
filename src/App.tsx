@@ -112,9 +112,7 @@ export interface SiteImages {
   };
 }
 
-const HERO_IMAGE = `${import.meta.env.BASE_URL}hero-800.webp`;
-const HERO_IMAGE_480 = `${import.meta.env.BASE_URL}hero-480.webp`;
-const HERO_IMAGE_1200 = `${import.meta.env.BASE_URL}hero-1200.webp`;
+const HERO_IMAGE = `${import.meta.env.BASE_URL}hero-autoclave.jpg`;
 const CITRIODORA_IMAGE = `${import.meta.env.BASE_URL}citriodora-optimized.webp`;
 const CITRIODORA_IMAGE_480 = `${import.meta.env.BASE_URL}citriodora-480.webp`;
 
@@ -163,7 +161,6 @@ const responsiveImage = (source: string, widths: number[]) => {
   if (displaySource === HERO_IMAGE) {
     return {
       src: HERO_IMAGE,
-      srcSet: `${HERO_IMAGE_480} 480w, ${HERO_IMAGE} 800w, ${HERO_IMAGE_1200} 1200w`,
     };
   }
   return {
@@ -657,10 +654,10 @@ export default function App() {
               loading="eager"
               fetchPriority="high"
               alt=""
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover object-center [filter:saturate(.72)_brightness(.85)_contrast(1.08)]"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-black/60"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,28,18,.55)_0%,rgba(9,28,18,.65)_58%,rgba(9,28,18,.8)_100%)]"></div>
           </div>
         )}
 
