@@ -196,7 +196,7 @@ function homeStatic(base: string): string {
 <h1>Eucalipto Citriodora Tratado em Autoclave | Postes e Mourões em ${esc(B.city)} (SP)</h1>
 <p>A ${esc(B.name)}, em ${esc(B.city)} (SP), fornece postes, mourões, palanques e madeira serrada de eucalipto citriodora tratado em autoclave com CCA, conforme a ABNT NBR 9480, com 10 anos de garantia. Mais de 30 anos de mercado e 100% madeira de reflorestamento.</p>
 <h2>Por que eucalipto citriodora?</h2>
-<ul><li>Fibras retorcidas que aumentam a resistência estrutural</li><li>Maior resistência a trincas e rachaduras</li><li>Densidade alta e resistência mecânica superior, suporta altas cargas</li><li>Melhor absorção do preservativo CCA</li><li>Ideal para ambientes externos e rurais</li><li>Durabilidade superior a 20 a 30 anos em contato com o solo e laudos de tratamento aprovados pelo IPT</li></ul>
+<ul><li>Fibras retorcidas que aumentam a resistência estrutural</li><li>Maior resistência a trincas e rachaduras</li><li>Densidade alta e resistência mecânica superior, suporta altas cargas</li><li>Melhor absorção do preservativo CCA</li><li>Ideal para ambientes externos e rurais</li><li>Durabilidade superior a 20 a 30 anos em contato com o solo e laudo de retenção de CCA emitido pelo IPT (6,8 a 10,4 kg/m³ nas amostras ensaiadas)</li></ul>
 <h2>Produtos</h2><ul>${products}</ul>
 <h2>Perguntas frequentes</h2><p><a href="${base}perguntas-frequentes/">Veja as perguntas frequentes sobre eucalipto tratado</a>.</p>
 <h2>Contato e orçamento</h2>
@@ -303,7 +303,7 @@ function faqHtml(items: PageFaq[], title: string): string {
 function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string; noindex: boolean }): string {
   const { base } = ctx;
   const href = (slug: string) => `${base}${slug}/`;
-  const resolve = (html: string) => html.replace(/\{\{([a-z0-9/-]+)\}\}/g, (_, slug) => href(bySlug(slug).slug));
+  const resolve = (html: string) => html.replace(/\{\{BASE\}\}/g, base).replace(/\{\{([a-z0-9/-]+)\}\}/g, (_, slug) => href(bySlug(slug).slug));
   const isFaqPage = p.slug === 'perguntas-frequentes';
   const faq = isFaqPage ? allFaq() : (p.faq ?? []);
   const wa = whatsappLink(p.whatsappText);
@@ -428,7 +428,7 @@ function llms(): string {
 - Tratamento: autoclave pelo processo de célula cheia, pressão de até 18 kg/cm², preservativo CCA. Secagem de 30 a 60 dias antes e 20 dias de fixação depois.
 - Norma: ABNT NBR 9480. A medida de venda é o diâmetro do topo (ponta fina).
 - Garantia: 10 anos. Durabilidade superior a 20 a 30 anos em contato com o solo.
-- Laudos de tratamento aprovados pelo IPT (Instituto de Pesquisas Tecnológicas).
+- Laudo de retenção de CCA emitido pelo IPT (Instituto de Pesquisas Tecnológicas), Relatório de Ensaio nº 1 129 012-203, de 25/11/2026: retenção total de 6,8 a 10,4 kg/m³ nas 4 amostras ensaiadas (ABNT NBR 6232:2013). Laudo completo: ${SITE}laudos/laudo-retencao-cca-ipt-2026-11.pdf
 - Origem: 100% madeira de reflorestamento.
 
 ${section('Produtos', PAGES.filter((p) => p.slug.startsWith('produtos')).map((p) => p.slug))}
