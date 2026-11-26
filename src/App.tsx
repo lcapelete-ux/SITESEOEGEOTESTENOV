@@ -248,6 +248,14 @@ const PromotionModal = ({ promo, onClose }: { promo: NonNullable<SiteImages['pro
 export default function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+
+  // O cadeado das páginas estáticas leva para a home com #acesso-restrito: abre o login.
+  useEffect(() => {
+    if (window.location.hash === "#acesso-restrito") {
+      setIsLoginModalOpen(true);
+      history.replaceState(null, "", window.location.pathname + window.location.search);
+    }
+  }, []);
   const [isAdminLoggedIn, setIsAdminLoggedIn] = useState(false);
   const [userEmail, setUserEmail] = useState<string | undefined>(undefined);
   const [siteImages, setSiteImages] = useState<SiteImages>(initialImages);
