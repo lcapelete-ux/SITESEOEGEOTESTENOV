@@ -22,6 +22,7 @@ export interface SitePage {
   related: string[]; // slugs de páginas relacionadas
   nav: string; // nome curto usado em links e no rodapé
   updated?: string; // AAAA-MM-DD da última revisão real do conteúdo (sitemap e schema)
+  gallery?: { category: "rural" | "civil" | "paisagismo" | "ideias"; title: string; alt: string }; // fotos da galeria do Supabase
 }
 
 const wa = (text: string) => `https://wa.me/${B.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -91,6 +92,11 @@ ${comoMedimos}`,
     nav: "Mourões",
     parent: { name: "Produtos", slug: "produtos" },
     product: { name: "Mourão de eucalipto citriodora tratado 2,20 m", category: "Mourões" },
+    gallery: {
+      category: "rural",
+      title: "Fotos de obras rurais com nossa madeira",
+      alt: "Eucalipto citriodora tratado da Eucalyptus Tratados em construção rural",
+    },
     title: "Mourão de Eucalipto Tratado 2,20 m | Citriodora | Para Cerca",
     description:
       "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, racha menos e tem 10 anos de garantia.",
