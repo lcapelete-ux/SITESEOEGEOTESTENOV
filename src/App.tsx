@@ -654,10 +654,10 @@ export default function App() {
               loading="eager"
               fetchPriority="high"
               alt=""
-              className="w-full h-full object-cover object-center [filter:saturate(.72)_brightness(.85)_contrast(1.08)]"
+              className="w-full h-full object-cover object-center [filter:saturate(.85)_brightness(.98)_contrast(1.05)]"
               referrerPolicy="no-referrer"
             />
-            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,28,18,.55)_0%,rgba(9,28,18,.65)_58%,rgba(9,28,18,.8)_100%)]"></div>
+            <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(9,28,18,.44)_0%,rgba(9,28,18,.54)_58%,rgba(9,28,18,.68)_100%)]"></div>
           </div>
         )}
 
