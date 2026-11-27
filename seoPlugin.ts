@@ -423,7 +423,7 @@ ${p.slug === 'contato' ? '' : `<aside class="cta-box" aria-label="Orçamento">
 <footer class="bg-[#183e26] text-stone-300 py-12">
 <div class="max-w-6xl mx-auto px-4 grid gap-8 sm:grid-cols-2 lg:grid-cols-4 text-sm">
 <div><a href="${base}" aria-label="Eucalyptus Tratados, página inicial">${logoHtml}</a>
-<p class="mt-4">${esc(B.street)}<br>${esc(B.city)} - ${B.region}</p>
+<p class="mt-4"><a class="inline-block py-1.5 hover:text-white" href="${B.mapsUrl}" target="_blank" rel="noopener" aria-label="Ver ${esc(B.street)}, ${esc(B.city)}, no Google Maps">${esc(B.street)}<br>${esc(B.city)} - ${B.region}</a></p>
 <p class="mt-2 flex flex-col items-start"><a class="inline-block py-1.5 hover:text-white" href="https://wa.me/${B.whatsapp}">WhatsApp ${esc(B.whatsappDisplay)}</a><a class="inline-block py-1.5 hover:text-white" href="tel:${B.phone}">Tel. ${esc(B.phoneDisplay)}</a><a class="inline-block py-1.5 hover:text-white break-all" href="mailto:${B.email}">${esc(B.email)}</a><a class="inline-block py-1.5 text-[#A1C913] hover:text-white font-semibold" href="${B.reviewsUrl}" rel="noopener">★ Avaliações no Google</a></p></div>
 ${footer}
 </div>

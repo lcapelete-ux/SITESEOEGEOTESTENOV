@@ -1454,7 +1454,7 @@ export default function App() {
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-sm">
             <div>
               <Logo />
-              <p className="mt-4">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</p>
+              <p className="mt-4"><a className="inline-block py-1.5 hover:text-white" href="https://maps.app.goo.gl/6pimRc4R7dyMVghZ7" target="_blank" rel="noopener noreferrer" aria-label="Ver Estrada do Moinho Km 2.1, Laranjal Paulista, no Google Maps">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</a></p>
               <p className="mt-2 flex flex-col items-start">
                 <a className="inline-block py-1.5 hover:text-white" href="https://wa.me/5515996854945" target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); abrirWhatsApp("footer"); }}>WhatsApp (15) 99685-4945</a>
                 <a className="inline-block py-1.5 hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a>
