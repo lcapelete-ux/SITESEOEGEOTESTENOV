@@ -69,7 +69,7 @@ function sizeTable(categoryTitle: string): string {
   if (comprimentos.length >= 2) {
     const faixas = [...new Map(linhas.filter((l) => l.d1 !== null).map((l) => [`${l.d1}-${l.d2}`, l])).values()].sort((x, y) => x.d1! - y.d1!);
     const peso = new Map(linhas.filter((l) => l.d1 !== null && l.comp !== null).map((l) => [`${l.d1}-${l.d2}|${l.comp}`, l.kg]));
-    const cab = comprimentos.map((c) => `<th scope="col">${String(c).replace(".", ",").replace(/^(\d+),(\d)$/, "$1,$20")} m</th>`).join("");
+    const cab = comprimentos.map((c) => `<th scope="col">${String(c).replace(".", ",").replace(/^(\d+),(\d)$/, "$1,$20")}m</th>`).join("");
     const corpo = faixas
       .map((f) => `<tr><th scope="row">${f.d1} a ${f.d2} cm</th>${comprimentos.map((c) => { const k = peso.get(`${f.d1}-${f.d2}|${c}`); return `<td>${k ? nf(k) : "—"}</td>`; }).join("")}</tr>`)
       .join("");
