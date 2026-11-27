@@ -1,3 +1,4 @@
+import { abrirWhatsApp } from "./whatsapp";
 import {
   Leaf,
   ShieldCheck,
@@ -1253,7 +1254,7 @@ export default function App() {
               <div className="space-y-6 mb-10">
                 <a
                   href="https://wa.me/5515996854945"
-                  onClick={() => { if (typeof window !== "undefined" && (window as any).dataLayer) (window as any).dataLayer.push({ event: "whatsapp_click", source: "contact_section" }); }}
+                  onClick={(e) => { e.preventDefault(); if (typeof window !== "undefined" && (window as any).dataLayer) (window as any).dataLayer.push({ event: "whatsapp_click", source: "contact_section" }); abrirWhatsApp("contact_section"); }}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-4 group cursor-pointer"
@@ -1455,7 +1456,7 @@ export default function App() {
               <Logo />
               <p className="mt-4">Estrada do Moinho Km 2.1<br />Laranjal Paulista - SP</p>
               <p className="mt-2 flex flex-col items-start">
-                <a className="inline-block py-1.5 hover:text-white" href="https://wa.me/5515996854945">WhatsApp (15) 99685-4945</a>
+                <a className="inline-block py-1.5 hover:text-white" href="https://wa.me/5515996854945" target="_blank" rel="noopener noreferrer" onClick={(e) => { e.preventDefault(); abrirWhatsApp("footer"); }}>WhatsApp (15) 99685-4945</a>
                 <a className="inline-block py-1.5 hover:text-white" href="tel:+551532831253">Tel. (15) 3283-1253</a>
                 <a className="inline-block py-1.5 hover:text-white break-all" href="mailto:vendas@eucalyptustratados.com.br">vendas@eucalyptustratados.com.br</a>
                 <a className="inline-block py-1.5 text-[#A1C913] hover:text-white font-semibold" href="https://share.google/hQkp3RdFSdnMS4v39" target="_blank" rel="noopener noreferrer">★ Avaliações no Google</a>
@@ -1510,7 +1511,7 @@ export default function App() {
           if (typeof window !== 'undefined' && (window as any).dataLayer) {
             (window as any).dataLayer.push({ event: 'whatsapp_click', source: 'floating_button' });
           }
-          window.open('https://wa.me/5515996854945?text=Olá! Gostaria de solicitar um orçamento.', '_blank');
+          abrirWhatsApp('floating_button', 'Olá! Gostaria de solicitar um orçamento.');
         }}
         target="_blank"
         rel="noopener noreferrer"
