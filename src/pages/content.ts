@@ -403,6 +403,10 @@ ${comoMedimos}`,
       "A ABNT NBR 9480 é a norma brasileira para peças roliças de eucalipto preservado usadas em construções rurais. Na prática, ela define que postes e mourões são vendidos pelo diâmetro do topo, a ponta mais fina da peça. Seguimos a norma em todas as nossas medidas.",
     body: `<h2>Medição pelo topo</h2>
 <p>A medida de venda é o diâmetro do <strong>topo</strong>. Um poste "16 a 18" tem entre 16 e 18 cm na ponta fina. A base é naturalmente mais grossa e varia conforme o crescimento da árvore, por isso não serve como medida padrão.</p>
+<figure class="figura-medicao">
+<img src="{{BASE}}medicao-poste-nbr-9480.webp" alt="Ilustração de medição de um poste de eucalipto tratado de 6,00 m de comprimento: a ponta, que é a medida padrão de venda, tem 16 cm de diâmetro e a base, variável, cerca de 22 cm" width="1600" height="1078" loading="lazy" decoding="async">
+<figcaption>Ilustração de medição: a ponta (topo) é a medida padrão de venda (16 cm neste exemplo); a base é variável (cerca de 22 cm); o comprimento total é de 6,00 m.</figcaption>
+</figure>
 <h2>Por que isso protege o comprador</h2>
 <p>Medir pelo topo garante a espessura mínima da peça em todo o comprimento. Quem vende "pela base" pode entregar uma peça que afina demais na ponta e perde resistência justamente na parte de cima.</p>
 <h2>Como conferir na entrega</h2>
