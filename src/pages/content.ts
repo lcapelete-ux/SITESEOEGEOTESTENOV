@@ -22,6 +22,18 @@ export interface SitePage {
   related: string[]; // slugs de páginas relacionadas
   nav: string; // nome curto usado em links e no rodapé
   updated?: string; // AAAA-MM-DD da última revisão real do conteúdo (sitemap e schema)
+  video?: PageVideo; // vídeo da página (arquivos em public/videos)
+}
+
+export interface PageVideo {
+  file: string; // ex.: "videos/tratamento-em-autoclave.mp4" (dentro de public/)
+  poster: string; // imagem de capa (dentro de public/)
+  title: string;
+  description: string;
+  seconds: number; // duração
+  uploadDate: string; // AAAA-MM-DD
+  heading: string; // título da seção
+  chapters: { time: string; title: string; text: string }[]; // passo a passo em texto (acessibilidade e SEO)
 }
 
 const wa = (text: string) => `https://wa.me/${B.whatsapp}?text=${encodeURIComponent(text)}`;
@@ -311,6 +323,25 @@ ${comoMedimos}`,
   {
     slug: "tratamento-em-autoclave",
     nav: "Tratamento em autoclave",
+    video: {
+      file: "videos/tratamento-em-autoclave.mp4",
+      poster: "videos/tratamento-em-autoclave-capa.webp",
+      title: "Como o eucalipto é tratado em autoclave: simulação 3D e imagens reais",
+      description: "Animação 3D do tratamento do eucalipto em autoclave, em 7 passos (carregamento, vácuo inicial, entrada do preservativo, impregnação sob pressão, retorno da solução, vácuo final e fixação), seguida de imagens reais da saída da madeira da autoclave.",
+      seconds: 85,
+      uploadDate: "2026-11-27",
+      heading: "Veja o tratamento em autoclave em vídeo",
+      chapters: [
+        { time: "0:05", title: "01 Preparação e carregamento", text: "Madeira descascada e seca entra na autoclave." },
+        { time: "0:15", title: "02 Vácuo inicial", text: "O ar é retirado para facilitar a impregnação." },
+        { time: "0:25", title: "03 Entrada do preservativo", text: "A solução preenche o cilindro fechado." },
+        { time: "0:35", title: "04 Impregnação sob pressão", text: "O preservativo penetra nas regiões permeáveis da madeira. Na animação, o alburno é a região permeável e o cerne é o núcleo da madeira." },
+        { time: "0:45", title: "05 Retorno da solução", text: "Após aliviar a pressão, o excedente volta ao reservatório." },
+        { time: "0:55", title: "06 Vácuo final", text: "Redução do excesso de produto na superfície." },
+        { time: "1:00", title: "07 Fixação e controle", text: "A madeira segue para fixação do produto e avaliação." },
+        { time: "1:05", title: "Da simulação à vida real", text: "Imagens reais da saída da madeira da autoclave na Eucalyptus Tratados." },
+      ],
+    },
     title: "Tratamento de Eucalipto em Autoclave com CCA | Como Funciona",
     description:
       "Como é feito o tratamento do eucalipto em autoclave: secagem de 30 a 60 dias, vácuo, pressão de até 18 kg/cm² com CCA e 20 dias de fixação. 10 anos de garantia.",
