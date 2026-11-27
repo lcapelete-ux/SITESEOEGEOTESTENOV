@@ -94,7 +94,7 @@ ${NOTA_MEDIDAS}
 
 const porQueCitriodora = `<h2>Por que eucalipto citriodora?</h2>
 <ul>
-<li><strong>Racha menos:</strong> as fibras retorcidas do citriodora seguram a madeira e reduzem trincas e rachaduras.</li>
+<li><strong>Praticamente não racha:</strong> as fibras retorcidas do citriodora seguram a madeira. Ele nem precisa de chapinhas metálicas anti-rachadura.</li>
 <li><strong>Densidade alta:</strong> madeira mais pesada e resistente, que suporta cargas altas e impactos.</li>
 <li><strong>Absorve bem o tratamento:</strong> o preservativo CCA penetra no alburno e protege contra cupins, fungos e apodrecimento.</li>
 <li><strong>10 anos de garantia</strong> e durabilidade superior a 20 a 30 anos em contato com o solo.</li>
@@ -136,7 +136,7 @@ ${comoMedimos}`,
     product: { name: "Mourão de eucalipto citriodora tratado 2,20 m", category: "Mourões" },
     title: "Mourão de Eucalipto Tratado 2,20 m | Citriodora | Para Cerca",
     description:
-      "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, racha menos e tem 10 anos de garantia.",
+      "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, praticamente não racha e tem 10 anos de garantia.",
     h1: "Mourão de eucalipto tratado para cerca (2,20 m)",
     intro:
       "O mourão de eucalipto citriodora tratado tem 2,20 m e forma a linha da cerca rural. Vendemos do refugo (4 a 6 cm) ao super grosso (12 a 14 cm), além de lasca, todos tratados em autoclave com CCA e com 10 anos de garantia.",
@@ -158,7 +158,7 @@ ${comoMedimos}`,
       },
       {
         q: "Quanto dura um mourão de eucalipto tratado?",
-        a: "Em contato com o solo, o mourão de eucalipto citriodora tratado em autoclave tem durabilidade superior a 20 a 30 anos, e damos 10 anos de garantia. O citriodora racha menos e o tratamento com CCA protege contra cupins e apodrecimento, mesmo na parte enterrada.",
+        a: "Em contato com o solo, o mourão de eucalipto citriodora tratado em autoclave tem durabilidade superior a 20 a 30 anos, e damos 10 anos de garantia. O citriodora praticamente não racha e o tratamento com CCA protege contra cupins e apodrecimento, mesmo na parte enterrada.",
       },
     ],
     whatsappText: "Olá! Gostaria de um orçamento de mourão de eucalipto tratado 2,20 m.",
@@ -212,7 +212,7 @@ ${comoMedimos}`,
 <li><strong>4 m e 5 m:</strong> estruturas de curral mais altas, troncos, embarcadouros e esteios de galpão.</li>
 <li><strong>6 m e 7 m:</strong> esteios de galpões, barracões, coberturas e estruturas elevadas.</li>
 </ul>
-<p>Em currais o palanque recebe impacto direto dos animais. A densidade alta e a baixa tendência a rachar do citriodora garantem segurança e durabilidade. Para alturas acima de 7 m, veja os <a href="{{produtos/poste-de-eucalipto-tratado}}">postes de 8 m a 12 m</a>.</p>
+<p>Em currais o palanque recebe impacto direto dos animais. A densidade alta do citriodora e o fato de ele praticamente não rachar garantem segurança e durabilidade. Para alturas acima de 7 m, veja os <a href="{{produtos/poste-de-eucalipto-tratado}}">postes de 8 m a 12 m</a>.</p>
 ${porQueCitriodora}
 ${comoMedimos}`,
     whatsappText: "Olá! Gostaria de um orçamento de palanque de eucalipto tratado.",
@@ -231,7 +231,7 @@ ${comoMedimos}`,
       "Os postes de eucalipto citriodora tratado são indicados para galpões, barracões, coberturas, quiosques e estruturas que suportam cargas altas. Temos de 8 m a 12 m, com 10 a 32 cm de diâmetro no topo, tratados em autoclave com CCA conforme a ABNT NBR 9480.",
     body: `${sizeTable("Postes")}
 <h2>Por que citriodora em postes</h2>
-<p>Em peças longas, a tendência a rachar e a resistência mecânica fazem toda a diferença. O citriodora tem densidade alta e fibras retorcidas, por isso suporta cargas altas e racha menos que outras espécies de eucalipto. Um poste que racha perde resistência e deixa o tratamento exposto. O citriodora reduz esse risco.</p>
+<p>Em peças longas, a tendência a rachar e a resistência mecânica fazem toda a diferença. O citriodora tem densidade alta e fibras retorcidas, por isso suporta cargas altas e praticamente não racha, ao contrário de outras espécies de eucalipto. Um poste que racha perde resistência e deixa o tratamento exposto. Com o citriodora, esse risco é mínimo.</p>
 <h2>Aplicações</h2>
 <ul>
 <li>Esteios de galpões, barracões e armazéns</li>
@@ -314,13 +314,13 @@ ${comoMedimos}`,
     nav: "Eucalipto citriodora",
     title: "Eucalipto Citriodora: a Melhor Espécie para Madeira Tratada",
     description:
-      "Por que o eucalipto citriodora é a melhor espécie para postes e mourões: racha menos, tem densidade alta e suporta altas cargas. Compare com outros eucaliptos.",
+      "Por que o eucalipto citriodora é a melhor espécie para postes e mourões: praticamente não racha, tem densidade alta e suporta altas cargas. Compare com outros eucaliptos.",
     h1: "Eucalipto citriodora: por que é a melhor espécie para madeira tratada",
     intro:
-      "O eucalipto citriodora (Corymbia citriodora, antes chamado Eucalyptus citriodora) é a espécie de eucalipto que menos racha, tem densidade alta e suporta cargas altas. Por isso é a escolha mais segura para postes, mourões e estruturas expostas ao tempo, e é a única espécie que usamos nas peças roliças.",
+      "O eucalipto citriodora (Corymbia citriodora, antes chamado Eucalyptus citriodora) é a espécie de eucalipto que praticamente não racha, tem densidade alta e suporta cargas altas. Por isso é a escolha mais segura para postes, mourões e estruturas expostas ao tempo, e é a única espécie que usamos nas peças roliças.",
     body: `<h2>O que torna o citriodora diferente</h2>
 <ul>
-<li><strong>Fibras retorcidas:</strong> as fibras entrelaçadas seguram a madeira e reduzem trincas e rachaduras durante a secagem e o uso.</li>
+<li><strong>Fibras retorcidas:</strong> as fibras entrelaçadas seguram a madeira, que praticamente não racha durante a secagem e o uso.</li>
 <li><strong>Densidade alta:</strong> madeira pesada e dura, com resistência mecânica superior. Suporta cargas altas e impactos de animais.</li>
 <li><strong>Boa absorção do CCA:</strong> o alburno recebe bem o preservativo no tratamento em autoclave.</li>
 <li><strong>Uso externo:</strong> ideal para peças em contato com o solo e expostas a sol e chuva.</li>
@@ -329,12 +329,13 @@ ${comoMedimos}`,
 <div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Comparação geral entre espécies usadas em madeira tratada</caption>
 <thead><tr><th scope="col">Característica</th><th scope="col">Citriodora</th><th scope="col">Espécies de crescimento rápido (grandis, urograndis, saligna)</th></tr></thead>
 <tbody>
-<tr><td>Tendência a rachar</td><td>Baixa</td><td>Maior, principalmente em peças grossas. A cloeziana é a espécie que mais racha, na nossa experiência.</td></tr>
+<tr><td>Tendência a rachar</td><td>Praticamente não racha, nem precisa de chapas anti-rachadura</td><td>Maior, principalmente em peças grossas. A cloeziana é a espécie que mais racha, na nossa experiência.</td></tr>
 <tr><td>Densidade</td><td>Alta</td><td>Menor</td></tr>
 <tr><td>Resistência a cargas</td><td>Alta</td><td>Menor</td></tr>
 <tr><td>Indicação</td><td>Postes, esticadores, currais e estruturas</td><td>Usos mais leves</td></tr>
 </tbody></table></div>
-<p>Rachaduras não são só estética: uma trinca profunda expõe o cerne não tratado e abre caminho para fungos e cupins. Entre as espécies que comparamos (grandis, urograndis, saligna e cloeziana), a cloeziana é a que mais racha na nossa experiência. Escolher a espécie certa protege o investimento.</p>
+<p>Rachaduras não são só estética: uma trinca profunda expõe o cerne não tratado e abre caminho para fungos e cupins. Entre as espécies que comparamos (grandis, urograndis, saligna e cloeziana), a cloeziana é a que mais racha na nossa experiência. Na nossa experiência, ela também pesa cerca de 3 vezes menos que o citriodora e é bem mais fraca. Escolher a espécie certa protege o investimento.</p>
+<p>Muita gente tenta resolver o rachamento com chapinhas metálicas anti-rachadura. Na nossa experiência, elas não resolvem. O citriodora não precisa delas. Veja como isso aparece na prática em <a href="{{cerca-de-eucalipto-tratado}}">cerca de eucalipto tratado</a>.</p>
 <h2>Como reconhecer</h2>
 <p>A árvore de citriodora tem casca lisa, que se solta em placas, e folhas com aroma cítrico forte, de onde vem o nome. Na madeira tratada, a densidade se percebe no peso: uma peça de citriodora pesa mais que outra do mesmo tamanho de espécie mais leve.</p>
 <p>Veja também <a href="{{tratamento-em-autoclave}}">como funciona o tratamento em autoclave</a> e <a href="{{produtos}}">todos os produtos em citriodora</a>.</p>`,
@@ -345,7 +346,7 @@ ${comoMedimos}`,
       },
       {
         q: "Vale a pena pagar mais pelo citriodora?",
-        a: "Para peças que recebem carga ou ficam enterradas, sim. O citriodora racha menos e é mais resistente, então a cerca ou estrutura dura mais e precisa de menos troca de peças, o que compensa a diferença de preço.",
+        a: "Para peças que recebem carga ou ficam enterradas, sim. O citriodora praticamente não racha e é mais resistente, então a cerca ou estrutura dura mais e precisa de menos troca de peças, o que compensa a diferença de preço.",
       },
     ],
     whatsappText: "Olá! Gostaria de um orçamento de eucalipto citriodora tratado.",
@@ -480,8 +481,15 @@ ${comoMedimos}`,
 <h2>Como calcular a quantidade</h2>
 <p>Divida o comprimento da cerca pelo espaçamento escolhido para saber quantos mourões usar e some os esticadores dos cantos e porteiras. Exemplo: 300 m com espaçamento de 2,5 m pedem cerca de 120 mourões, além dos esticadores. Envie a metragem pelo WhatsApp e montamos a lista para você.</p>
 <h2>Por que citriodora na cerca</h2>
-<p>A cerca sofre com sol, chuva, umidade do solo e pressão dos animais. O citriodora racha menos e é mais resistente, e o tratamento em autoclave protege a parte enterrada contra cupins e apodrecimento. Resultado: menos mourão quebrado e menos retrabalho.</p>`,
+<p>A cerca sofre com sol, chuva, umidade do solo e pressão dos animais. O citriodora praticamente não racha e é mais resistente, e o tratamento em autoclave protege a parte enterrada contra cupins e apodrecimento. Resultado: menos mourão quebrado e menos retrabalho.</p>
+<h2>Sem chapinhas anti-rachadura</h2>
+<p>Em muitas espécies de eucalipto, o mourão racha na hora de fixar o arame com grampo, e é comum colocar chapinhas metálicas anti-rachadura. Na nossa experiência, elas não adiantam. O <a href="{{eucalipto-citriodora}}">citriodora</a> praticamente não racha e dispensa essas chapas: você grampeia o arame e a madeira segura.</p>
+<p>É o contrário da cloeziana, que na nossa experiência pesa cerca de 3 vezes menos que o citriodora, é mais fraca e, numa cerca, racha só de encostar o grampo.</p>`,
     faq: [
+      {
+        q: "Preciso de chapinha anti-rachadura no mourão?",
+        a: "Com o eucalipto citriodora, não. Ele praticamente não racha, então você grampeia o arame sem precisar de chapas metálicas. Em outras espécies, na nossa experiência, as chapinhas não resolvem o rachamento.",
+      },
       {
         q: "Quantos mourões preciso para 100 metros de cerca?",
         a: "Com espaçamento de 2,5 m, cerca de 40 mourões, mais os esticadores dos cantos e porteiras. Com espaçamento de 2 m, cerca de 50 mourões. Mande a metragem pelo WhatsApp e calculamos com você.",
@@ -519,7 +527,7 @@ ${comoMedimos}`,
 <h2>Cuidados</h2>
 <ul>
 <li>Dimensione a estrutura com um profissional para vãos e cargas maiores.</li>
-<li>Prefira citriodora em esteios e peças que recebem carga, pois racha menos.</li>
+<li>Prefira citriodora em esteios e peças que recebem carga, pois praticamente não racha.</li>
 <li>Peças que ficam enterradas devem ser tratadas em autoclave.</li>
 </ul>`,
     whatsappText: "Olá! Quero orçamento de eucalipto tratado para uma construção.",
@@ -547,7 +555,7 @@ ${comoMedimos}`,
     description:
       "Desde 1992 em Laranjal Paulista (SP), a Eucalyptus Tratados trabalha só com eucalipto citriodora tratado em autoclave, conforme a NBR 9480.",
     h1: "Sobre a Eucalyptus Tratados",
-    intro: `Desde ${B.foundingYear}, a Eucalyptus Tratados fornece eucalipto tratado em ${B.city} (SP). São mais de 30 anos com um foco claro: trabalhar só com eucalipto citriodora, a espécie que menos racha e mais resiste, tratada em autoclave conforme a ABNT NBR 9480.`,
+    intro: `Desde ${B.foundingYear}, a Eucalyptus Tratados fornece eucalipto tratado em ${B.city} (SP). São mais de 30 anos com um foco claro: trabalhar só com eucalipto citriodora, a espécie que praticamente não racha e mais resiste, tratada em autoclave conforme a ABNT NBR 9480.`,
     body: `<h2>Nossos compromissos</h2>
 <ul>
 <li><strong>Só citriodora</strong> nas peças roliças: postes, mourões, esticadores e palanques.</li>

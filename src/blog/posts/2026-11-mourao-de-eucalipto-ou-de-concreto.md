@@ -29,7 +29,7 @@ Para a maioria das cercas rurais, o mourão de eucalipto citriodora tratado em a
 
 ## O ponto de atenção: a qualidade do eucalipto
 
-A vantagem do eucalipto só existe se a madeira for boa e bem tratada. Espécies de crescimento rápido racham mais, e uma trinca profunda expõe o miolo não tratado. Por isso trabalhamos só com [eucalipto citriodora]({{eucalipto-citriodora}}), que racha menos e tem densidade alta, tratado em autoclave conforme a NBR 9480. Veja também [como saber se o eucalipto é tratado de verdade]({{blog/como-saber-se-o-eucalipto-e-tratado-em-autoclave}}).
+A vantagem do eucalipto só existe se a madeira for boa e bem tratada. Espécies de crescimento rápido racham mais, e uma trinca profunda expõe o miolo não tratado. Por isso trabalhamos só com [eucalipto citriodora]({{eucalipto-citriodora}}), que praticamente não racha e tem densidade alta, tratado em autoclave conforme a NBR 9480. Veja também [como saber se o eucalipto é tratado de verdade]({{blog/como-saber-se-o-eucalipto-e-tratado-em-autoclave}}).
 
 ## Perguntas frequentes
 
