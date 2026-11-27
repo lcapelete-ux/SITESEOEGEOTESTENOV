@@ -95,7 +95,7 @@ Seu navegador não reproduz vídeo. <a href="${base}${v.file}">Baixe o vídeo (M
 </video>
 <details class="video-passos"><summary>Passo a passo do vídeo, em texto</summary><ol>${v.chapters
     .map((c) => `<li><strong>${esc(c.title)}</strong> (${esc(c.time)}): ${esc(c.text)}</li>`)
-    .join('')}</ol></details></section>`;
+    .join('')}</ol></details>${v.youtubeId ? `\n<p class="nota"><a href="https://youtu.be/${v.youtubeId}" target="_blank" rel="noopener">Assistir também no YouTube</a></p>` : ''}</section>`;
 }
 
 function galleryHtml(p: SitePage): string {
@@ -305,6 +305,7 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
       description: p.video.description,
       thumbnailUrl: `${SITE}${p.video.poster}`,
       contentUrl: `${SITE}${p.video.file}`,
+      ...(p.video.youtubeId ? { embedUrl: `https://www.youtube.com/embed/${p.video.youtubeId}`, sameAs: `https://youtu.be/${p.video.youtubeId}` } : {}),
       uploadDate: p.video.uploadDate,
       duration: `PT${Math.floor(p.video.seconds / 60)}M${p.video.seconds % 60}S`,
       inLanguage: 'pt-BR',
