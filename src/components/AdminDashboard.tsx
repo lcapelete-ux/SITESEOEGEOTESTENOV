@@ -4,6 +4,7 @@ import { SiteImages, OperationType, handleSupabaseError, GalleryItem } from "../
 import { supabase, uploadImage, formatSupabaseError } from "../supabase";
 import imageCompression from "browser-image-compression";
 import toast from "react-hot-toast";
+import SellersPanel from "./SellersPanel";
 import Cropper from "react-easy-crop";
 import { getCroppedImg } from "../utils/cropImage";
 import { GALLERY_PAGES } from "../pages/galleryPages";
@@ -211,7 +212,7 @@ export default function AdminDashboard({
   refreshGallery,
   userEmail = "fazendajt@gmail.com"
 }: AdminDashboardProps) {
-  const [activeTab, setActiveTab] = useState<"principais" | "galeria" | "analytics" | "promo">("principais");
+  const [activeTab, setActiveTab] = useState<"principais" | "galeria" | "analytics" | "promo" | "vendedores">("principais");
 
   const [activeGalleryCategory, setActiveGalleryCategory] = useState<GalleryCategory>("rural");
   const [activeMainCategory, setActiveMainCategory] = useState<keyof Omit<SiteImages, "gallery" | "_allSiteContent">>("hero");
@@ -749,6 +750,17 @@ export default function AdminDashboard({
             <BarChart2 className="w-5 h-5" />
             Relatórios de Acesso
           </button>
+          <button
+            onClick={() => setActiveTab("vendedores")}
+            className={`w-full flex items-center gap-3 px-4 py-3 rounded-lg text-left transition-colors ${
+              activeTab === "vendedores"
+                ? "bg-brand-600 text-white"
+                : "text-stone-300 hover:bg-stone-800"
+            }`}
+          >
+            <Users className="w-5 h-5" />
+            Vendedores WhatsApp
+          </button>
         </nav>
         <div className="p-4 border-t border-stone-800">
           <button
@@ -766,9 +778,9 @@ export default function AdminDashboard({
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold text-stone-900">
-              {activeTab === "principais" ? "Imagens Principais do Site" : activeTab === "galeria" ? "Gestão da Galeria" : activeTab === "promo" ? "Promoção e Pop-up" : "Relatórios de Acessos"}
+              {activeTab === "principais" ? "Imagens Principais do Site" : activeTab === "galeria" ? "Gestão da Galeria" : activeTab === "promo" ? "Promoção e Pop-up" : activeTab === "vendedores" ? "Vendedores do WhatsApp" : "Relatórios de Acessos"}
             </h1>
-            {activeTab !== "analytics" && activeTab !== "promo" && (
+            {activeTab !== "analytics" && activeTab !== "promo" && activeTab !== "vendedores" && (
               <label className="bg-brand-500 text-white px-4 py-2 rounded-lg font-medium hover:bg-brand-600 transition-colors flex items-center gap-2 cursor-pointer disabled:opacity-50">
                 {loading?.includes("upload") || loading === "new-gallery" ? <Loader2 className="w-5 h-5 animate-spin" /> : <Plus className="w-5 h-5" />}
                 {loading?.includes("upload") || loading === "new-gallery" ? "Enviando..." : "Nova Imagem"}
@@ -782,6 +794,8 @@ export default function AdminDashboard({
               </label>
             )}
           </div>
+
+          {activeTab === "vendedores" && <SellersPanel />}
 
           {activeTab === "promo" && (
             <div className="space-y-8">
