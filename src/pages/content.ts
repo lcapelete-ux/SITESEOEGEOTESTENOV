@@ -26,11 +26,11 @@ export interface SitePage {
 }
 
 export interface PageVideo {
+  file: string; // ex.: "videos/tratamento-em-autoclave.mp4" (dentro de public/)
   poster: string; // imagem de capa (dentro de public/)
   title: string;
   description: string;
   seconds: number; // duração
-  youtubeId: string; // vídeo no YouTube (exibido com capa e carregado só ao clicar)
   uploadDate: string; // AAAA-MM-DD
   heading: string; // título da seção
   chapters: { time: string; title: string; text: string }[]; // passo a passo em texto (acessibilidade e SEO)
@@ -355,11 +355,11 @@ ${comoMedimos}`,
     slug: "tratamento-em-autoclave",
     nav: "Tratamento em autoclave",
     video: {
+      file: "videos/tratamento-em-autoclave.mp4",
       poster: "videos/tratamento-em-autoclave-capa.webp",
       title: "Como o eucalipto é tratado em autoclave: simulação 3D e imagens reais",
       description: "Animação 3D do tratamento do eucalipto em autoclave, em 7 passos (carregamento, vácuo inicial, entrada do preservativo, impregnação sob pressão, retorno da solução, vácuo final e fixação), seguida de imagens reais da saída da madeira da autoclave.",
       seconds: 85,
-      youtubeId: "ucfEW2QjivU",
       uploadDate: "2026-11-27",
       heading: "Veja o tratamento em autoclave em vídeo",
       chapters: [
