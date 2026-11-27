@@ -87,4 +87,6 @@ export const FAQ: { q: string; a: string }[] = [
     q: "Onde fica a Eucalyptus Tratados e como pedir um orçamento?",
     a: "Estamos na Estrada do Moinho Km 2.1, em Laranjal Paulista (SP), no mercado desde 1992. O orçamento é feito pelo WhatsApp (15) 99685-4945, pelo telefone (15) 3283-1253 ou pelo e-mail vendas@eucalyptustratados.com.br. Informe as medidas, a quantidade, a aplicação e a cidade de entrega.",
   },
+  // Pergunta aguardando resposta: aparece no site, mas fica fora do schema até ser respondida.
+  { q: "Quais as diferenças entre espécies de eucalipto?", a: "" },
 ];

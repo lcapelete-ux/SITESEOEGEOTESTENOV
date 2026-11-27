@@ -176,7 +176,7 @@ const faqLd = (url: string, items: PageFaq[]) => ({
   '@type': 'FAQPage',
   '@id': `${url}#faq`,
   inLanguage: 'pt-BR',
-  mainEntity: items.map((f) => ({
+  mainEntity: items.filter((f) => f.a).map((f) => ({
     '@type': 'Question',
     name: f.q,
     acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -276,7 +276,7 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
         : {}),
       ...(p.slug === 'perguntas-frequentes'
         ? {
-            mainEntity: faq.map((f) => ({
+            mainEntity: faq.filter((f) => f.a).map((f) => ({
               '@type': 'Question',
               name: f.q,
               acceptedAnswer: { '@type': 'Answer', text: f.a },
@@ -323,7 +323,7 @@ const logoHtml = `<span class="flex items-center gap-3">
 function faqHtml(items: PageFaq[], title: string): string {
   if (!items.length) return '';
   return `<section class="faq" aria-labelledby="faq-titulo"><h2 id="faq-titulo">${esc(title)}</h2>${items
-    .map((f) => `<details><summary><h3>${esc(f.q)}</h3></summary><p>${esc(f.a)}</p></details>`)
+    .map((f) => `<details><summary><h3>${esc(f.q)}</h3></summary><p>${f.a ? esc(f.a) : '<em>Resposta em breve. Se precisar agora, chame a gente no WhatsApp.</em>'}</p></details>`)
     .join('')}</section>`;
 }
 
