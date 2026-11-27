@@ -88,18 +88,14 @@ const galleryOf = (p: SitePage) => PAGE_PHOTOS[galleryPageOf(p)?.key ?? ''] ?? [
 function videoHtml(p: SitePage, base: string): string {
   const v = p.video;
   if (!v) return '';
-  const link = `https://youtu.be/${v.youtubeId}`;
   return `<section class="video-sec" aria-labelledby="video-titulo"><h2 id="video-titulo">${esc(v.heading)}</h2>
-<div class="yt" data-id="${v.youtubeId}" data-title="${esc(v.title)}">
-<a href="${link}" target="_blank" rel="noopener" aria-label="Assistir no YouTube: ${esc(v.title)}">
-<img src="${base}${v.poster}" alt="" width="1280" height="720" loading="lazy" decoding="async">
-<span class="yt-play" aria-hidden="true"><svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.2 34 .2 34 .2S12.8.2 7.5 1.7a8.5 8.5 0 0 0-6 6C0 13 0 24 0 24s0 11 1.5 16.3a8.5 8.5 0 0 0 6 6C12.8 47.8 34 47.8 34 47.8s21.2 0 26.5-1.5a8.5 8.5 0 0 0 6-6C68 35 68 24 68 24s0-11-1.5-16.3z" fill="#c4302b"/><path d="M45 24 27 14v20z" fill="#fff"/></svg></span>
-</a></div>
-<script>document.querySelectorAll('.yt').forEach(function(d){d.querySelector('a').addEventListener('click',function(e){e.preventDefault();var f=document.createElement('iframe');f.src='https://www.youtube-nocookie.com/embed/'+d.dataset.id+'?autoplay=1&rel=0';f.title=d.dataset.title;f.allow='accelerometer; autoplay; encrypted-media; picture-in-picture';f.allowFullscreen=true;f.referrerPolicy='strict-origin-when-cross-origin';d.replaceChildren(f);});});</script>
+<video controls preload="none" playsinline poster="${base}${v.poster}" width="1280" height="720" aria-label="${esc(v.title)}">
+<source src="${base}${v.file}" type="video/mp4">
+Seu navegador não reproduz vídeo. <a href="${base}${v.file}">Baixe o vídeo (MP4)</a>.
+</video>
 <details class="video-passos"><summary>Passo a passo do vídeo, em texto</summary><ol>${v.chapters
     .map((c) => `<li><strong>${esc(c.title)}</strong> (${esc(c.time)}): ${esc(c.text)}</li>`)
-    .join('')}</ol></details>
-<p class="nota"><a href="${link}" target="_blank" rel="noopener">Assistir no YouTube</a></p></section>`;
+    .join('')}</ol></details>${v.youtubeId ? `\n<p class="nota"><a href="https://youtu.be/${v.youtubeId}" target="_blank" rel="noopener">Assistir também no YouTube</a></p>` : ''}</section>`;
 }
 
 function galleryHtml(p: SitePage): string {
@@ -308,8 +304,8 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
       name: p.video.title,
       description: p.video.description,
       thumbnailUrl: `${SITE}${p.video.poster}`,
-      embedUrl: `https://www.youtube.com/embed/${p.video.youtubeId}`,
-      url: `https://youtu.be/${p.video.youtubeId}`,
+      contentUrl: `${SITE}${p.video.file}`,
+      ...(p.video.youtubeId ? { embedUrl: `https://www.youtube.com/embed/${p.video.youtubeId}`, sameAs: `https://youtu.be/${p.video.youtubeId}` } : {}),
       uploadDate: p.video.uploadDate,
       duration: `PT${Math.floor(p.video.seconds / 60)}M${p.video.seconds % 60}S`,
       inLanguage: 'pt-BR',
@@ -435,7 +431,7 @@ ${footer}
 function sitemap(): string {
   const urls = [
     `<url><loc>${SITE}</loc><lastmod>${[CONTENT_UPDATED, ...POSTS.map((x) => x.article.date)].sort().pop()}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
-    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${p.video ? `<video:video><video:thumbnail_loc>${SITE}${p.video.poster}</video:thumbnail_loc><video:title>${esc(p.video.title)}</video:title><video:description>${esc(p.video.description)}</video:description><video:player_loc>https://www.youtube.com/embed/${p.video.youtubeId}</video:player_loc><video:duration>${p.video.seconds}</video:duration></video:video>` : ''}${galleryOf(p).map((img) => `<image:image><image:loc>${esc(img.url)}</image:loc></image:image>`).join('')}</url>`),
+    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${p.video ? `<video:video><video:thumbnail_loc>${SITE}${p.video.poster}</video:thumbnail_loc><video:title>${esc(p.video.title)}</video:title><video:description>${esc(p.video.description)}</video:description><video:content_loc>${SITE}${p.video.file}</video:content_loc><video:duration>${p.video.seconds}</video:duration></video:video>` : ''}${galleryOf(p).map((img) => `<image:image><image:loc>${esc(img.url)}</image:loc></image:image>`).join('')}</url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
