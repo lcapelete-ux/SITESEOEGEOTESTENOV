@@ -41,24 +41,53 @@ export const whatsappLink = wa;
 
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-/** Tabela de medidas a partir do catálogo. */
+/** Tabela de medidas a partir do catálogo, sem repetir nome nem comprimento. */
+const PRODUTO_PALAVRAS = /^(mourão|mourao|esticador|palanque|poste|vara)\s+/i;
+const nf = (n: number) => n.toLocaleString("pt-BR");
+const NOTA_MEDIDAS = `<p class="nota">O diâmetro é medido na ponta (topo) da peça, conforme a ABNT NBR 9480; a base é naturalmente mais grossa. Pesos aproximados em kg por peça, variam com a umidade da madeira. "—" indica medida não fabricada.</p>`;
+
 function sizeTable(categoryTitle: string): string {
   const cat = catalogData.find((c: CatalogCategory) => c.title.startsWith(categoryTitle));
   if (!cat) throw new Error(`Categoria não encontrada no catálogo: ${categoryTitle}`);
-  const rows = cat.items
-    .map((item) => {
-      const m = item.name.match(/^(.*?)\s*\((\d+)\s*a\s*(\d+)\)\s*(.*)$/);
-      const name = m ? `${m[1]}${m[4] ? " " + m[4] : ""}`.trim() : item.name;
-      const diam = m ? `${m[2]} a ${m[3]} cm` : "—";
-      const weight = /^0(\.0)?kg$/i.test(item.weight) ? "—" : item.weight.replace("kg", " kg").replace(".", ",");
-      return `<tr><td>${esc(name)}</td><td>${diam}</td><td>${weight}</td></tr>`;
-    })
+  type Linha = { tipo: string; comp: number | null; d1: number | null; d2: number | null; kg: number | null };
+  const linhas: Linha[] = cat.items.map((item) => {
+    const m = item.name.match(/^(.*?)\s*(?:(\d+(?:,\d+)?)\s*m?\s*)?\((\d+)\s*a\s*(\d+)\)\s*$/);
+    const semDiametro = item.name.match(/^(.*?)\s*(\d+(?:,\d+)?)\s*m\s*$/);
+    const kgNum = parseFloat(item.weight.replace("kg", ""));
+    const kg = kgNum > 0 ? kgNum : null;
+    if (m) {
+      const tipo = m[1].replace(PRODUTO_PALAVRAS, "").replace(/\b[A-ZÁÂÃÉÊÍÓÔÕÚÇ]{2,}\b/g, (w) => w[0] + w.slice(1).toLowerCase()).trim();
+      return { tipo, comp: m[2] ? parseFloat(m[2].replace(",", ".")) : null, d1: +m[3], d2: +m[4], kg };
+    }
+    return { tipo: (semDiametro ? semDiametro[1] : item.name).trim(), comp: null, d1: null, d2: null, kg };
+  });
+  const comprimentos = [...new Set(linhas.map((l) => l.comp).filter((c): c is number => c !== null))].sort((x, y) => x - y);
+  const caption = `${esc(cat.title)}: diâmetro no topo e peso aproximado`;
+  const wrap = (t: string) => `<div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)">${t}</div>`;
+
+  // Vários comprimentos: matriz diâmetro (linhas) x comprimento (colunas), peso no cruzamento.
+  if (comprimentos.length >= 2) {
+    const faixas = [...new Map(linhas.filter((l) => l.d1 !== null).map((l) => [`${l.d1}-${l.d2}`, l])).values()].sort((x, y) => x.d1! - y.d1!);
+    const peso = new Map(linhas.filter((l) => l.d1 !== null && l.comp !== null).map((l) => [`${l.d1}-${l.d2}|${l.comp}`, l.kg]));
+    const cab = comprimentos.map((c) => `<th scope="col">${String(c).replace(".", ",").replace(/^(\d+),(\d)$/, "$1,$20")} m</th>`).join("");
+    const corpo = faixas
+      .map((f) => `<tr><th scope="row">${f.d1} a ${f.d2} cm</th>${comprimentos.map((c) => { const k = peso.get(`${f.d1}-${f.d2}|${c}`); return `<td>${k ? nf(k) : "—"}</td>`; }).join("")}</tr>`)
+      .join("");
+    return `${wrap(`<table class="tabela-matriz"><caption>${caption} (kg), por comprimento</caption>
+<thead><tr><th scope="col">Diâmetro no topo</th>${cab}</tr></thead>
+<tbody>${corpo}</tbody></table>`)}
+${NOTA_MEDIDAS}`;
+  }
+
+  // Um comprimento só: tabela curta com diâmetro, tipo e peso.
+  const ordenadas = [...linhas].sort((x, y) => (x.d1 ?? 1e9) - (y.d1 ?? 1e9));
+  const corpo = ordenadas
+    .map((l) => `<tr><th scope="row">${l.d1 !== null ? `${l.d1} a ${l.d2} cm` : "—"}</th><td>${esc(l.tipo)}</td><td>${l.kg ? nf(l.kg) : "—"}</td></tr>`)
     .join("");
-  return `<div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table>
-<caption>${esc(cat.title)}: medidas disponíveis</caption>
-<thead><tr><th scope="col">Peça</th><th scope="col">Diâmetro no topo</th><th scope="col">Peso aproximado</th></tr></thead>
-<tbody>${rows}</tbody></table></div>
-<p class="nota">O diâmetro é medido na ponta (topo) da peça, conforme a ABNT NBR 9480; a base é naturalmente mais grossa. Pesos aproximados, variam com a umidade da madeira.</p>`;
+  return `${wrap(`<table><caption>${caption} (kg)</caption>
+<thead><tr><th scope="col">Diâmetro no topo</th><th scope="col">Tipo</th><th scope="col">Peso (kg)</th></tr></thead>
+<tbody>${corpo}</tbody></table>`)}
+${NOTA_MEDIDAS}`;
 }
 
 const porQueCitriodora = `<h2>Por que eucalipto citriodora?</h2>
