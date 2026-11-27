@@ -31,7 +31,6 @@ export interface PageVideo {
   title: string;
   description: string;
   seconds: number; // duração
-  youtubeId?: string; // mesmo vídeo no YouTube (link e schema)
   uploadDate: string; // AAAA-MM-DD
   heading: string; // título da seção
   chapters: { time: string; title: string; text: string }[]; // passo a passo em texto (acessibilidade e SEO)
@@ -361,7 +360,6 @@ ${comoMedimos}`,
       title: "Como o eucalipto é tratado em autoclave: simulação 3D e imagens reais",
       description: "Animação 3D do tratamento do eucalipto em autoclave, em 7 passos (carregamento, vácuo inicial, entrada do preservativo, impregnação sob pressão, retorno da solução, vácuo final e fixação), seguida de imagens reais da saída da madeira da autoclave.",
       seconds: 85,
-      youtubeId: "ucfEW2QjivU",
       uploadDate: "2026-11-27",
       heading: "Veja o tratamento em autoclave em vídeo",
       chapters: [
