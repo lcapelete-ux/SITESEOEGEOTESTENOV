@@ -85,6 +85,19 @@ async function loadGalleries(): Promise<void> {
 const galleryPageOf = (p: SitePage) => GALLERY_PAGES.find((g) => g.slug === p.slug);
 const galleryOf = (p: SitePage) => PAGE_PHOTOS[galleryPageOf(p)?.key ?? ''] ?? [];
 
+function videoHtml(p: SitePage, base: string): string {
+  const v = p.video;
+  if (!v) return '';
+  return `<section class="video-sec" aria-labelledby="video-titulo"><h2 id="video-titulo">${esc(v.heading)}</h2>
+<video controls preload="none" playsinline poster="${base}${v.poster}" width="1280" height="720" aria-label="${esc(v.title)}">
+<source src="${base}${v.file}" type="video/mp4">
+Seu navegador não reproduz vídeo. <a href="${base}${v.file}">Baixe o vídeo (MP4)</a>.
+</video>
+<details class="video-passos"><summary>Passo a passo do vídeo, em texto</summary><ol>${v.chapters
+    .map((c) => `<li><strong>${esc(c.title)}</strong> (${esc(c.time)}): ${esc(c.text)}</li>`)
+    .join('')}</ol></details></section>`;
+}
+
 function galleryHtml(p: SitePage): string {
   const imgs = galleryOf(p);
   if (!imgs.length) return '';
@@ -284,6 +297,20 @@ function pageLd(p: SitePage, faq: PageFaq[]): string {
   if (p.slug === 'sobre-a-empresa' || p.slug === 'contato' || articleOf(p) || p.slug === 'blog') graph.push(businessLd());
   // Product sem offers/review/aggregateRating é marcado como inválido no Search Console;
   // os produtos ficam descritos no OfferCatalog da empresa. Reativar quando houver preço público.
+  if (p.video) {
+    graph.push({
+      '@type': 'VideoObject',
+      '@id': `${url}#video`,
+      name: p.video.title,
+      description: p.video.description,
+      thumbnailUrl: `${SITE}${p.video.poster}`,
+      contentUrl: `${SITE}${p.video.file}`,
+      uploadDate: p.video.uploadDate,
+      duration: `PT${Math.floor(p.video.seconds / 60)}M${p.video.seconds % 60}S`,
+      inLanguage: 'pt-BR',
+      publisher: { '@id': BUSINESS_ID },
+    });
+  }
   if (faq.length && p.slug !== 'perguntas-frequentes') graph.push(faqLd(url, faq));
   return ld({ '@context': 'https://schema.org', '@graph': graph });
 }
@@ -373,6 +400,7 @@ ${ctx.gtm}
 <h1>${esc(p.h1)}</h1>${articleOf(p) ? `\n<p class="nota">${esc(articleOf(p)!.category)} · <time datetime="${articleOf(p)!.date}">${dataPorExtenso(articleOf(p)!.date)}</time>${articleOf(p)!.updated ? ` · atualizado em <time datetime="${articleOf(p)!.updated}">${dataPorExtenso(articleOf(p)!.updated!)}</time>` : ''} · ${articleOf(p)!.readMinutes} min de leitura</p>` : ''}
 <p class="lead">${esc(p.intro)}</p>
 <p><a class="cta" href="${wa}">Pedir orçamento pelo WhatsApp</a></p>
+${videoHtml(p, base)}
 ${galleryHtml(p)}
 ${resolve(p.body)}
 ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
@@ -403,10 +431,10 @@ ${footer}
 function sitemap(): string {
   const urls = [
     `<url><loc>${SITE}</loc><lastmod>${[CONTENT_UPDATED, ...POSTS.map((x) => x.article.date)].sort().pop()}</lastmod><image:image><image:loc>${SITE}og-image.jpg</image:loc></image:image><image:image><image:loc>${SITE}citriodora-optimized.webp</image:loc></image:image></url>`,
-    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${galleryOf(p).map((img) => `<image:image><image:loc>${esc(img.url)}</image:loc></image:image>`).join('')}</url>`),
+    ...ALL.map((p) => `<url><loc>${pageUrl(p.slug)}</loc><lastmod>${modifiedOf(p as Partial<BlogPost>)}</lastmod>${p.video ? `<video:video><video:thumbnail_loc>${SITE}${p.video.poster}</video:thumbnail_loc><video:title>${esc(p.video.title)}</video:title><video:description>${esc(p.video.description)}</video:description><video:content_loc>${SITE}${p.video.file}</video:content_loc><video:duration>${p.video.seconds}</video:duration></video:video>` : ''}${galleryOf(p).map((img) => `<image:image><image:loc>${esc(img.url)}</image:loc></image:image>`).join('')}</url>`),
   ];
   return `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
 ${urls.join('\n')}
 </urlset>
 `;

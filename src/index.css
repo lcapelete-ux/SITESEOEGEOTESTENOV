@@ -94,3 +94,10 @@
 .laudo-paginas a { display: block; border: 1px solid var(--color-stone-300); border-radius: .5rem; overflow: hidden; background: #fff; }
 .laudo-paginas img { display: block; width: 100%; height: auto; }
 @media (max-width: 520px) { .laudo-paginas { grid-template-columns: 1fr; } }
+
+.video-sec { margin: 1.5rem 0 2rem; }
+.video-sec h2 { margin-top: 0; }
+.video-sec video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; border-radius: .75rem; background: #0d1f13; }
+.video-passos { margin-top: .75rem; border: 1px solid var(--color-stone-200); border-radius: .75rem; padding: .75rem 1rem; background: var(--color-stone-50); }
+.video-passos summary { cursor: pointer; font-weight: 600; color: var(--color-stone-900); }
+.video-passos ol { margin: .75rem 0 0; }
