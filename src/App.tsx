@@ -805,7 +805,7 @@ export default function App() {
               <ul className="space-y-4">
                 {[
                   "Fibras retorcidas que aumentam a resistência estrutural",
-                  "Maior resistência a trincas e rachaduras",
+                  "Praticamente não racha, sem precisar de chapas anti-rachadura",
                   "Melhor absorção do tratamento preservativo CCA",
                   "Descascamento manual que preserva a beleza natural da madeira, sem marcas de máquinas",
                   "Durabilidade superior a 20-30 anos, em contato com solo (Padrão ABNT, NBR 9480)",
@@ -836,7 +836,7 @@ export default function App() {
                 ))}
               </ul>
               <p className="mt-8">
-                <a href={pageHref("eucalipto-citriodora")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Por que o citriodora racha menos que outros eucaliptos <ChevronRight className="w-4 h-4" /></a>
+                <a href={pageHref("eucalipto-citriodora")} className="inline-flex items-center gap-1 font-bold text-[#183e26] underline underline-offset-4 hover:text-brand-700">Por que o citriodora praticamente não racha <ChevronRight className="w-4 h-4" /></a>
               </p>
             </motion.div>
 

@@ -57,7 +57,7 @@ export const PRODUCTS: { name: string; description: string }[] = [
 export const FAQ: { q: string; a: string }[] = [
   {
     q: "Por que o eucalipto citriodora é a melhor espécie para madeira tratada?",
-    a: "O Eucalyptus citriodora tem fibras retorcidas e densidade alta, o que dá mais resistência mecânica e muito menos trincas e rachaduras do que outras espécies de eucalipto. Ele também absorve bem o preservativo CCA no tratamento em autoclave, o que o torna ideal para postes, mourões e estruturas expostas ao tempo e a cargas altas.",
+    a: "O Eucalyptus citriodora tem fibras retorcidas e densidade alta, o que dá mais resistência mecânica e faz com que ele praticamente não rache, ao contrário de outras espécies de eucalipto, e nem precise de chapas metálicas anti-rachadura. Ele também absorve bem o preservativo CCA no tratamento em autoclave, o que o torna ideal para postes, mourões e estruturas expostas ao tempo e a cargas altas.",
   },
   {
     q: "Quanto tempo dura o eucalipto tratado da Eucalyptus Tratados?",
