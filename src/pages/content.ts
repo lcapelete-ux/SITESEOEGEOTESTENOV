@@ -76,7 +76,8 @@ function sizeTable(categoryTitle: string): string {
     return `${wrap(`<table class="tabela-matriz"><caption>${caption} (kg), por comprimento</caption>
 <thead><tr><th scope="col">Diâmetro no topo</th>${cab}</tr></thead>
 <tbody>${corpo}</tbody></table>`)}
-${NOTA_MEDIDAS}`;
+${NOTA_MEDIDAS}
+<p>Não achou a medida que procura? <a href="{{WA}}">Fale com a gente pelo WhatsApp</a>.</p>`;
   }
 
   // Um comprimento só: tabela curta com diâmetro, tipo e peso.
@@ -87,7 +88,8 @@ ${NOTA_MEDIDAS}`;
   return `${wrap(`<table><caption>${caption} (kg)</caption>
 <thead><tr><th scope="col">Diâmetro no topo</th><th scope="col">Tipo</th><th scope="col">Peso (kg)</th></tr></thead>
 <tbody>${corpo}</tbody></table>`)}
-${NOTA_MEDIDAS}`;
+${NOTA_MEDIDAS}
+<p>Não achou a medida que procura? <a href="{{WA}}">Fale com a gente pelo WhatsApp</a>.</p>`;
 }
 
 const porQueCitriodora = `<h2>Por que eucalipto citriodora?</h2>
