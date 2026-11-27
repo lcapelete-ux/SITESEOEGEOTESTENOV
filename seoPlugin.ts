@@ -330,7 +330,7 @@ function faqHtml(items: PageFaq[], title: string): string {
 function renderPage(p: SitePage, ctx: { base: string; css: string[]; gtm: string; noindex: boolean }): string {
   const { base } = ctx;
   const href = (slug: string) => `${base}${slug}/`;
-  const resolve = (html: string) => html.replace(/\{\{BASE\}\}/g, base).replace(/\{\{([a-z0-9/-]+)\}\}/g, (_, slug) => href(bySlug(slug).slug));
+  const resolve = (html: string) => html.replace(/\{\{BASE\}\}/g, base).replace(/\{\{WA\}\}/g, wa).replace(/\{\{([a-z0-9/-]+)\}\}/g, (_, slug) => href(bySlug(slug).slug));
   const isFaqPage = p.slug === 'perguntas-frequentes';
   const faq = isFaqPage ? allFaq() : (p.faq ?? []);
   const wa = whatsappLink(p.whatsappText);
@@ -399,16 +399,15 @@ ${ctx.gtm}
 <article class="conteudo">
 <h1>${esc(p.h1)}</h1>${articleOf(p) ? `\n<p class="nota">${esc(articleOf(p)!.category)} · <time datetime="${articleOf(p)!.date}">${dataPorExtenso(articleOf(p)!.date)}</time>${articleOf(p)!.updated ? ` · atualizado em <time datetime="${articleOf(p)!.updated}">${dataPorExtenso(articleOf(p)!.updated!)}</time>` : ''} · ${articleOf(p)!.readMinutes} min de leitura</p>` : ''}
 <p class="lead">${esc(p.intro)}</p>
-<p><a class="cta" href="${wa}">Pedir orçamento pelo WhatsApp</a></p>
 ${videoHtml(p, base)}
 ${galleryHtml(p)}
 ${resolve(p.body)}
 ${faqHtml(faq, isFaqPage ? 'Todas as perguntas' : 'Perguntas frequentes')}
-<aside class="cta-box" aria-label="Orçamento">
+${p.slug === 'contato' ? '' : `<aside class="cta-box" aria-label="Orçamento">
 <h2>Peça seu orçamento</h2>
-<p>Atendimento rápido pelo WhatsApp <strong>${esc(B.whatsappDisplay)}</strong>. Informe peças, medidas, quantidade e cidade de entrega.</p>
-<p><a class="cta" href="${wa}">Chamar no WhatsApp</a></p>
-</aside>
+<p>Informe a peça, a medida (comprimento e diâmetro), a quantidade e a cidade de entrega. Atendimento pelo WhatsApp <strong>${esc(B.whatsappDisplay)}</strong>.</p>
+<p><a class="cta" href="${wa}">Pedir orçamento</a></p>
+</aside>`}
 </article>
 <section aria-labelledby="rel-titulo" class="mt-12"><h2 id="rel-titulo" class="text-2xl font-bold text-stone-900 mb-4">Veja também</h2><div class="cards">${related}</div></section>
 </main>
