@@ -581,12 +581,16 @@ ${comoMedimos}`,
     h1: "Contato e orçamento",
     intro:
       "O jeito mais rápido de pedir orçamento é pelo WhatsApp. Informe as peças, medidas, quantidade, aplicação e a cidade de entrega para receber o valor com frete.",
-    body: `<div class="cards">
-<a class="card" href="${wa("Olá! Gostaria de um orçamento de eucalipto tratado.")}"><h2>WhatsApp</h2><p>${B.whatsappDisplay}</p></a>
-<a class="card" href="tel:${B.phone}"><h2>Telefone</h2><p>${B.phoneDisplay}</p></a>
-<a class="card" href="mailto:${B.email}"><h2>E-mail</h2><p>${B.email}</p></a>
-<a class="card" href="${B.mapsUrl}"><h2>Endereço</h2><p>${B.street}, ${B.city} - ${B.region}</p></a>
-<a class="card" href="${B.reviewsUrl}"><h2>Avaliações no Google</h2><p>Veja o que nossos clientes dizem e deixe a sua avaliação.</p></a>
+    body: `<div class="cards contact-cards">
+<a class="card contact-card contact-card--primary" href="${wa("Olá! Gostaria de um orçamento de eucalipto tratado.")}">
+  <span class="contact-card__eyebrow">Atendimento rápido</span><h2>Converse com a gente pelo WhatsApp</h2>
+  <p>Envie as medidas e a cidade de entrega. Ajudamos você a escolher as peças certas.</p>
+  <span class="contact-card__footer"><strong>${B.whatsappDisplay}</strong><span>Iniciar conversa <span aria-hidden="true">↗</span></span></span>
+</a>
+<a class="card contact-card" href="tel:${B.phone}"><span class="contact-card__eyebrow">Ligação</span><h2>Telefone</h2><p>${B.phoneDisplay}</p><span class="contact-card__action">Ligar agora <span aria-hidden="true">↗</span></span></a>
+<a class="card contact-card" href="mailto:${B.email}"><span class="contact-card__eyebrow">Mensagem</span><h2>E-mail</h2><p>${B.email}</p><span class="contact-card__action">Enviar e-mail <span aria-hidden="true">↗</span></span></a>
+<a class="card contact-card" href="${B.mapsUrl}" target="_blank" rel="noopener noreferrer"><span class="contact-card__eyebrow">Venha nos visitar</span><h2>Endereço</h2><p>${B.street}<br>${B.city} - ${B.region}</p><span class="contact-card__action">Abrir no mapa <span aria-hidden="true">↗</span></span></a>
+<a class="card contact-card" href="${B.reviewsUrl}" target="_blank" rel="noopener noreferrer"><span class="contact-card__eyebrow">Opinião dos clientes</span><h2>Avaliações no Google</h2><p>Veja as avaliações e conte como foi sua experiência.</p><span class="contact-card__action">Ver avaliações <span aria-hidden="true">↗</span></span></a>
 </div>
 <h2>O que informar no orçamento</h2>
 <ul>
