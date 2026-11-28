@@ -8,10 +8,10 @@ export const FOOTER_GROUPS: { title: string; links: NavLink[] }[] = [
   {
     title: "Produtos",
     links: [
-      { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourões 2,20 m" },
-      { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticadores 2,50 m" },
-      { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanques 3,20 a 7 m" },
-      { slug: "produtos/poste-de-eucalipto-tratado", name: "Postes 8 a 12 m" },
+      { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourões 2,20m" },
+      { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticadores 2,50m" },
+      { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanques 3,20 a 7m" },
+      { slug: "produtos/poste-de-eucalipto-tratado", name: "Postes 8 a 12m" },
       { slug: "produtos/vara-de-eucalipto-tratado", name: "Varas" },
       { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada" },
       { slug: "produtos", name: "Todos os produtos" },
