@@ -45,11 +45,11 @@ type HomeProduct = {
 };
 
 const HOME_PRODUCTS: HomeProduct[] = [
-  { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20 m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca.", photoIndex: 15 },
-  { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50 m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame.", photoIndex: 16 },
-  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20 m a 7 m · 10 a 32 cm", desc: "Pergolados, currais, mangueiras, porteiras e construção civil.", photoIndex: 6 },
-  { slug: "produtos/poste-de-eucalipto-tratado", name: "Pilares de eucalipto tratado", size: "8 m a 12 m · 10 a 32 cm", desc: "Força e versatilidade na construção civil: coberturas e estruturas de grande carga.", photoIndex: 2 },
-  { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50 m a 8 m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo.", photoIndex: 4 },
+  { slug: "produtos/mourao-de-eucalipto-tratado", name: "Mourão de eucalipto tratado", size: "2,20m · 4 a 14 cm", desc: "A linha da cerca rural, do refugo ao super grosso, além de lasca.", photoIndex: 15 },
+  { slug: "produtos/esticador-de-eucalipto-tratado", name: "Esticador de eucalipto tratado", size: "2,50m · 10 a 32 cm", desc: "Para cantos, porteiras e pontos de tensão do arame.", photoIndex: 16 },
+  { slug: "produtos/palanque-de-eucalipto-tratado", name: "Palanque de eucalipto tratado", size: "3,20m a 7m · 10 a 32 cm", desc: "Pergolados, currais, mangueiras, porteiras e construção civil.", photoIndex: 6 },
+  { slug: "produtos/poste-de-eucalipto-tratado", name: "Pilares de eucalipto tratado", size: "8m a 12m · 10 a 32 cm", desc: "Força e versatilidade na construção civil: coberturas e estruturas de grande carga.", photoIndex: 2 },
+  { slug: "produtos/vara-de-eucalipto-tratado", name: "Vara de eucalipto tratado", size: "2,50m a 8m · 4 a 12 cm", desc: "Pergolados, cercas leves, paisagismo e cultivo.", photoIndex: 4 },
   { slug: "produtos/madeira-serrada-de-eucalipto", name: "Madeira serrada de eucalipto", size: "Caibro, viga, prancha e ripa", desc: "Decks de eucalipto, pinus e ipê tratado de alta qualidade, além de madeiras serradas como tábuas, esteiras de bambu e vigotas tratadas.", photoIndex: 3, photoUrl: DECK_IMAGE, photoAlt: "Deck de madeira tratada com guarda-corpo em área rural" },
 ];
 

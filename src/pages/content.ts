@@ -117,11 +117,11 @@ export const PAGES: SitePage[] = [
     intro:
       "Todas as peças são de eucalipto citriodora, tratadas em autoclave com CCA conforme a ABNT NBR 9480 e com 10 anos de garantia. Escolha a linha abaixo para ver medidas, pesos e aplicações.",
     body: `<div class="cards">
-<a class="card" href="{{produtos/mourao-de-eucalipto-tratado}}"><h2>Mourões (2,20 m)</h2><p>Para a linha da cerca rural. Do refugo ao super grosso, além de lasca.</p></a>
-<a class="card" href="{{produtos/esticador-de-eucalipto-tratado}}"><h2>Esticadores (2,50 m)</h2><p>Para cantos, porteiras e pontos de tensão do arame. De 10 a 32 cm.</p></a>
-<a class="card" href="{{produtos/palanque-de-eucalipto-tratado}}"><h2>Palanques (3,20 m a 7 m)</h2><p>Currais, mangueiras, porteiras, galpões e estruturas rurais.</p></a>
-<a class="card" href="{{produtos/poste-de-eucalipto-tratado}}"><h2>Postes (8 m a 12 m)</h2><p>Galpões, coberturas, barracões e estruturas de grande carga.</p></a>
-<a class="card" href="{{produtos/vara-de-eucalipto-tratado}}"><h2>Varas (2,50 m a 8 m)</h2><p>Peças finas para pergolados, cercas leves, paisagismo e cultivo.</p></a>
+<a class="card" href="{{produtos/mourao-de-eucalipto-tratado}}"><h2>Mourões (2,20m)</h2><p>Para a linha da cerca rural. Do refugo ao super grosso, além de lasca.</p></a>
+<a class="card" href="{{produtos/esticador-de-eucalipto-tratado}}"><h2>Esticadores (2,50m)</h2><p>Para cantos, porteiras e pontos de tensão do arame. De 10 a 32 cm.</p></a>
+<a class="card" href="{{produtos/palanque-de-eucalipto-tratado}}"><h2>Palanques (3,20m a 7m)</h2><p>Currais, mangueiras, porteiras, galpões e estruturas rurais.</p></a>
+<a class="card" href="{{produtos/poste-de-eucalipto-tratado}}"><h2>Postes (8m a 12m)</h2><p>Galpões, coberturas, barracões e estruturas de grande carga.</p></a>
+<a class="card" href="{{produtos/vara-de-eucalipto-tratado}}"><h2>Varas (2,50m a 8m)</h2><p>Peças finas para pergolados, cercas leves, paisagismo e cultivo.</p></a>
 <a class="card" href="{{produtos/madeira-serrada-de-eucalipto}}"><h2>Madeira serrada e outros</h2><p>Caibro, viga, prancha, ripa, ripão, balancim e esteira de bambu.</p></a>
 </div>
 ${porQueCitriodora}
@@ -133,13 +133,13 @@ ${comoMedimos}`,
     slug: "produtos/mourao-de-eucalipto-tratado",
     nav: "Mourões",
     parent: { name: "Produtos", slug: "produtos" },
-    product: { name: "Mourão de eucalipto citriodora tratado 2,20 m", category: "Mourões" },
-    title: "Mourão de Eucalipto Tratado 2,20 m | Citriodora | Para Cerca",
+    product: { name: "Mourão de eucalipto citriodora tratado 2,20m", category: "Mourões" },
+    title: "Mourão de Eucalipto Tratado 2,20m | Citriodora | Para Cerca",
     description:
-      "Mourão de eucalipto citriodora tratado em autoclave, 2,20 m, do fino ao super grosso. Ideal para cerca rural, praticamente não racha e tem 10 anos de garantia.",
-    h1: "Mourão de eucalipto tratado para cerca (2,20 m)",
+      "Mourão de eucalipto citriodora tratado em autoclave, 2,20m, do fino ao super grosso. Ideal para cerca rural, praticamente não racha e tem 10 anos de garantia.",
+    h1: "Mourão de eucalipto tratado para cerca (2,20m)",
     intro:
-      "O mourão de eucalipto citriodora tratado tem 2,20 m e forma a linha da cerca rural. Vendemos do refugo (4 a 6 cm) ao super grosso (12 a 14 cm), além de lasca, todos tratados em autoclave com CCA e com 10 anos de garantia.",
+      "O mourão de eucalipto citriodora tratado tem 2,20m e forma a linha da cerca rural. Vendemos do refugo (4 a 6 cm) ao super grosso (12 a 14 cm), além de lasca, todos tratados em autoclave com CCA e com 10 anos de garantia.",
     body: `${sizeTable("Mourões")}
 <h2>Qual mourão escolher?</h2>
 <ul>
@@ -148,33 +148,33 @@ ${comoMedimos}`,
 <li><strong>Refugo (4 a 6 cm):</strong> uso leve, como hortas, jardins e cercas provisórias.</li>
 <li><strong>Lasca:</strong> peça rachada, econômica para cercas de menor exigência.</li>
 </ul>
-<p>Nos cantos, porteiras e trechos de tensão use <a href="{{produtos/esticador-de-eucalipto-tratado}}">esticadores de 2,50 m</a>. Veja o passo a passo em <a href="{{cerca-de-eucalipto-tratado}}">como montar cerca de eucalipto tratado</a>.</p>
+<p>Nos cantos, porteiras e trechos de tensão use <a href="{{produtos/esticador-de-eucalipto-tratado}}">esticadores de 2,50m</a>. Veja o passo a passo em <a href="{{cerca-de-eucalipto-tratado}}">como montar cerca de eucalipto tratado</a>.</p>
 ${porQueCitriodora}
 ${comoMedimos}`,
     faq: [
       {
         q: "Qual o tamanho do mourão de eucalipto para cerca?",
-        a: "O mourão padrão tem 2,20 m de comprimento. Cerca de 50 a 60 cm ficam enterrados e o restante forma a altura da cerca. O diâmetro varia de 4 a 14 cm no topo, conforme a aplicação.",
+        a: "O mourão padrão tem 2,20m de comprimento. Cerca de 50 a 60 cm ficam enterrados e o restante forma a altura da cerca. O diâmetro varia de 4 a 14 cm no topo, conforme a aplicação.",
       },
       {
         q: "Quanto dura um mourão de eucalipto tratado?",
         a: "Em contato com o solo, o mourão de eucalipto citriodora tratado em autoclave tem durabilidade superior a 20 a 30 anos, e damos 10 anos de garantia. O citriodora praticamente não racha e o tratamento com CCA protege contra cupins e apodrecimento, mesmo na parte enterrada.",
       },
     ],
-    whatsappText: "Olá! Gostaria de um orçamento de mourão de eucalipto tratado 2,20 m.",
+    whatsappText: "Olá! Gostaria de um orçamento de mourão de eucalipto tratado 2,20m.",
     related: ["produtos/esticador-de-eucalipto-tratado", "cerca-de-eucalipto-tratado", "norma-nbr-9480"],
   },
   {
     slug: "produtos/esticador-de-eucalipto-tratado",
     nav: "Esticadores",
     parent: { name: "Produtos", slug: "produtos" },
-    product: { name: "Esticador de eucalipto citriodora tratado 2,50 m", category: "Esticadores" },
-    title: "Esticador de Eucalipto Tratado 2,50 m | Citriodora",
+    product: { name: "Esticador de eucalipto citriodora tratado 2,50m", category: "Esticadores" },
+    title: "Esticador de Eucalipto Tratado 2,50m | Citriodora",
     description:
-      "Esticador de eucalipto citriodora tratado em autoclave, 2,50 m, de 10 a 32 cm de diâmetro. Para cantos, porteiras e tensão de cercas. 10 anos de garantia.",
-    h1: "Esticador de eucalipto tratado (2,50 m)",
+      "Esticador de eucalipto citriodora tratado em autoclave, 2,50m, de 10 a 32 cm de diâmetro. Para cantos, porteiras e tensão de cercas. 10 anos de garantia.",
+    h1: "Esticador de eucalipto tratado (2,50m)",
     intro:
-      "O esticador é a peça mais grossa da cerca: tem 2,50 m e fica nos cantos, porteiras e pontos onde o arame é tensionado. Trabalhamos de 10 a 32 cm de diâmetro no topo, em eucalipto citriodora tratado em autoclave.",
+      "O esticador é a peça mais grossa da cerca: tem 2,50m e fica nos cantos, porteiras e pontos onde o arame é tensionado. Trabalhamos de 10 a 32 cm de diâmetro no topo, em eucalipto citriodora tratado em autoclave.",
     body: `${sizeTable("Esticadores")}
 <h2>Onde usar esticador</h2>
 <ul>
@@ -182,37 +182,37 @@ ${comoMedimos}`,
 <li><strong>Porteiras e colchetes:</strong> sustentam o peso e o movimento do portão.</li>
 <li><strong>Trechos retos longos:</strong> pontos intermediários para esticar o arame.</li>
 </ul>
-<p>Por ser o ponto que mais sofre esforço, o esticador precisa de madeira densa que não rache. É exatamente onde o citriodora faz diferença. Para a linha da cerca, use <a href="{{produtos/mourao-de-eucalipto-tratado}}">mourões de 2,20 m</a>.</p>
+<p>Por ser o ponto que mais sofre esforço, o esticador precisa de madeira densa que não rache. É exatamente onde o citriodora faz diferença. Para a linha da cerca, use <a href="{{produtos/mourao-de-eucalipto-tratado}}">mourões de 2,20m</a>.</p>
 ${porQueCitriodora}
 ${comoMedimos}`,
     faq: [
       {
         q: "Qual a diferença entre mourão e esticador?",
-        a: "O mourão tem 2,20 m e forma a linha da cerca. O esticador tem 2,50 m, é mais grosso e fica nos cantos, porteiras e pontos de tensão, onde o arame faz mais força.",
+        a: "O mourão tem 2,20m e forma a linha da cerca. O esticador tem 2,50m, é mais grosso e fica nos cantos, porteiras e pontos de tensão, onde o arame faz mais força.",
       },
     ],
-    whatsappText: "Olá! Gostaria de um orçamento de esticador de eucalipto tratado 2,50 m.",
+    whatsappText: "Olá! Gostaria de um orçamento de esticador de eucalipto tratado 2,50m.",
     related: ["produtos/mourao-de-eucalipto-tratado", "cerca-de-eucalipto-tratado", "produtos/palanque-de-eucalipto-tratado"],
   },
   {
     slug: "produtos/palanque-de-eucalipto-tratado",
     nav: "Palanques",
     parent: { name: "Produtos", slug: "produtos" },
-    product: { name: "Palanque de eucalipto citriodora tratado 3,20 m a 7 m", category: "Palanques" },
-    title: "Palanque de Eucalipto Tratado 3,20 m a 7 m | Citriodora",
+    product: { name: "Palanque de eucalipto citriodora tratado 3,20m a 7m", category: "Palanques" },
+    title: "Palanque de Eucalipto Tratado 3,20m a 7m | Citriodora",
     description:
-      "Palanques de eucalipto citriodora tratado de 3,20 m, 4 m, 5 m, 6 m e 7 m, com 10 a 32 cm de diâmetro. Para currais, porteiras e galpões. 10 anos de garantia.",
-    h1: "Palanque de eucalipto tratado (3,20 m a 7 m)",
+      "Palanques de eucalipto citriodora tratado de 3,20m, 4m, 5m, 6m e 7m, com 10 a 32 cm de diâmetro. Para currais, porteiras e galpões. 10 anos de garantia.",
+    h1: "Palanque de eucalipto tratado (3,20m a 7m)",
     intro:
-      "Palanques são peças longas e grossas para estruturas rurais: currais, mangueiras, embarcadouros, porteiras e galpões. Temos de 3,20 m a 7 m, com 10 a 32 cm de diâmetro no topo, em eucalipto citriodora tratado em autoclave.",
+      "Palanques são peças longas e grossas para estruturas rurais: currais, mangueiras, embarcadouros, porteiras e galpões. Temos de 3,20m a 7m, com 10 a 32 cm de diâmetro no topo, em eucalipto citriodora tratado em autoclave.",
     body: `${sizeTable("Palanques")}
 <h2>Aplicações do palanque</h2>
 <ul>
-<li><strong>3,20 m:</strong> currais, mangueiras e porteiras de grande porte.</li>
-<li><strong>4 m e 5 m:</strong> estruturas de curral mais altas, troncos, embarcadouros e esteios de galpão.</li>
-<li><strong>6 m e 7 m:</strong> esteios de galpões, barracões, coberturas e estruturas elevadas.</li>
+<li><strong>3,20m:</strong> currais, mangueiras e porteiras de grande porte.</li>
+<li><strong>4m e 5m:</strong> estruturas de curral mais altas, troncos, embarcadouros e esteios de galpão.</li>
+<li><strong>6m e 7m:</strong> esteios de galpões, barracões, coberturas e estruturas elevadas.</li>
 </ul>
-<p>Em currais o palanque recebe impacto direto dos animais. A densidade alta do citriodora e o fato de ele praticamente não rachar garantem segurança e durabilidade. Para alturas acima de 7 m, veja os <a href="{{produtos/poste-de-eucalipto-tratado}}">postes de 8 m a 12 m</a>.</p>
+<p>Em currais o palanque recebe impacto direto dos animais. A densidade alta do citriodora e o fato de ele praticamente não rachar garantem segurança e durabilidade. Para alturas acima de 7m, veja os <a href="{{produtos/poste-de-eucalipto-tratado}}">postes de 8m a 12m</a>.</p>
 ${porQueCitriodora}
 ${comoMedimos}`,
     whatsappText: "Olá! Gostaria de um orçamento de palanque de eucalipto tratado.",
@@ -222,13 +222,13 @@ ${comoMedimos}`,
     slug: "produtos/poste-de-eucalipto-tratado",
     nav: "Postes",
     parent: { name: "Produtos", slug: "produtos" },
-    product: { name: "Poste de eucalipto citriodora tratado 8 m a 12 m", category: "Postes" },
-    title: "Poste de Eucalipto Tratado 8 a 12 m | Citriodora | NBR 9480",
+    product: { name: "Poste de eucalipto citriodora tratado 8m a 12m", category: "Postes" },
+    title: "Poste de Eucalipto Tratado 8 a 12m | Citriodora | NBR 9480",
     description:
-      "Postes de eucalipto citriodora tratado em autoclave de 8, 9, 10, 11 e 12 m, até 32 cm de diâmetro. Para galpões e coberturas. NBR 9480, 10 anos de garantia.",
-    h1: "Poste de eucalipto tratado (8 m a 12 m)",
+      "Postes de eucalipto citriodora tratado em autoclave de 8, 9, 10, 11 e 12m, até 32 cm de diâmetro. Para galpões e coberturas. NBR 9480, 10 anos de garantia.",
+    h1: "Poste de eucalipto tratado (8m a 12m)",
     intro:
-      "Os postes de eucalipto citriodora tratado são indicados para galpões, barracões, coberturas, quiosques e estruturas que suportam cargas altas. Temos de 8 m a 12 m, com 10 a 32 cm de diâmetro no topo, tratados em autoclave com CCA conforme a ABNT NBR 9480.",
+      "Os postes de eucalipto citriodora tratado são indicados para galpões, barracões, coberturas, quiosques e estruturas que suportam cargas altas. Temos de 8m a 12m, com 10 a 32 cm de diâmetro no topo, tratados em autoclave com CCA conforme a ABNT NBR 9480.",
     body: `${sizeTable("Postes")}
 <h2>Por que citriodora em postes</h2>
 <p>Em peças longas, a tendência a rachar e a resistência mecânica fazem toda a diferença. O citriodora tem densidade alta e fibras retorcidas, por isso suporta cargas altas e praticamente não racha, ao contrário de outras espécies de eucalipto. Um poste que racha perde resistência e deixa o tratamento exposto. Com o citriodora, esse risco é mínimo.</p>
@@ -244,7 +244,7 @@ ${comoMedimos}`,
     faq: [
       {
         q: "Qual o tamanho de poste de eucalipto para galpão?",
-        a: "Depende da altura do pé-direito e da carga do telhado. Lembre que parte do poste fica enterrada. Para galpões rurais é comum usar postes de 6 m a 8 m; estruturas mais altas pedem postes de 9 m a 12 m. Envie o projeto pelo WhatsApp e indicamos a medida certa.",
+        a: "Depende da altura do pé-direito e da carga do telhado. Lembre que parte do poste fica enterrada. Para galpões rurais é comum usar postes de 6m a 8m; estruturas mais altas pedem postes de 9m a 12m. Envie o projeto pelo WhatsApp e indicamos a medida certa.",
       },
     ],
     whatsappText: "Olá! Gostaria de um orçamento de poste de eucalipto tratado.",
@@ -254,13 +254,13 @@ ${comoMedimos}`,
     slug: "produtos/vara-de-eucalipto-tratado",
     nav: "Varas",
     parent: { name: "Produtos", slug: "produtos" },
-    product: { name: "Vara de eucalipto tratado 2,50 m a 8 m", category: "Varas" },
-    title: "Vara de Eucalipto Tratado 2,50 m a 8 m | Pergolado e Cerca",
+    product: { name: "Vara de eucalipto tratado 2,50m a 8m", category: "Varas" },
+    title: "Vara de Eucalipto Tratado 2,50m a 8m | Pergolado e Cerca",
     description:
-      "Varas de eucalipto tratado em autoclave de 2,50 m a 8 m, com 4 a 12 cm de diâmetro. Para pergolados, cercas leves, paisagismo e cultivo. Peça orçamento.",
-    h1: "Vara de eucalipto tratado (2,50 m a 8 m)",
+      "Varas de eucalipto tratado em autoclave de 2,50m a 8m, com 4 a 12 cm de diâmetro. Para pergolados, cercas leves, paisagismo e cultivo. Peça orçamento.",
+    h1: "Vara de eucalipto tratado (2,50m a 8m)",
     intro:
-      "Varas são peças roliças finas, de 4 a 12 cm de diâmetro no topo e 2,50 m a 8 m de comprimento. São tratadas em autoclave e ideais para pergolados, cercas leves, caramanchões, paisagismo e apoio de cultivos.",
+      "Varas são peças roliças finas, de 4 a 12 cm de diâmetro no topo e 2,50m a 8m de comprimento. São tratadas em autoclave e ideais para pergolados, cercas leves, caramanchões, paisagismo e apoio de cultivos.",
     body: `${sizeTable("Varas")}
 <h2>Aplicações das varas</h2>
 <ul>
@@ -284,7 +284,7 @@ ${comoMedimos}`,
       "Madeira serrada de eucalipto tratado: caibro 5x5, caibrão 5x7, terça 5x11, viga 5x15, pranchas 5x20 a 5x30 e ripa. Também ripão, balancim e esteira de bambu.",
     h1: "Madeira serrada de eucalipto tratado",
     intro:
-      "Além das peças roliças, fornecemos madeira serrada de eucalipto tratado vendida por metro: caibro, caibrão, terça, viga, pranchas e ripa. Também temos ripão, balancim de 1,20 m, birira e esteira de bambu tratado.",
+      "Além das peças roliças, fornecemos madeira serrada de eucalipto tratado vendida por metro: caibro, caibrão, terça, viga, pranchas e ripa. Também temos ripão, balancim de 1,20m, birira e esteira de bambu tratado.",
     body: `<h2>Madeira serrada (vendida por metro)</h2>
 <div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Bitolas disponíveis (em cm)</caption>
 <thead><tr><th scope="col">Peça</th><th scope="col">Bitola</th><th scope="col">Uso comum</th></tr></thead>
@@ -300,9 +300,9 @@ ${comoMedimos}`,
 <ul>
 <li><strong>Ripão citriodora 3 x 15</strong> (por metro): fechamentos, cercas e acabamentos.</li>
 <li><strong>Ripão 3 x 10, 3 x 12, 3 x 15 e 3 x 20</strong> (por metro).</li>
-<li><strong>Balancim 1,20 m:</strong> espaçador de arame em cercas.</li>
+<li><strong>Balancim 1,20m:</strong> espaçador de arame em cercas.</li>
 <li><strong>Birira (2 a 4 cm)</strong> por metro linear.</li>
-<li><strong>Esteira de bambu tratado 1 x 1,50 m:</strong> sombreamento e paisagismo.</li>
+<li><strong>Esteira de bambu tratado 1 x 1,50m:</strong> sombreamento e paisagismo.</li>
 </ul>`,
     whatsappText: "Olá! Gostaria de um orçamento de madeira serrada de eucalipto tratado.",
     related: ["construcoes-com-eucalipto-tratado", "produtos/vara-de-eucalipto-tratado", "produtos"],
@@ -436,8 +436,8 @@ ${comoMedimos}`,
     body: `<h2>Medição pelo topo</h2>
 <p>A medida de venda é o diâmetro do <strong>topo</strong>. Um poste "16 a 18" tem entre 16 e 18 cm na ponta fina. A base é naturalmente mais grossa e varia conforme o crescimento da árvore, por isso não serve como medida padrão.</p>
 <figure class="figura-medicao">
-<img src="{{BASE}}medicao-poste-nbr-9480.webp" alt="Ilustração de medição de um poste de eucalipto tratado de 6,00 m de comprimento: a ponta, que é a medida padrão de venda, tem 16 cm de diâmetro e a base, variável, cerca de 22 cm" width="1600" height="1078" loading="lazy" decoding="async">
-<figcaption>Ilustração de medição: a ponta (topo) é a medida padrão de venda (16 cm neste exemplo); a base é variável (cerca de 22 cm); o comprimento total é de 6,00 m.</figcaption>
+<img src="{{BASE}}medicao-poste-nbr-9480.webp" alt="Ilustração de medição de um poste de eucalipto tratado de 6,00m de comprimento: a ponta, que é a medida padrão de venda, tem 16 cm de diâmetro e a base, variável, cerca de 22 cm" width="1600" height="1078" loading="lazy" decoding="async">
+<figcaption>Ilustração de medição: a ponta (topo) é a medida padrão de venda (16 cm neste exemplo); a base é variável (cerca de 22 cm); o comprimento total é de 6,00m.</figcaption>
 </figure>
 <h2>Por que isso protege o comprador</h2>
 <p>Medir pelo topo garante a espessura mínima da peça em todo o comprimento. Quem vende "pela base" pode entregar uma peça que afina demais na ponta e perde resistência justamente na parte de cima.</p>
@@ -463,23 +463,23 @@ ${comoMedimos}`,
       "Guia de cerca de eucalipto tratado: mourões, esticadores e balancins, espaçamento, profundidade e por que o citriodora dura mais. Orçamento pelo WhatsApp.",
     h1: "Cerca de eucalipto tratado: como fazer e quais peças usar",
     intro:
-      "Uma cerca rural de eucalipto tratado usa três peças: mourões de 2,20 m na linha, esticadores de 2,50 m nos cantos e porteiras, e balancins entre os mourões para manter o arame alinhado. Com eucalipto citriodora tratado em autoclave, a cerca dura muito mais e exige menos manutenção.",
+      "Uma cerca rural de eucalipto tratado usa três peças: mourões de 2,20m na linha, esticadores de 2,50m nos cantos e porteiras, e balancins entre os mourões para manter o arame alinhado. Com eucalipto citriodora tratado em autoclave, a cerca dura muito mais e exige menos manutenção.",
     body: `<h2>Peças da cerca</h2>
 <ul>
-<li><a href="{{produtos/mourao-de-eucalipto-tratado}}"><strong>Mourões (2,20 m)</strong></a>: formam a linha da cerca.</li>
-<li><a href="{{produtos/esticador-de-eucalipto-tratado}}"><strong>Esticadores (2,50 m)</strong></a>: nos cantos, porteiras e pontos de tensão.</li>
-<li><a href="{{produtos/madeira-serrada-de-eucalipto}}"><strong>Balancins (1,20 m)</strong></a>: espaçadores de arame entre os mourões.</li>
+<li><a href="{{produtos/mourao-de-eucalipto-tratado}}"><strong>Mourões (2,20m)</strong></a>: formam a linha da cerca.</li>
+<li><a href="{{produtos/esticador-de-eucalipto-tratado}}"><strong>Esticadores (2,50m)</strong></a>: nos cantos, porteiras e pontos de tensão.</li>
+<li><a href="{{produtos/madeira-serrada-de-eucalipto}}"><strong>Balancins (1,20m)</strong></a>: espaçadores de arame entre os mourões.</li>
 <li><a href="{{produtos/palanque-de-eucalipto-tratado}}"><strong>Palanques</strong></a>: para currais e cercas de manejo.</li>
 </ul>
 <h2>Dicas de montagem</h2>
 <ul>
 <li><strong>Profundidade:</strong> enterre cerca de 50 a 60 cm do mourão e um pouco mais do esticador, compactando bem a terra.</li>
-<li><strong>Espaçamento:</strong> o espaçamento entre mourões costuma ficar entre 2 e 3 m, conforme o tipo de arame e de animal. Com balancins, dá para aumentar o vão.</li>
+<li><strong>Espaçamento:</strong> o espaçamento entre mourões costuma ficar entre 2 e 3m, conforme o tipo de arame e de animal. Com balancins, dá para aumentar o vão.</li>
 <li><strong>Cantos firmes:</strong> o esticador do canto segura toda a tensão. Use peça grossa e escore bem.</li>
 <li><strong>Ponta para cima:</strong> instale a base (mais grossa) enterrada e o topo para cima.</li>
 </ul>
 <h2>Como calcular a quantidade</h2>
-<p>Divida o comprimento da cerca pelo espaçamento escolhido para saber quantos mourões usar e some os esticadores dos cantos e porteiras. Exemplo: 300 m com espaçamento de 2,5 m pedem cerca de 120 mourões, além dos esticadores. Envie a metragem pelo WhatsApp e montamos a lista para você.</p>
+<p>Divida o comprimento da cerca pelo espaçamento escolhido para saber quantos mourões usar e some os esticadores dos cantos e porteiras. Exemplo: 300m com espaçamento de 2,5m pedem cerca de 120 mourões, além dos esticadores. Envie a metragem pelo WhatsApp e montamos a lista para você.</p>
 <h2>Por que citriodora na cerca</h2>
 <p>A cerca sofre com sol, chuva, umidade do solo e pressão dos animais. O citriodora praticamente não racha e é mais resistente, e o tratamento em autoclave protege a parte enterrada contra cupins e apodrecimento. Resultado: menos mourão quebrado e menos retrabalho.</p>
 <h2>Sem chapinhas anti-rachadura</h2>
@@ -492,7 +492,7 @@ ${comoMedimos}`,
       },
       {
         q: "Quantos mourões preciso para 100 metros de cerca?",
-        a: "Com espaçamento de 2,5 m, cerca de 40 mourões, mais os esticadores dos cantos e porteiras. Com espaçamento de 2 m, cerca de 50 mourões. Mande a metragem pelo WhatsApp e calculamos com você.",
+        a: "Com espaçamento de 2,5m, cerca de 40 mourões, mais os esticadores dos cantos e porteiras. Com espaçamento de 2m, cerca de 50 mourões. Mande a metragem pelo WhatsApp e calculamos com você.",
       },
     ],
     whatsappText: "Olá! Quero fazer uma cerca de eucalipto tratado. Pode me ajudar com o orçamento?",
@@ -511,8 +511,8 @@ ${comoMedimos}`,
 <div class="tabela-wrap" tabindex="0" role="region" aria-label="Tabela de medidas (role para os lados no celular)"><table><caption>Peças indicadas por tipo de construção</caption>
 <thead><tr><th scope="col">Obra</th><th scope="col">Peças indicadas</th></tr></thead>
 <tbody>
-<tr><td>Galpão e barracão</td><td><a href="{{produtos/poste-de-eucalipto-tratado}}">Postes</a> ou <a href="{{produtos/palanque-de-eucalipto-tratado}}">palanques de 6 m a 7 m</a> como esteios, com terças e caibros serrados</td></tr>
-<tr><td>Curral e mangueira</td><td><a href="{{produtos/palanque-de-eucalipto-tratado}}">Palanques de 3,20 m a 4 m</a> e pranchas</td></tr>
+<tr><td>Galpão e barracão</td><td><a href="{{produtos/poste-de-eucalipto-tratado}}">Postes</a> ou <a href="{{produtos/palanque-de-eucalipto-tratado}}">palanques de 6m a 7m</a> como esteios, com terças e caibros serrados</td></tr>
+<tr><td>Curral e mangueira</td><td><a href="{{produtos/palanque-de-eucalipto-tratado}}">Palanques de 3,20m a 4m</a> e pranchas</td></tr>
 <tr><td>Cobertura e quiosque</td><td>Palanques ou postes, vigas e caibros</td></tr>
 <tr><td>Pergolado</td><td><a href="{{produtos/vara-de-eucalipto-tratado}}">Varas</a> ou palanques finos e ripão</td></tr>
 <tr><td>Deck e bancos</td><td><a href="{{produtos/madeira-serrada-de-eucalipto}}">Pranchas e vigas serradas</a></td></tr>
@@ -591,7 +591,7 @@ ${comoMedimos}`,
 <h2>O que informar no orçamento</h2>
 <ul>
 <li>Tipo de peça (mourão, esticador, palanque, poste, vara ou serrada)</li>
-<li>Comprimento e faixa de diâmetro (ex.: mourão 2,20 m, 10 a 12 cm)</li>
+<li>Comprimento e faixa de diâmetro (ex.: mourão 2,20m, 10 a 12 cm)</li>
 <li>Quantidade de cada peça</li>
 <li>Aplicação (cerca, curral, galpão…)</li>
 <li>Cidade e endereço de entrega</li>

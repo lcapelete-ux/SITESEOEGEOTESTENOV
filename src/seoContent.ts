@@ -23,24 +23,24 @@ export const BUSINESS = {
 
 export const PRODUCTS: { name: string; description: string }[] = [
   {
-    name: "Mourões de eucalipto tratado (2,20 m)",
+    name: "Mourões de eucalipto tratado (2,20m)",
     description:
-      "Mourões de 2,20 m para cercas rurais e divisas, do refugo (4 a 6 cm) ao super grosso (12 a 14 cm), além de lasca.",
+      "Mourões de 2,20m para cercas rurais e divisas, do refugo (4 a 6 cm) ao super grosso (12 a 14 cm), além de lasca.",
   },
   {
-    name: "Esticadores de eucalipto tratado (2,50 m)",
+    name: "Esticadores de eucalipto tratado (2,50m)",
     description:
-      "Esticadores de 2,50 m para cantos e tensionamento de cercas, de 10 a 32 cm de diâmetro no topo.",
+      "Esticadores de 2,50m para cantos e tensionamento de cercas, de 10 a 32 cm de diâmetro no topo.",
   },
   {
-    name: "Palanques de eucalipto tratado (3,20 m a 7 m)",
+    name: "Palanques de eucalipto tratado (3,20m a 7m)",
     description:
-      "Palanques de 3,20 m, 4 m, 5 m, 6 m e 7 m para currais, porteiras, galpões e estruturas rurais, de 10 a 32 cm de diâmetro.",
+      "Palanques de 3,20m, 4m, 5m, 6m e 7m para currais, porteiras, galpões e estruturas rurais, de 10 a 32 cm de diâmetro.",
   },
   {
-    name: "Postes de eucalipto tratado (8 m a 12 m)",
+    name: "Postes de eucalipto tratado (8m a 12m)",
     description:
-      "Postes de 8 a 12 m para construção civil, galpões, coberturas, pergolados e estruturas de grande carga.",
+      "Postes de 8 a 12m para construção civil, galpões, coberturas, pergolados e estruturas de grande carga.",
   },
   {
     name: "Madeira serrada de eucalipto tratado",
@@ -50,7 +50,7 @@ export const PRODUCTS: { name: string; description: string }[] = [
   {
     name: "Ripão, balancim e esteira de bambu tratado",
     description:
-      "Balancim de 1,20 m, ripão e esteira de bambu tratado para acabamento, sombreamento e paisagismo.",
+      "Balancim de 1,20m, ripão e esteira de bambu tratado para acabamento, sombreamento e paisagismo.",
   },
 ];
 
@@ -73,11 +73,11 @@ export const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "Qual a diferença entre mourão, esticador, palanque e poste?",
-    a: "A diferença principal é o comprimento e a aplicação. Mourões têm 2,20 m e formam a linha da cerca. Esticadores têm 2,50 m e ficam nos cantos e pontos de tensão. Palanques vão de 3,20 m a 7 m e são usados em currais, porteiras e estruturas rurais. Postes vão de 8 m a 12 m e são usados em galpões, coberturas e construção civil.",
+    a: "A diferença principal é o comprimento e a aplicação. Mourões têm 2,20m e formam a linha da cerca. Esticadores têm 2,50m e ficam nos cantos e pontos de tensão. Palanques vão de 3,20m a 7m e são usados em currais, porteiras e estruturas rurais. Postes vão de 8m a 12m e são usados em galpões, coberturas e construção civil.",
   },
   {
     q: "Quais produtos de eucalipto tratado vocês vendem?",
-    a: "Mourões de 2,20 m, esticadores de 2,50 m, palanques de 3,20 m a 7 m, postes de 8 m a 12 m, madeira serrada (caibro, caibrão, terça, viga, pranchas e ripa), ripão, balancim e esteira de bambu tratado. Todos em eucalipto citriodora tratado em autoclave.",
+    a: "Mourões de 2,20m, esticadores de 2,50m, palanques de 3,20m a 7m, postes de 8m a 12m, madeira serrada (caibro, caibrão, terça, viga, pranchas e ripa), ripão, balancim e esteira de bambu tratado. Todos em eucalipto citriodora tratado em autoclave.",
   },
   {
     q: "A madeira é de reflorestamento?",
